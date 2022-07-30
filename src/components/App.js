@@ -1,8 +1,11 @@
 import React from "react";
+import CreateUser from "./CreateUser/CreateUser";
 
 const App = () => {
     return (
-        <div></div>
+        <div>
+            <CreateUser />
+        </div>
     )
 }
 
