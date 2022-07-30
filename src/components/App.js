@@ -4,7 +4,7 @@ import CreateUser from "./CreateUser/CreateUser";
 const App = () => {
     return (
         <div>
-            <CreateUser />
+            <CreateUser/>
         </div>
     )
 }

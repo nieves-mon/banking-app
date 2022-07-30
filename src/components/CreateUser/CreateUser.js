@@ -6,9 +6,16 @@ const CreateUser = () => {
     const [balance, setBalance] = useState(0);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [users, setUsers] = useState([]);
+
+    const addUser = (user) => {
+        setUsers([...users, user]);
+        console.log(users);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        addUser({"name":name, "email":email, "password":password, "balance":balance});
     }
 
     return (
