@@ -43,55 +43,72 @@ const CreateUser = ({users, setUsers}) => {
         console.log(users);
     }
 
+    const capitalize = (string) => {
+        const subStrings = string.split(" ");
+
+        for(let i = 0; i < subStrings.length; i++) {
+            subStrings[i] = subStrings[i][0].toUpperCase() + subStrings[i].substr(1);
+        }
+
+        return subStrings.join(" ");
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        addUser({"name":name, "email":email, "password":password, "balance":balance});
+        addUser({"name":capitalize(name), "email":email, "password":password, "balance":balance});
     }
 
     return (
         <form onSubmit={e => {handleSubmit(e)}}>
-            <label htmlFor="email">Email Address</label>
-            <input
-                required
-                id="email"
-                name="email"
-                type="email"
-                value={email}
-                placeholder="sample@email.com"
-                onChange={e => setEmail(e.target.value)}
-            />
+            <div>
+                <label htmlFor="email">Email Address</label>
+                <input
+                    required
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={email}
+                    placeholder="sample@email.com"
+                    onChange={e => setEmail(e.target.value)}
+            /></div>
 
-            <label htmlFor="password">Password</label>
-            <input
-                required
-                id="password"
-                name="password"
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-            />
+            <div>
+                <label htmlFor="password">Password</label>
+                <input
+                    required
+                    id="password"
+                    name="password"
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                />
+            </div>
 
-            <label htmlFor="name">Name</label>
-            <input
-                required
-                id="name"
-                name="userName"
-                type="text"
-                value={name}
-                placeholder="John Doe"
-                onChange={e => setName(e.target.value)}
-            />
+            <div>
+                <label htmlFor="name">Name</label>
+                <input
+                    required
+                    id="name"
+                    name="userName"
+                    type="text"
+                    value={name}
+                    placeholder="John Doe"
+                    onChange={e => setName(e.target.value)}
+                />
+            </div>
 
-            <label htmlFor="balance">Initial Balance</label>
-            <input
-                required
-                id="balance"
-                name="balance"
-                type="number"
-                value={balance}
-                min="0"
-                onChange={e => setBalance(e.target.value)}
-            />
+            <div>
+                <label htmlFor="balance">Initial Balance</label>
+                <input
+                    required
+                    id="balance"
+                    name="balance"
+                    type="number"
+                    value={balance}
+                    min="0"
+                    onChange={e => setBalance(e.target.value)}
+                />
+            </div>
 
             <button type="submit">Create New User</button>
         </form>
