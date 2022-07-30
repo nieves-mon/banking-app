@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./CreateUser.css"
 
 const CreateUser = () => {
     const [name, setName] = useState("");
