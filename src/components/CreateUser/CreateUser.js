@@ -6,10 +6,13 @@ const CreateUser = () => {
     const [balance, setBalance] = useState(0);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState(
+        JSON.parse(localStorage.getItem("users")) === null ? [] : JSON.parse(localStorage.getItem("users"))
+    );
 
-    const addUser = (user) => {
-        setUsers([...users, user]);
+    const addUser = (newUser) => {
+        localStorage.setItem("users", JSON.stringify([...users, newUser]));
+        setUsers(JSON.parse(localStorage.getItem("users")));
         console.log(users);
     }
 
