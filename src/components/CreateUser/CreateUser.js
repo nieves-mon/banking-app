@@ -1,16 +1,43 @@
 import React, { useState } from "react";
 import "./CreateUser.css"
 
-const CreateUser = () => {
+const CreateUser = ({users, setUsers}) => {
     const [name, setName] = useState("");
     const [balance, setBalance] = useState(0);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [users, setUsers] = useState(
-        JSON.parse(localStorage.getItem("users")) === null ? [] : JSON.parse(localStorage.getItem("users"))
-    );
+
+    const vaildNewUser = (newUser) => {
+        let valid = {
+            unique: true,
+            doesNotStartWithNum: true
+        };
+
+        if(newUser.name.charAt(0) >= "0" && newUser.name.charAt(0) <= "9") {
+            valid.doesNotStartWithNum = false;
+        }
+
+        users.forEach(user => {
+            if(user.name === newUser.name) {
+                valid.unique = false;
+            }
+        });
+
+        return valid;
+    }
 
     const addUser = (newUser) => {
+        const validity = vaildNewUser(newUser);
+        if(!validity.unique) {
+            alert(`${newUser.name} already exists!`);
+            return;
+        }
+
+        if(!validity.doesNotStartWithNum) {
+            alert(`Name cannot start with a number!`);
+            return;
+        }
+
         localStorage.setItem("users", JSON.stringify([...users, newUser]));
         setUsers(JSON.parse(localStorage.getItem("users")));
         console.log(users);
@@ -25,6 +52,7 @@ const CreateUser = () => {
         <form onSubmit={e => {handleSubmit(e)}}>
             <label htmlFor="email">Email Address</label>
             <input
+                required
                 id="email"
                 name="email"
                 type="email"
@@ -35,6 +63,7 @@ const CreateUser = () => {
 
             <label htmlFor="password">Password</label>
             <input
+                required
                 id="password"
                 name="password"
                 type="password"
@@ -44,6 +73,7 @@ const CreateUser = () => {
 
             <label htmlFor="name">Name</label>
             <input
+                required
                 id="name"
                 name="userName"
                 type="text"
@@ -54,6 +84,7 @@ const CreateUser = () => {
 
             <label htmlFor="balance">Initial Balance</label>
             <input
+                required
                 id="balance"
                 name="balance"
                 type="number"
