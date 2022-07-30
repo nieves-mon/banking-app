@@ -59,7 +59,7 @@ const CreateUser = ({users, setUsers}) => {
     }
 
     return (
-        <form onSubmit={e => {handleSubmit(e)}}>
+        <form className="create-user" onSubmit={e => {handleSubmit(e)}}>
             <div>
                 <label htmlFor="email">Email Address</label>
                 <input
