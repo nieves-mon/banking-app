@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CreateUser.css"
+const validator = require("email-validator");
 
 const CreateUser = ({users, setUsers}) => {
     const [name, setName] = useState("");
@@ -7,18 +8,35 @@ const CreateUser = ({users, setUsers}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const vaildNewUser = (newUser) => {
+    const validEmail = () => {
+        const valid = {
+            unique: true,
+            validFormat: true
+        }
+
+        valid.validFormat = validator.validate(email);
+
+        users.forEach(user => {
+            if(user.email === email) {
+                valid.unique = false;
+            }
+        })
+
+        return valid;
+    }
+
+    const vaildName = () => {
         let valid = {
             unique: true,
             doesNotStartWithNum: true
         };
 
-        if(newUser.name.charAt(0) >= "0" && newUser.name.charAt(0) <= "9") {
+        if(name.charAt(0) >= "0" && name.charAt(0) <= "9") {
             valid.doesNotStartWithNum = false;
         }
 
         users.forEach(user => {
-            if(user.name === newUser.name) {
+            if(user.name === name) {
                 valid.unique = false;
             }
         });
@@ -27,14 +45,25 @@ const CreateUser = ({users, setUsers}) => {
     }
 
     const addUser = (newUser) => {
-        const validity = vaildNewUser(newUser);
-        if(!validity.unique) {
+        const nameValidity = vaildName();
+        if(!nameValidity.unique) {
             alert(`${newUser.name} already exists!`);
             return;
         }
 
-        if(!validity.doesNotStartWithNum) {
+        if(!nameValidity.doesNotStartWithNum) {
             alert(`Name cannot start with a number!`);
+            return;
+        }
+
+        const emailValidity = validEmail();
+        if(!emailValidity.unique) {
+            alert(`${newUser.email} is already used in an existing account`);
+            return;
+        }
+
+        if(!emailValidity.validFormat) {
+            alert("Invalid email format");
             return;
         }
 
