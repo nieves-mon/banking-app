@@ -1,0 +1,28 @@
+body {
+    font-family: Arial;
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+}
+
+.leftContainer {
+    background-color: blue;
+    width: 200px;
+}
+
+.middleContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: pink;
+    flex: 3;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: purple;
+    width: 300px;
+}

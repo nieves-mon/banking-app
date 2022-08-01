@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import CreateUser from "./CreateUser/CreateUser";
+import Header from './ClientTransactions/Header/Header.js'
+import Body from './ClientTransactions/Body/Body.js'
 
 const App = () => {
     const [users, setUsers] = useState(
@@ -8,7 +9,8 @@ const App = () => {
 
     return (
         <div>
-            <CreateUser users={users} setUsers={setUsers}/>
+            <Header />
+            <Body />
         </div>
     )
 }
