@@ -1,0 +1,19 @@
+.bodyContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftBodyContainer {
+    background-color: darkcyan;
+    width: 200px;
+}
+
+.middleBodyContainer {
+    background-color: beige;
+    flex: 3;
+}
+
+.rightBodyContainer {
+    background-color: rgb(253 232 233);
+    width: 300px;
+}
