@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Header from './ClientTransactions/Header/Header.js'
-import Body from './ClientTransactions/Body/Body.js'
+import LeftContainer from "./LeftContainer/LeftContainer";
+import MainContainer from "./MainContainer/MainContainer";
 
 const App = () => {
     const [users, setUsers] = useState(
@@ -8,9 +8,12 @@ const App = () => {
     );
 
     return (
-        <div>
-            <Header />
-            <Body />
+        // <div>
+        //     <Header />
+        //     <Body />
+        <div className="grid">
+            <LeftContainer />
+            <MainContainer users={users} setUsers={setUsers} />
         </div>
     )
 }
