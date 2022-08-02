@@ -10,7 +10,7 @@ body {
 
 .leftContainer {
     background-color: blue;
-    width: 200px;
+    width: 220px;
 }
 
 .middleContainer {
@@ -25,4 +25,16 @@ body {
     flex-direction: row;
     background-color: purple;
     width: 300px;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 0.5rem;
+}
+
+.rightContainer div {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5rem 1rem;
 }

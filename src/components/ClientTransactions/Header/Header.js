@@ -13,11 +13,12 @@ const Header = () => {
                     <div>Date</div>
                     <div>{date}</div>
                 </div>
-                <div>Currency</div>
             </div>
             <div className="rightContainer">
-                <div>Hello,</div>
-                <div>notification icon</div>
+                <div>
+                    Select User
+                    <i class="fa-solid fa-users"></i>
+                </div>
             </div>
         </div>
     )

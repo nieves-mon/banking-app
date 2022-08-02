@@ -1,11 +1,16 @@
 .bodyContainer {
     display: flex;
     flex-direction: row;
+    height: calc(100vh - 60px);
 }
 
 .leftBodyContainer {
     background-color: darkcyan;
-    width: 200px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
 .middleBodyContainer {
