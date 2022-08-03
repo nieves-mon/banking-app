@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CreateUser.css"
 const validator = require("email-validator");
 
-const CreateUser = ({users, setUsers}) => {
+const CreateUser = ({users, setUsers, togglePopup}) => {
     const [name, setName] = useState("");
     const [balance, setBalance] = useState(0);
     const [email, setEmail] = useState("");
@@ -84,34 +84,12 @@ const CreateUser = ({users, setUsers}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addUser({"name":capitalize(name), "email":email, "password":password, "balance":balance});
+        addUser({"name":capitalize(name), "email":email, "password":password, "balance":balance, "cardNumber": Date.now()});
     }
 
     return (
         <form className="create-user" onSubmit={e => {handleSubmit(e)}}>
-            <div>
-                <label htmlFor="email">Email Address</label>
-                <input
-                    required
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={email}
-                    placeholder="sample@email.com"
-                    onChange={e => setEmail(e.target.value)}
-            /></div>
-
-            <div>
-                <label htmlFor="password">Password</label>
-                <input
-                    required
-                    id="password"
-                    name="password"
-                    type="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                />
-            </div>
+            <i className="fa-solid fa-xmark" onClick={togglePopup}></i>
 
             <div>
                 <label htmlFor="name">Name</label>
@@ -123,6 +101,31 @@ const CreateUser = ({users, setUsers}) => {
                     value={name}
                     placeholder="John Doe"
                     onChange={e => setName(e.target.value)}
+                />
+            </div>
+
+            <div>
+                <label htmlFor="email">Email Address</label>
+                <input
+                    required
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={email}
+                    placeholder="sample@email.com"
+                    onChange={e => setEmail(e.target.value)}
+                />
+            </div>
+
+            <div>
+                <label htmlFor="password">Password</label>
+                <input
+                    required
+                    id="password"
+                    name="password"
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
                 />
             </div>
 

@@ -1,0 +1,92 @@
+.user-list-div {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 1rem;
+}
+
+.user-popup-div {
+    position: relative;
+}
+
+.popup-overlay-div {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 60px);
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.user-list-header,
+.user-list-header-left {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-list-header {
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.user-list-header-left {
+    align-items: center;
+}
+
+.searchbar {
+    margin-left: 1rem;
+}
+
+.user-list-title {
+    font-size: 2em;
+}
+
+.user-list-back:hover {
+    color:rgba(0, 0, 0, 0.7);
+}
+
+.fa-plus {
+    margin-right: 0.3rem;
+}
+
+.create-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem 1rem;
+    margin-top: 0.5rem;
+}
+
+.create-btn:hover {
+    cursor: pointer;
+}
+
+.user-table {
+    margin-top: 2rem;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table td,
+.user-table th {
+    text-align: center;
+    border-bottom: gray solid 1px;
+    padding: 0.3rem 0;
+}
+
+.id,
+.user-name,
+.user-email,
+.user-cn {
+    border-right: gray solid 1px;
+}
+
+.id {
+    width: 40px;
+}

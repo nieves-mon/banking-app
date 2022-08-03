@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 import "./Header.css"
 
 const Header = () => {
@@ -15,10 +16,10 @@ const Header = () => {
                 </div>
             </div>
             <div className="rightContainer">
-                <div>
-                    Select User
-                    <i class="fa-solid fa-users"></i>
-                </div>
+                <Link to="/UserList">
+                    Change User
+                    <i className="fa-solid fa-users"></i>
+                </Link>
             </div>
         </div>
     )

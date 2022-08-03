@@ -1,25 +1,21 @@
-import React from "react"
-import "./Body.css"
-
-import Navbar from "./LeftBody/Navbar/Navbar.js"
-import Logout from "./LeftBody/Logout/Logout.js"
-import Transactions from "./MiddleBody/Transactions/Transactions.js"
-import RightBody from "./RightBody/RightBody.js"
+import React, {useState} from "react"
+import { Routes, Route } from "react-router-dom"
+import UserList from "../../UserList/UserList"
+import Dashboard from "./MiddleBody/Dashboard/Dashboard"
 
 const Body = () => {
+    const [users, setUsers] = useState(
+        JSON.parse(localStorage.getItem("users")) === null ? [] : JSON.parse(localStorage.getItem("users"))
+    );
+
+    const [currUser, setCurrUser] = useState(users[0]);
+
     return (
-        <div className="bodyContainer">
-            <div className="leftBodyContainer">
-                <Navbar />
-                <Logout />
-            </div>
-            <div className="middleBodyContainer">
-                <Transactions />
-            </div>
-            <div className="rightBodyContainer">
-                <RightBody />
-            </div>
-        </div>
+        <Routes>
+            <Route path="/UserList" element={<UserList users={users} setUsers={setUsers} />} />
+
+            <Route path="/Dashboard/*" element={<Dashboard />}/>
+        </Routes>
     )
 }
 
