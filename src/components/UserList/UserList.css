@@ -68,7 +68,7 @@
 }
 
 .user-table {
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 100%;
     border-collapse: collapse;
 }
@@ -89,4 +89,19 @@
 
 .id {
     width: 40px;
+}
+
+.selected-user {
+    font-size: 1.5em;
+    margin-top: 2rem;
+}
+
+.user-row:hover {
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.selected,
+.selected:hover {
+    background: rgba(43, 122, 250, 0.2);
 }

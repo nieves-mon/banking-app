@@ -137,7 +137,8 @@ const CreateUser = ({users, setUsers, togglePopup}) => {
                     name="balance"
                     type="number"
                     value={balance}
-                    min="0"
+                    min="0.00"
+                    step="any"
                     onChange={e => setBalance(e.target.value)}
                 />
             </div>

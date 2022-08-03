@@ -8,13 +8,17 @@ const Body = () => {
         JSON.parse(localStorage.getItem("users")) === null ? [] : JSON.parse(localStorage.getItem("users"))
     );
 
-    const [currUser, setCurrUser] = useState(users[0]);
+    if(localStorage.getItem("currentUser") === null) {
+        localStorage.setItem("currentUser", JSON.stringify(users[0]));
+    }
+
+    const [currUser, setCurrUser] = useState(JSON.parse(localStorage.getItem("currentUser")));
 
     return (
         <Routes>
-            <Route path="/UserList" element={<UserList users={users} setUsers={setUsers} />} />
+            <Route path="/UserList" element={<UserList users={users} setUsers={setUsers} currUser={currUser} setCurrUser={setCurrUser} />} />
 
-            <Route path="/Dashboard/*" element={<Dashboard />}/>
+            <Route path="/Dashboard/*" element={<Dashboard currUser={currUser}/>}/>
         </Routes>
     )
 }
