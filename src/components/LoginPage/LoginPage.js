@@ -1,4 +1,6 @@
 import React, { useState }from "react";
+import Button from "./Button/Button";
+import "./LoginPage.css"
 
 const LoginPage = ({handleLogIn}) => {
     const [usernameIn, setUsernameIn] = useState("");
@@ -27,27 +29,31 @@ const LoginPage = ({handleLogIn}) => {
     }
 
     return (
-        <>
-            <form onSubmit={() => handleSubmit()}>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    value={usernameIn}
-                    onChange={e => setUsernameIn(e.target.value)}
-                />
+        <div className="login-page">
+            <form className="login-form" onSubmit={() => handleSubmit()}>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        value={usernameIn}
+                        onChange={e => setUsernameIn(e.target.value)}
+                    />
+                </div>
 
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    value={passwordIn}
-                    onChange={e => setPasswordIn(e.target.value)}
-                />
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={passwordIn}
+                        onChange={e => setPasswordIn(e.target.value)}
+                    />
+                </div>
 
-                <button type="submit">Log In</button>
+                <Button className="login-btn" type="Submit" label="Log In"/>
             </form>
-        </>
+        </div>
     )
 }
 
