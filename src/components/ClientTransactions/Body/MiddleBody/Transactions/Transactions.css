@@ -1,0 +1,18 @@
+.dateContainer, .balanceContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.dateLabel, .balanceLabel {
+    flex: 2;
+}
+
+.dateActual, .balanceActual {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+    color: rgb(3 73 144);
+}

@@ -4,7 +4,9 @@ import "./Logout.css"
 const Logout = () => {
     return (
         <div className="logoutContainer">
-            <div className="linkNavbar">Log Out</div>
+            <div className="links">
+                <div className="linkText">Log Out</div>
+            </div>    
         </div>
     )
 }

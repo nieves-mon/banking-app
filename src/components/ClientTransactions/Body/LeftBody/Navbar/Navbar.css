@@ -1,0 +1,58 @@
+.linksContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.linkCont {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.svg {
+    background-color: pink;
+    text-align: left;
+}
+
+.links {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 40px;
+    background-color: rgb(225 226 235);
+    border-radius: 5px;
+    margin-top: 20px;
+    margin: 5px;
+}
+
+.linkText:hover {
+    position: absolute;
+    margin: 10px;
+    color: rgb(225 226 235);
+}
+
+.links:hover {
+    background-color: rgb(122 151 187);
+}
+
+.linkText {
+    position: absolute;
+    margin: 0px;
+    color: rgb(3 73 144);
+}
+
+.links:active {
+    background-color: rgb(225 226 235);
+}
+
+.linkText:active {
+    position: absolute;
+    margin: 10px;
+    color: rgb(3 73 144);
+}

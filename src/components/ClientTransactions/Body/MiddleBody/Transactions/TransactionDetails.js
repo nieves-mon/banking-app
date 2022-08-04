@@ -1,12 +1,9 @@
 import React from "react"
-import "./Transactions.css"
+import "./TransactionDetails.css"
 import {
     Routes,
     Route
 } from "react-router-dom";
-import Deposit from "../Deposit/Deposit.js"
-import Withdraw from "../Withdraw/Withdraw.js"
-import Transfer from "../Transfer/Transfer.js"
 
 import Recipient from "../Transfer/Recipient.js"
 import TransferConfirmation from "../Transfer/TransferConfirmation.js"
@@ -14,8 +11,7 @@ import FinalTransfer from "../Transfer/FinalTransfer.js"
 
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 
-const Transactions = () => {
-    const tempUser = {name:"B", email: "b@gmail.com", balance:10000}
+const TransactionDetails = () => {
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
@@ -27,14 +23,10 @@ const Transactions = () => {
             </div>
             <div className="balanceContainer">
                 <div className="balanceLabel">BALANCE</div>
-                <div className="balanceActual">{tempUser.balance.toLocaleString(undefined, {maximumFractionDigits:2})}</div>
+                <div className="balanceActual">123</div>
             </div>
-            <div className="transactionsContainer">
-                <Routes>                    
-                    <Route path="/deposit" element={<Deposit />}/>
-                    <Route path="/withdraw" element={<Withdraw />}/>
-                    
-                    <Route path="/transfer" element={<Transfer />}/>
+            <div className="transactionDetails">
+                <Routes>
                     <Route path="/recipient" element={<Recipient />}/>
                     <Route path="/transferConfirmation" element={<TransferConfirmation />}/>
                     <Route path="/finalTransfer" element={<FinalTransfer />}/>
@@ -44,9 +36,10 @@ const Transactions = () => {
                 <Routes>
                     <Route path="/latestTransactions" element={<LatestTransactions />}/>
                 </Routes>
+                <LatestTransactions />
             </div>
         </div>
     )
 }
 
-export default Transactions
+export default TransactionDetails

@@ -4,16 +4,16 @@
 }
 
 .leftBodyContainer {
-    background-color: darkcyan;
+    background-color: rgb(235 230 238);
     width: 200px;
 }
 
 .middleBodyContainer {
-    background-color: beige;
+    background-color: rgb(235 230 238);
     flex: 3;
 }
 
 .rightBodyContainer {
-    background-color: rgb(253 232 233);
+    background-color: rgb(225 226 235);
     width: 300px;
 }
