@@ -13,7 +13,6 @@ const Dashboard = ({currUser, handleLogIn}) => {
                 <Logout handleLogIn={handleLogIn} />
             </div>
             <div className="middleBodyContainer">
-                <span>{currUser.name}</span>
                 <Transactions />
             </div>
             <div className="rightBodyContainer">
