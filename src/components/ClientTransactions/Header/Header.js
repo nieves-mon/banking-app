@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 import "./Header.css"
 
 const Header = () => {
@@ -7,17 +8,21 @@ const Header = () => {
 
     return (
         <div className="headerContainer">
-            <div className="leftContainer">alkansya</div>
+            <div className="leftContainer">
+                <i className="fa-solid fa-piggy-bank"></i>
+                alkansya
+            </div>
             <div className="middleContainer">
                 <div>
                     <div>Date</div>
                     <div>{date}</div>
                 </div>
-                <div>Currency</div>
             </div>
             <div className="rightContainer">
-                <div>Hello,</div>
-                <div>notification icon</div>
+                <Link to="/UserList">
+                    Change User
+                    <i className="fa-solid fa-users"></i>
+                </Link>
             </div>
         </div>
     )

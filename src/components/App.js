@@ -1,17 +1,26 @@
-import React, { useState } from "react";
-import Header from './ClientTransactions/Header/Header.js'
-import Body from './ClientTransactions/Body/Body.js'
+import React, { useState, useEffect } from "react";
+import Header from "./ClientTransactions/Header/Header"
+import Body from "./ClientTransactions/Body/Body"
+import LoginPage from "./LoginPage/LoginPage";
 
 const App = () => {
-    const [users, setUsers] = useState(
-        JSON.parse(localStorage.getItem("users")) === null ? [] : JSON.parse(localStorage.getItem("users"))
-    );
+    const [loggedIn, setloggedIn] = useState(JSON.parse(sessionStorage.getItem("loggedIn")));
+
+    const handleLogIn = () => {
+        sessionStorage.setItem("loggedIn", JSON.stringify(!loggedIn));
+        setloggedIn(JSON.parse(sessionStorage.getItem("loggedIn")));
+    }
 
     return (
-        <div>
-            <Header />
-            <Body />
-        </div>
+        <>
+            {loggedIn === true ?
+                <>
+                    <Header />
+                    <Body  handleLogIn={handleLogIn} />
+                </>
+            : <LoginPage handleLogIn={handleLogIn} />
+            }
+        </>
     )
 }
 

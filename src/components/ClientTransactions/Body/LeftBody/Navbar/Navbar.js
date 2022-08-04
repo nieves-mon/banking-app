@@ -1,24 +1,23 @@
 import React from "react";
-import {
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 export default function Navbar() {
   return (
       <div>
         <nav>
           <ul>
-            <li>
-              <Link to="/deposit">Deposit</Link>
-            </li>
-            <li>
-              <Link to="/withdraw">Withdraw</Link>
-            </li>
-            <li>
-              <Link to="/transfer">Transfer</Link>
-            </li>
+            <Link to="/deposit">
+              <li>Deposit</li>
+            </Link>
+
+            <Link to="/withdraw">
+              <li>Withdraw</li>
+            </Link>
+
+            <Link to="/transfer">
+              <li>Transfer</li>
+            </Link>
           </ul>
         </nav>
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CreateUser.css"
 const validator = require("email-validator");
 
-const CreateUser = ({users, setUsers}) => {
+const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
     const [name, setName] = useState("");
     const [balance, setBalance] = useState(0);
     const [email, setEmail] = useState("");
@@ -67,9 +67,10 @@ const CreateUser = ({users, setUsers}) => {
             return;
         }
 
-        localStorage.setItem("users", JSON.stringify([...users, newUser]));
-        setUsers(JSON.parse(localStorage.getItem("users")));
-        console.log(users);
+        updateUsers([...users, newUser]);
+        changeCurrUser(JSON.parse(localStorage.getItem("users"))[JSON.parse(localStorage.getItem("users")).length - 1]);
+        togglePopup();
+        alert("Successfully created new user: " + newUser.name + "\nUser's card number: " + newUser.cardNumber);
     }
 
     const capitalize = (string) => {
@@ -84,34 +85,16 @@ const CreateUser = ({users, setUsers}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addUser({"name":capitalize(name), "email":email, "password":password, "balance":balance});
+        addUser({"name":capitalize(name),
+                "email":email, "password":password,
+                "balance":parseFloat(balance),
+                "cardNumber": Date.now(),
+                "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100)}); //generate random number between 100 - 999
     }
 
     return (
         <form className="create-user" onSubmit={e => {handleSubmit(e)}}>
-            <div>
-                <label htmlFor="email">Email Address</label>
-                <input
-                    required
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={email}
-                    placeholder="sample@email.com"
-                    onChange={e => setEmail(e.target.value)}
-            /></div>
-
-            <div>
-                <label htmlFor="password">Password</label>
-                <input
-                    required
-                    id="password"
-                    name="password"
-                    type="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                />
-            </div>
+            <i className="fa-solid fa-xmark" onClick={togglePopup}></i>
 
             <div>
                 <label htmlFor="name">Name</label>
@@ -127,6 +110,31 @@ const CreateUser = ({users, setUsers}) => {
             </div>
 
             <div>
+                <label htmlFor="email">Email Address</label>
+                <input
+                    required
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={email}
+                    placeholder="sample@email.com"
+                    onChange={e => setEmail(e.target.value)}
+                />
+            </div>
+
+            <div>
+                <label htmlFor="password">Password</label>
+                <input
+                    required
+                    id="password"
+                    name="password"
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                />
+            </div>
+
+            <div>
                 <label htmlFor="balance">Initial Balance</label>
                 <input
                     required
@@ -134,7 +142,8 @@ const CreateUser = ({users, setUsers}) => {
                     name="balance"
                     type="number"
                     value={balance}
-                    min="0"
+                    min="0.00"
+                    step="any"
                     onChange={e => setBalance(e.target.value)}
                 />
             </div>
