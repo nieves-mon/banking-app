@@ -1,13 +1,10 @@
 import React from "react"
 import "./TransactionDetails.css"
-import {
-    Routes,
-    Route
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Recipient from "../Transfer/Recipient.js"
 import TransferConfirmation from "../Transfer/TransferConfirmation.js"
-import FinalTransfer from "../Transfer/FinalTransfer.js"
+import FinalTransfer from "../"
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 
 const TransactionDetails = () => {
