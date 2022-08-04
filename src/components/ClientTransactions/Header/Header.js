@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import "./Header.css"
 
 const Header = () => {
-    const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-
     return (
         <div className="headerContainer">
             <div className="leftContainer">
@@ -23,7 +20,7 @@ const Header = () => {
                     <div className="initials">R</div>
                 </div>
                 <div className="greeting">Hello,</div>
-                <div><img src="...../public/icons/deposit.svg"></img></div>
+                <div><img alt="Deposit icon" src="...../public/icons/deposit.svg"></img></div>
             </div>
         </div>
     )

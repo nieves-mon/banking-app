@@ -24,10 +24,6 @@ const Body = ({handleLogIn}) => {
         return;
     }
 
-    const getCurrUser = () => {
-        return currUser;
-    }
-
     return (
         <Routes>
             <Route path="/UserList" element={<UserList users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} />} />
