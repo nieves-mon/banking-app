@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CreateUser from "../CreateUser/CreateUser";
 import "./UserList.css"
 
-const UserList = ({users, setUsers, currUser, setCurrUser}) => {
+const UserList = ({users, updateUsers, currUser, changeCurrUser}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchInput, setSearchInput] = useState("");
 
@@ -11,18 +11,14 @@ const UserList = ({users, setUsers, currUser, setCurrUser}) => {
         setIsOpen(!isOpen);
     }
 
-    // const changeCurrUser = (user) => {
-    //     setCurrUser(user);
-    // }
-
     const filteredUsers = users.filter(user => user.name.toLowerCase().includes(searchInput.toLowerCase()));
 
     return (
         <div className="user-popup-div">
             {isOpen &&
                 <div className="popup-overlay-div">
-                    <CreateUser users={users} setUsers={setUsers} togglePopup={togglePopup}/>
-                    <div className="overlay"></div>
+                    <CreateUser users={users} updateUsers={updateUsers} changeCurrUser={changeCurrUser} togglePopup={togglePopup}/>
+                    <div className="overlay" onClick={togglePopup}></div>
                 </div>
             }
             <div className="user-list-div">
@@ -48,7 +44,7 @@ const UserList = ({users, setUsers, currUser, setCurrUser}) => {
                     Create New User
                 </button>
 
-                <h4 className="selected-user">Selected User: {currUser.name}</h4>
+                {currUser === null ? <h4 className="selected-user">No Selected User</h4> : <h4 className="selected-user">Selected User: {currUser.name}</h4>}
 
                 <table className="user-table">
                     <thead>
@@ -62,12 +58,14 @@ const UserList = ({users, setUsers, currUser, setCurrUser}) => {
                     </thead>
 
                     <tbody>
-                        {filteredUsers.length > 0 && filteredUsers.map((user, i) => {
+                        {filteredUsers.length > 0 ? filteredUsers.map((user, i) => {
                             return (
                                 <tr
                                     key={`user${i}`}
                                     className={user.name === currUser.name ? "selected user-row" : "user-row"}
-                                    onClick={e => setCurrUser(user)}
+                                    onClick={e => {
+                                        changeCurrUser(user);
+                                    }}
                                 >
                                     <td className="id">{i}</td>
                                     <td className="user-name">{user.name}</td>
@@ -76,7 +74,7 @@ const UserList = ({users, setUsers, currUser, setCurrUser}) => {
                                     <td className="user-balance">₱ {user.balance}</td>
                                 </tr>
                             )
-                        }) ||
+                        }) :
                             <tr className="no-match">
                                 <td className="no-match-text" colSpan="5">No Users Found</td>
                             </tr>

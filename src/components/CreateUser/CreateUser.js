@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CreateUser.css"
 const validator = require("email-validator");
 
-const CreateUser = ({users, setUsers, togglePopup}) => {
+const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
     const [name, setName] = useState("");
     const [balance, setBalance] = useState(0);
     const [email, setEmail] = useState("");
@@ -67,9 +67,10 @@ const CreateUser = ({users, setUsers, togglePopup}) => {
             return;
         }
 
-        localStorage.setItem("users", JSON.stringify([...users, newUser]));
-        setUsers(JSON.parse(localStorage.getItem("users")));
-        console.log(users);
+        updateUsers([...users, newUser]);
+        changeCurrUser(JSON.parse(localStorage.getItem("users"))[JSON.parse(localStorage.getItem("users")).length - 1]);
+        togglePopup();
+        alert("Successfully created new user: " + newUser.name + "\nUser's card number: " + newUser.cardNumber);
     }
 
     const capitalize = (string) => {
@@ -84,7 +85,11 @@ const CreateUser = ({users, setUsers, togglePopup}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addUser({"name":capitalize(name), "email":email, "password":password, "balance":balance, "cardNumber": Date.now()});
+        addUser({"name":capitalize(name),
+                "email":email, "password":password,
+                "balance":parseFloat(balance),
+                "cardNumber": Date.now(),
+                "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100)}); //generate random number between 100 - 999
     }
 
     return (

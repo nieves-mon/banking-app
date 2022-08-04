@@ -8,7 +8,10 @@ const Header = () => {
 
     return (
         <div className="headerContainer">
-            <div className="leftContainer">alkansya</div>
+            <div className="leftContainer">
+                <i className="fa-solid fa-piggy-bank"></i>
+                alkansya
+            </div>
             <div className="middleContainer">
                 <div>
                     <div>Date</div>

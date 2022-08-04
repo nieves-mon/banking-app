@@ -9,8 +9,14 @@ body {
 }
 
 .leftContainer {
+    font-size: 2em;
     background-color: blue;
     width: 220px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
 }
 
 .middleContainer {
