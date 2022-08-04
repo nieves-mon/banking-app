@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import UserList from "../../UserList/UserList"
 import Dashboard from "./MiddleBody/Dashboard/Dashboard"
 
-const Body = () => {
+const Body = ({handleLogIn}) => {
     const [currUser, setCurrUser] = useState(
         JSON.parse(localStorage.getItem("currentUser")) === null ? {} : JSON.parse(localStorage.getItem("currentUser"))
     );
@@ -15,10 +15,6 @@ const Body = () => {
         localStorage.setItem("users", JSON.stringify(newUsers));
         setUsers(newUsers);
         return;
-    }
-
-    const getUsers = () => {
-        return users;
     }
 
     const changeCurrUser = (user) => {
@@ -35,7 +31,7 @@ const Body = () => {
         <Routes>
             <Route path="/UserList" element={<UserList users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} />} />
 
-            <Route path="/Dashboard/*" element={<Dashboard currUser={currUser}/>}/>
+            <Route path="/Dashboard/*" element={<Dashboard handleLogIn={handleLogIn} currUser={currUser}/>}/>
         </Routes>
     )
 }

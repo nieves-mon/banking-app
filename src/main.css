@@ -6,20 +6,3 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-
-
-/*Grid Container*/
-.grid {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-template-areas: "left main";
-}
-
-.left-container {
-    grid-area: left;
-}
-
-.main-container {
-    grid-area: main;
-}

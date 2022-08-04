@@ -5,12 +5,12 @@ import Transactions from "../Transactions/Transactions";
 import RightBody from "../../RightBody/RightBody";
 import "./Dashboard.css"
 
-const Dashboard = ({currUser}) => {
+const Dashboard = ({currUser, handleLogIn}) => {
     return (
         <div className="bodyContainer">
             <div className="leftBodyContainer">
                 <Navbar />
-                <Logout />
+                <Logout handleLogIn={handleLogIn} />
             </div>
             <div className="middleBodyContainer">
                 <span>{currUser.name}</span>

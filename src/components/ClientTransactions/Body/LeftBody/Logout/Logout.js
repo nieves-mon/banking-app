@@ -1,10 +1,10 @@
 import React from "react"
 import "./Logout.css"
 
-const Logout = () => {
+const Logout = ({handleLogIn}) => {
     return (
         <div className="logoutContainer">
-            <div className="linkNavbar">Log Out</div>
+            <div className="linkNavbar" onClick={handleLogIn}>Log Out</div>
         </div>
     )
 }

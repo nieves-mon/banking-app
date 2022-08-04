@@ -1,6 +1,6 @@
 import React, { useState }from "react";
 
-const LoginPage = ({setloggedIn}) => {
+const LoginPage = ({handleLogIn}) => {
     const [usernameIn, setUsernameIn] = useState("");
     const [passwordIn, setPasswordIn] = useState("");
 
@@ -21,7 +21,7 @@ const LoginPage = ({setloggedIn}) => {
     const handleSubmit = () => {
         const validity = isValidLogin();
         if(validity[0] && validity[1]) {
-            setloggedIn(true);
+            handleLogIn();
             return;
         }
     }
@@ -32,7 +32,6 @@ const LoginPage = ({setloggedIn}) => {
                 <label htmlFor="username">Username:</label>
                 <input
                     type="text"
-                    name="username"
                     id="username"
                     value={usernameIn}
                     onChange={e => setUsernameIn(e.target.value)}
@@ -41,7 +40,6 @@ const LoginPage = ({setloggedIn}) => {
                 <label htmlFor="password">Password:</label>
                 <input
                     type="password"
-                    name="password"
                     id="password"
                     value={passwordIn}
                     onChange={e => setPasswordIn(e.target.value)}
