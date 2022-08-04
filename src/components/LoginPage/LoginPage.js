@@ -1,6 +1,4 @@
 import React, { useState }from "react";
-import PasswordInput from "./PasswordInput/PasswordInput";
-import UserNameInput from "./UserNameInput.js/UserNameInput";
 
 const LoginPage = ({setloggedIn}) => {
     const [usernameIn, setUsernameIn] = useState("");
