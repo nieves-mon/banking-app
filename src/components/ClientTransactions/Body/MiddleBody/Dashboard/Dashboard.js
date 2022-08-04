@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React from "react";
 import Navbar from "../../LeftBody/Navbar/Navbar";
 import Logout from "../../LeftBody/Logout/Logout";
 import Transactions from "../Transactions/Transactions";

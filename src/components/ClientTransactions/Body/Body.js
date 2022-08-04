@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import { Routes, Route } from "react-router-dom"
 import UserList from "../../UserList/UserList"
 import Dashboard from "./MiddleBody/Dashboard/Dashboard"
+import "./Body.css";
 
 const Body = ({handleLogIn}) => {
     const [currUser, setCurrUser] = useState(

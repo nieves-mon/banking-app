@@ -1,36 +1,38 @@
 import React, { useState }from "react";
-import Button from "./Button/Button";
 import "./LoginPage.css"
 
 const LoginPage = ({handleLogIn}) => {
     const [usernameIn, setUsernameIn] = useState("");
     const [passwordIn, setPasswordIn] = useState("");
+    const [unValidity, setunValidity] = useState(true);
+    const [pwValidity, setpwValidity] = useState(true);
 
     const isValidLogin = () => {
-        const valid = [true, true];
+        if(usernameIn.trim() === "admin" && passwordIn === "12345678") {
+            return true;
+        }
 
-        if(usernameIn !== "admin") {
-            valid[0] = false;
+        if(usernameIn.trim() !== "admin") {
+            setunValidity(false);
         }
 
         if(passwordIn !== "12345678") {
-            valid[1] = false;
+            setpwValidity(false);
         }
-
-        return valid;
+        return false;
     }
 
-    const handleSubmit = () => {
-        const validity = isValidLogin();
-        if(validity[0] && validity[1]) {
-            handleLogIn();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(!isValidLogin()) {
             return;
         }
+        handleLogIn();
     }
 
     return (
         <div className="login-page">
-            <form className="login-form" onSubmit={() => handleSubmit()}>
+            <form className="login-form" onSubmit={(e) => {handleSubmit(e)}}>
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input
@@ -39,6 +41,7 @@ const LoginPage = ({handleLogIn}) => {
                         value={usernameIn}
                         onChange={e => setUsernameIn(e.target.value)}
                     />
+                    {!unValidity && <div className="invalid">Username does not exist</div>}
                 </div>
 
                 <div>
@@ -49,9 +52,10 @@ const LoginPage = ({handleLogIn}) => {
                         value={passwordIn}
                         onChange={e => setPasswordIn(e.target.value)}
                     />
+                    {!pwValidity && <div className="invalid">Incorrect Password</div>}
                 </div>
 
-                <Button className="login-btn" type="Submit" label="Log In"/>
+                <button className="login-btn" type="Submit">Log In</button>
             </form>
         </div>
     )

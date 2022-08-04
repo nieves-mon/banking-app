@@ -1,16 +1,47 @@
-li {
-    border-radius: 10px;
-    list-style-type: none;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem 0;
-    padding-left: 1rem;
+.linksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-a {
-    color: black;
+.links {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+    background-color: rgb(225 226 235);
+    border-radius: 5px;
+    margin-top: 20px;
+    margin: 5px;
     text-decoration: none;
 }
 
-li:hover {
-    background: gray;
+.linkText {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.links:hover .linkText {
+    color: rgb(225 226 235);
+}
+
+.links:hover {
+    background-color: rgb(122 151 187);
+}
+
+.linkText {
+    color: rgb(3 73 144);
+}
+
+.links:active {
+    background-color: rgb(225 226 235);
+}
+
+.linkText:active {
+    color: rgb(3 73 144);
 }

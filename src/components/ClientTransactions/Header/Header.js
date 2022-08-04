@@ -13,16 +13,17 @@ const Header = () => {
                 alkansya
             </div>
             <div className="middleContainer">
-                <div>
-                    <div>Date</div>
-                    <div>{date}</div>
-                </div>
-            </div>
-            <div className="rightContainer">
                 <Link to="/UserList">
                     Change User
                     <i className="fa-solid fa-users"></i>
                 </Link>
+            </div>
+            <div className="rightContainer">
+                <div className="initialContainer">
+                    <div className="initials">R</div>
+                </div>
+                <div className="greeting">Hello,</div>
+                <div><img src="...../public/icons/deposit.svg"></img></div>
             </div>
         </div>
     )
