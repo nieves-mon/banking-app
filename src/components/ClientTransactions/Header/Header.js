@@ -5,14 +5,16 @@ const Header = () => {
 
     return (
         <div className="headerContainer">
-            <div className="leftContainer">alkansya</div>
+            <div className="leftContainer">
+                <div className="initials"><i className="fa-solid fa-piggy-bank"></i></div>
+                <div className="initials">alkansya</div>
+            </div>
             <div className="middleContainer"></div>
             <div className="rightContainer">
                 <div className="initialContainer">
-                    <div className="initials">R</div>
+                    <div className="initials">A</div>
                 </div>
-                <div className="greeting">Hello,</div>
-                <div><img src="...../public/icons/deposit.svg"></img></div>
+                <div className="greeting">Name</div>
             </div>
         </div>
     )

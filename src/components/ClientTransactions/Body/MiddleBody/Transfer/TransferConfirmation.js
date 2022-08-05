@@ -4,55 +4,67 @@ import {
     Link
   } from "react-router-dom";
 
-import "./TransferConfirmation.css"
+import "../Transactions/TransactionConfirmation.css"
 
 
 const TransferConfirmation = () => {
+    const [reference, setReference] = useState("")
+
     return (
         <div>
-            <div>
-                <div>
-                    <div>Transfer details</div>
-                    <div>Edit</div>
+            <div className="transactionDetailsContainer">
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Transfer details</div>
+                    <Link to="/transfer"><div className="transactionDetailActual">Edit</div></Link>
                 </div>
-                <div>
-                    <div>You send exactly</div>
-                    <div>123</div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">You send exactly</div>
+                    <div className="transactionDetailActual">123</div>
                 </div>
-                <div>
-                    <div>You get</div>
-                    <div>123</div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">You get</div>
+                    <div className="transactionDetailActual">123</div>
                 </div>
-                <div>
-                    <div>Balance afterwards</div>
-                    <div>123</div>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <div>Recipient details</div>
-                    <div>Change</div>
-                </div>
-                <div>
-                    <div>Name</div>
-                    <div>A</div>
-                </div>
-                <div>
-                    <div>Email</div>
-                    <div>a@gmail.com</div>
-                </div>
-                <div>
-                    <div>Account number</div>
-                    <div>1234</div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Balance afterwards</div>
+                    <div className="transactionDetailActual">123</div>
                 </div>
             </div>
-            <div>
-                <div>Reference (optional)</div>
-                <div>Type a reference for A</div>
+            <div className="transactionDetailsContainer">
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Recipient details</div>
+                    <Link to="/recipient"><div className="transactionDetailActual">Change</div></Link>
+                </div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Name</div>
+                    <div className="transactionDetailActual">A</div>
+                </div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Email</div>
+                    <div className="transactionDetailActual">a@gmail.com</div>
+                </div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Account number</div>
+                    <div className="transactionDetailActual">1234</div>
+                </div>
             </div>
-            <Link to="/finalTransfer">
-                <div>Confirm and send</div>
-            </Link>
+            <div className="transactionDetailsContainer">
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Reference (optional)</div>
+                    <div className="transactionDetailActual">
+                        <input
+                            required
+                            id="transferReference"
+                            className="transactionReference"
+                            name="reference"
+                            type="text"
+                            value={reference}
+                            onChange={e => setReference(e.target.value)}
+                        />
+                    </div>
+                </div>
+            </div>
+            <Link className="submitButton" type="submit" to="/finalTransfer"><button className="button">Confirm and send</button></Link>
         </div>        
     )
 }

@@ -12,6 +12,7 @@ body {
 
 .leftContainer {
     width: 200px;
+    text-align: center;
 }
 
 .middleContainer {
@@ -31,12 +32,14 @@ body {
     width: 30px;
     height: 30px;
     margin: 15px;
-    border-radius: 15px;
+    border-radius: 15px; 
 }
 
 .initials {
     color: rgb(122 151 187);
-    padding-right: 10px;
+    padding-right: 20px;
+    margin-top: 3px;
+    margin-left: 9.8px;  
 }
 
 .greeting {

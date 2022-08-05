@@ -4,7 +4,9 @@ import "./Card.css"
 const Card = () => {
     return (
         <div className="cardContainer">
-            <div className="logoContainer">Logo</div>
+            <div className="logoContainer">
+                <div className="emboss initials"><i className="fa-solid fa-piggy-bank"></i></div>
+            </div>
             <div className="chip">
                 <div className="chipLine"></div>
                 <div className="chipLine"></div>

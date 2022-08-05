@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "./Recipient.css"
+import "../Transactions/Transaction.css"
 
 import {
     Link
@@ -7,29 +7,43 @@ import {
 
 const Recipient = () => {
     const tempUser = {name:"B", email: "b@gmail.com", balance:10000}
-    const tempRecipient = {name:"B", email: "b@gmail.com", balance:10000}
+    const tempRecipient = {name:"A", email: "a@gmail.com", balance:20000}
     const [recipient, setRecipient] = useState(tempRecipient.name)
-    const [transfer] = useState(50000)
+    let transactionError = false
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setRecipient();
     }
 
-    return (
-        <form onSubmit={e => {handleSubmit(e)}}>
-            <div>
-                <label>Who are you sending money to?</label>
-                <div>Search</div>
-                <div>Your recipients</div>
-                <Link to="/transferConfirmation">
-                    <div>A</div>
-                </Link>
-                <div>Show more</div>
-                <div>New recipient</div>
-            </div>
-        </form>
+    function transactionError(recipient) {
+        if (recipient == []) {
+            transactionError = true
+            return <p className="warning">Recipient is not our customer</p>
+        }
+        return <p>Recipient is our customer</p>
+    }
+
+    return (    
+        <div className="transactionContainer">
+            <form className="transaction" onSubmit={e => {handleSubmit(e)}}>
+                <div className="inputContainer">
+                    <label htmlFor="recipient">Send to email</label>
+                        <input
+                            required
+                            id="recipient"
+                            className="inputValue"
+                            name="recipient"
+                            type="text"
+                            value={recipient}
+                            onChange={e => setRecipient(e.target.value)}
+                        />
+                    <div className="statusText">{transactionError(recipient)}</div>
+                </div>       
+                <Link className="submitButton" type="submit" to="/transferConfirmation"><button disabled={transactionError} className="button">Continue</button></Link>         
+            </form>
+        </div>
     )
 }
-    
+
 export default Recipient

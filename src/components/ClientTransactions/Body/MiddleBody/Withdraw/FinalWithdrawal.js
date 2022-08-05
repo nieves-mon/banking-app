@@ -6,12 +6,12 @@ import {
 
 import "../Transactions/FinalTransaction.css"
 
-const FinalTransfer = () => {
+const FinalWithdrawal = () => {
 
     return (
         <div className="finalTransactionContainer">
             <div className="doneTransaction">Done!</div>
-            <div className="finalTransaction">Money has been transferred from A to B and ready to use.</div>
+            <div className="finalTransaction">Money has been withdrawn by A.</div>
             <div>
                 <Link className="submitButton" type="submit" to="/latestTransactions"><button className="button">Got it!</button></Link> 
             </div>
@@ -19,4 +19,4 @@ const FinalTransfer = () => {
     )
 }
 
-export default FinalTransfer
+export default FinalWithdrawal

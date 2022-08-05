@@ -5,10 +5,6 @@ import {
     Route
 } from "react-router-dom";
 
-import Recipient from "../Transfer/Recipient.js"
-import TransferConfirmation from "../Transfer/TransferConfirmation.js"
-import FinalTransfer from "../Transfer/FinalTransfer.js"
-
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 
 const TransactionDetails = () => {
@@ -26,16 +22,9 @@ const TransactionDetails = () => {
                 <div className="balanceActual">123</div>
             </div>
             <div className="transactionDetails">
-                <Routes>
-                    <Route path="/recipient" element={<Recipient />}/>
-                    <Route path="/transferConfirmation" element={<TransferConfirmation />}/>
-                    <Route path="/finalTransfer" element={<FinalTransfer />}/>
-                </Routes>
+                
             </div>
             <div>
-                <Routes>
-                    <Route path="/latestTransactions" element={<LatestTransactions />}/>
-                </Routes>
                 <LatestTransactions />
             </div>
         </div>

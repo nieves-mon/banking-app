@@ -9,8 +9,7 @@ export default function Navbar() {
   return (
       <div>
         <nav>
-          <div className="linksContainer">
-            
+          <div className="linksContainer">            
             <Link className="links" to="/deposit">
                 <div className="linkCont">
                     <div className="svg">
@@ -24,6 +23,9 @@ export default function Navbar() {
             </Link>
             <Link className="links" to="/transfer">
               <div className="linkText">Transfer</div>
+            </Link>
+            <Link className="links" to="/latestTransactions">
+              <div className="linkText">Transactions</div>
             </Link>
           </div>
         </nav>

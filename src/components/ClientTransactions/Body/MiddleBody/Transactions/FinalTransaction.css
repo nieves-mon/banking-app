@@ -1,0 +1,33 @@
+.finalTransactionContainer {
+    position: relative
+}
+
+.doneTransaction {
+    margin-top: 50px;
+    text-align: center;
+    color: rgb(3 73 144);
+    display: flex;
+    flex-direction: column;
+}
+
+.finalTransaction {
+    text-align: center;
+    color: #a98bb5;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.submitButton {
+    height: 20px;
+    width: 250px;
+}
+
+.button {
+    position: absolute;
+    border: none;
+    background-color: rgb(3 73 144);
+    color: rgb(235 230 238);
+    align-items: center;
+}

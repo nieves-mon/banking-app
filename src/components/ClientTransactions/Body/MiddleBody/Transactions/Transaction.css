@@ -1,4 +1,5 @@
 .transactionContainer {
+    position: relative;
     width: flex;
     height: 160px;
     margin-top: 15px;
@@ -17,14 +18,14 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
-.deductTransfer {
+.transaction {
     margin: 10px;
     color: #a98bb5;
     display: flex;
     flex-direction: column;
 }
 
-.inputTransfer {
+.inputContainer {
     display: flex;
     flex-direction: column;
 }
@@ -33,7 +34,7 @@ textarea:focus, input:focus{
     outline: none;
 }
 
-.transferAmount {
+.inputValue {
     border: #a98bb5;
     background-color: rgb(235 230 238);
     font-size: 25px;
@@ -48,10 +49,20 @@ textarea:focus, input:focus{
 }
 
 .warning {
-    color: red;
+    color: rgb(195 6 57);
 }
 
 .submitButton {
+    position: absolute;
+    height: 20px;
+    width: 80px;
+    margin-top: 80px;
+}
+
+.button {
+    position: absolute;
     margin-top: 20px;
     border: none;
+    background-color: rgb(3 73 144);
+    color: rgb(235 230 238);
 }

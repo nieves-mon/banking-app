@@ -5,9 +5,14 @@ import {
     Route
 } from "react-router-dom";
 import Deposit from "../Deposit/Deposit.js"
-import Withdraw from "../Withdraw/Withdraw.js"
-import Transfer from "../Transfer/Transfer.js"
+import DepositConfirmation from "../Deposit/DepositConfirmation.js"
+import FinalDeposit from "../Deposit/FinalDeposit.js"
 
+import Withdraw from "../Withdraw/Withdraw.js"
+import WithdrawalConfirmation from "../Withdraw/WithdrawalConfirmation.js"
+import FinalWithdrawal from "../Withdraw/FinalWithdrawal.js"
+
+import Transfer from "../Transfer/Transfer.js"
 import Recipient from "../Transfer/Recipient.js"
 import TransferConfirmation from "../Transfer/TransferConfirmation.js"
 import FinalTransfer from "../Transfer/FinalTransfer.js"
@@ -32,7 +37,12 @@ const Transactions = () => {
             <div className="transactionsContainer">
                 <Routes>                    
                     <Route path="/deposit" element={<Deposit />}/>
+                    <Route path="/depositConfirmation" element={<DepositConfirmation />}/>
+                    <Route path="/finalDeposit" element={<FinalDeposit />}/>
+                    
                     <Route path="/withdraw" element={<Withdraw />}/>
+                    <Route path="/withdrawalConfirmation" element={<WithdrawalConfirmation />}/>
+                    <Route path="/finalWithdrawal" element={<FinalWithdrawal />}/>
                     
                     <Route path="/transfer" element={<Transfer />}/>
                     <Route path="/recipient" element={<Recipient />}/>
