@@ -23,7 +23,7 @@
 .chip {
     position: relative;
     margin: 0;
-    top: 35px;
+    top: 50px;
     left: 10px;
     display: flex;
     align-items: center;
@@ -74,7 +74,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 40px 10px 3px;
+    margin: 55px 10px 0px;
     font-size: 18px;
     font-family: "cc font", monospace;
 }
@@ -84,7 +84,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 13px 10px 10px;
+    margin: 0px 10px 0px;
     font-size: 15px;
     font-family: "cc font", monospace;
 }
@@ -94,7 +94,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 12px 10px;
+    margin: 0px 12px 0px;
     font-size: 15px;
     font-family: "cc font", monospace;
 }
@@ -107,24 +107,26 @@
 
 .mastercardLogo {
     position: absolute;
-    right: 20px;
-    bottom: 20px;
+    margin-top: 100px;
     display: flex;
 }
 
 .mcRed {
+    position: absolute;
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: black;
+    background-color: rgb(235 0 27);
+    margin-top: 10px;
 }
 
 .mcYellow {
+    position: absolute;
     width: 20px;
     height: 20px;
     border-radius: 50%;
     margin-left: -10px;
-    background-color: rgba(255, 209, 0, 0.7);
+    background-color: rgba(247, 158, 27, 0.7);
 }
 
 .design1 {
@@ -132,7 +134,7 @@
     width: 312px;
     height: 125px;
     border-radius: 600px / 200px;
-    margin: 8px -20px -61px -78px;
+    margin: -33px -20px -61px -78px;
     background: rgba(255, 255, 255, 0.05);
 }
 
@@ -141,6 +143,6 @@
     width: 245px;
     height: 190px;
     border-radius: 50%;
-    margin: -30px 89px -115px -97px;
+    margin: -70px 89px -115px -97px;
     background: rgba(255, 255, 255, 0.05);
 }

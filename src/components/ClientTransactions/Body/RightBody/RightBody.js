@@ -5,7 +5,7 @@ import Card from "./Card/Card.js"
 const RightBody = ({currUser}) => {
     return (
         <div>
-            <div className="myCard">MY CARD</div>
+            <div className="myCard">{currUser.name}'s Card</div>
             <div>
                 <Card currUser={currUser}/>
             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -8,7 +8,7 @@ export default function Navbar({page}) {
         <nav>
           <div className="linksContainer">
             <Link className={page === "history" ? "links active" : "links"} to="history">
-              <div className="linkText">History</div>
+              <div className="linkText">Transactions</div>
             </Link>
             <Link className={page === "deposit" ? "links active" : "links"} to="deposit">
               <div className="linkText">

@@ -1,44 +1,49 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
+import { Link } from "react-router-dom";
+import "../Transactions/Transaction.css"
 
-const Withdraw = ({currUser, balance, updateBalance, setPage}) => {
-    const [withdrawal, setWithdrawal] = useState("")
+const Withdraw = ({withdraw, setWithdraw, balance, setPage}) => {
+    let withdrawError = false;
 
-    const deductWithdrawal = () => {
-        updateBalance(currUser, "withdraw", parseFloat(withdrawal))
-        setWithdrawal("");
-        return;
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        deductWithdrawal();
+    function fundStatus(balance, withdrawal) {
+        if (withdraw.length < 1) {
+            withdrawError = true
+            return <p className="warning">Type an amount to withdraw</p>
+        }
+        if ((balance - parseFloat(withdraw)) < 0) {
+            withdrawError = true
+            return <p className="warning">You have not enough funds in your account</p>;
+        }
+        return <p>You have <span>&#8369;</span>{(balance - withdraw).toLocaleString(undefined, {maximumFractionDigits:2})} available in your account</p>
     }
 
     useEffect(() => {
+        setWithdraw("");
         setPage("withdraw");
-    }, [setPage]);
+    }, [setWithdraw, setPage]);
 
     return (
-        <form className="deductWithdrawal" onSubmit={e => {handleSubmit(e)}}>
-            <div>
-                <label htmlFor="withdrawal">Amount</label>
-                <input
-                    required
-                    id="withdrawal"
-                    name="withdrawal"
-                    type="number"
-                    value={withdrawal}
-                    min="0.0"
-                    step="any"
-                    placeholder="0"
-                    onChange={e => setWithdrawal(e.target.value)}
-                />
-            </div>
-            <button type="submit">Submit</button>
-            <div>
-                Your balance is {balance}.
-            </div>
-        </form>
+        <div className="transactionContainer">
+            <form className="transaction">
+                <div className="inputContainer">
+                    <label htmlFor="withdrawal">Withdraw exactly</label>
+                        <input
+                            required
+                            id="withdrawal"
+                            className="inputValue"
+                            name="withdrawal"
+                            type="number"
+                            value={withdraw}
+                            min="0"
+                            onChange={e => setWithdraw(e.target.value)}
+                        />
+                    <div className="statusText">{fundStatus(balance, withdraw)}</div>
+                </div>
+                <Link className="submitButton" type="submit" to="../withdrawalConfirmation">
+                    <button disabled={withdrawError} className="button">Continue</button>
+                </Link>
+            </form>
+        </div>
     )
 }
 

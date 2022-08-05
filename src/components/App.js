@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./ClientTransactions/Header/Header"
 import Body from "./ClientTransactions/Body/Body"
 import LoginPage from "./LoginPage/LoginPage";

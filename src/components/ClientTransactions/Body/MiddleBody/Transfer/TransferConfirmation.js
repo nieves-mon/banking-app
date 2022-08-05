@@ -1,51 +1,69 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom";
+import "../Transactions/TransactionConfirmation.css"
 
-const TransferConfirmation = () => {
+
+const TransferConfirmation = ({users, currUser, other, amount, balance, updateBalance}) => {
+    const [reference, setReference] = useState("")
+
+    const idx = users.findIndex(user => user.email === other);
+
+    const handleConfirm = (e) => {
+        updateBalance(currUser, "Transfer", parseFloat(amount), "Transfer To", users[idx]);
+    }
+
     return (
         <div>
-            <div>
-                <div>
-                    <div>Transfer details</div>
-                    <div>Edit</div>
+            <div className="transactionDetailsContainer">
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Transfer details</div>
+                    <Link to="../transfer"><div className="transactionDetailActual">Edit</div></Link>
                 </div>
-                <div>
-                    <div>You send exactly</div>
-                    <div>123</div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Send exactly</div>
+                    <div className="transactionDetailActual">₱ {amount}</div>
                 </div>
-                <div>
-                    <div>You get</div>
-                    <div>123</div>
-                </div>
-                <div>
-                    <div>Balance afterwards</div>
-                    <div>123</div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Balance afterwards</div>
+                    <div className="transactionDetailActual">₱ {parseFloat(balance) - parseFloat(amount)}</div>
                 </div>
             </div>
-            <div>
-                <div>
-                    <div>Recipient details</div>
-                    <div>Change</div>
+            <div className="transactionDetailsContainer">
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Recipient details</div>
+                    <Link to="../recipient"><div className="transactionDetailActual">Change</div></Link>
                 </div>
-                <div>
-                    <div>Name</div>
-                    <div>A</div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Name</div>
+                    <div className="transactionDetailActual">{users[idx].name}</div>
                 </div>
-                <div>
-                    <div>Email</div>
-                    <div>a@gmail.com</div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Email</div>
+                    <div className="transactionDetailActual">{users[idx].email}</div>
                 </div>
-                <div>
-                    <div>Account number</div>
-                    <div>1234</div>
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Account number</div>
+                    <div className="transactionDetailActual">{users[idx].cardNumber}</div>
                 </div>
             </div>
-            <div>
-                <div>Reference (optional)</div>
-                <div>Type a reference for A</div>
+            <div className="transactionDetailsContainer">
+                <div className="transactionDetails">
+                    <div className="transactionDetailLabel">Reference (optional)</div>
+                    <div className="transactionDetailActual">
+                        <input
+                            required
+                            id="transferReference"
+                            className="transactionReference"
+                            name="reference"
+                            type="text"
+                            value={reference}
+                            onChange={e => setReference(e.target.value)}
+                        />
+                    </div>
+                </div>
             </div>
-            <Link to="/finalTransfer">
-                <div>Confirm and send</div>
+            <Link className="submitButton" type="submit" to="../finalTransfer">
+                <button className="button" onClick={e => handleConfirm(e)}>Confirm and send</button>
             </Link>
         </div>
     )

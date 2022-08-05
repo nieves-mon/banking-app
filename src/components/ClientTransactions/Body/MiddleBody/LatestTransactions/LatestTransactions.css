@@ -7,3 +7,38 @@
     font-size: 15px;
     font-weight: 500;
 }
+
+.latestTransactionDetailsContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-right: 30px;
+    margin-left: 30px;
+    border: 1px;
+    border-style: solid;
+    border-color: rgb(235 230 238);
+    border-radius: 16px;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94 104 121 0.288);
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.detailsActual {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    color: rgb(3 73 144);
+}
+
+.date {
+    background-color: pink;
+    text-shadow: -3px 2px 5px rgba(0, 0, 0, 0.5), 3px -1px 0 rgba(225 225 225 0.8);
+}

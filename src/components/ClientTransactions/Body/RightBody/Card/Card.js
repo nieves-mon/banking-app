@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import "./Card.css"
 
 const Card = ({currUser}) => {
@@ -17,7 +17,9 @@ const Card = ({currUser}) => {
 
     return (
         <div className="cardContainer">
-            <div className="logoContainer">Logo</div>
+            <div className="logoContainer">
+                <div className="emboss initials"><i className="fa-solid fa-piggy-bank"></i></div>
+            </div>
             <div className="chip">
                 <div className="chipLine"></div>
                 <div className="chipLine"></div>
@@ -27,7 +29,7 @@ const Card = ({currUser}) => {
             </div>
             <div className="emboss cardNumber">{cardNumber}</div>
             <div className="emboss cardExpiry">12/28</div>
-            <div className="emboss cardUser">A A A</div>
+            <div className="emboss cardUser">{currUser.name}</div>
             <div className="mastercardLogo">
                 <div className="mcRed"></div>
                 <div className="mcYellow"></div>

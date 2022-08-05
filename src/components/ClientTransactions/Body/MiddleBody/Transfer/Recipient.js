@@ -1,30 +1,67 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import "../Transactions/Transaction.css"
 
-const Recipient = () => {
-    const tempUser = {name:"B", email: "b@gmail.com", balance:10000}
-    const tempRecipient = {name:"B", email: "b@gmail.com", balance:10000}
-    const [recipient, setRecipient] = useState(tempRecipient.name)
-    const [transfer] = useState(50000)
+import {
+    Link
+  } from "react-router-dom";
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setRecipient();
+const Recipient = ({users, currUser, setOther}) => {
+    const filteredUsers = users.filter(user => user.name !== currUser.name);
+    const [recipient, setRecipient] = useState("");
+    let transactionError = false;
+
+    const recepientError = (recipient) => {
+        if(recipient.length < 1) {
+            transactionError = false;
+            return <p>Please type a valid email address</p>;
+        }
+
+        const validEmail = (user) => {
+            return user.email === recipient;
+        }
+
+        if(filteredUsers.every(user => !validEmail(user))) {
+            transactionError = true;
+            return <p className="warning">Recipient is not our customer</p>;
+        } else {
+            filteredUsers.forEach(user => {
+                if(validEmail(user)) {
+                    transactionError = false;
+                }
+            });
+
+            if(!transactionError) {
+                setOther(recipient)
+                return <p>Recipient is our customer</p>;
+            }
+        }
     }
 
+    useEffect(() => {
+        setRecipient("");
+    }, [setRecipient]);
+
     return (
-        <form onSubmit={e => {handleSubmit(e)}}>
-            <div>
-                <label>Who are you sending money to?</label>
-                <div>Search</div>
-                <div>Your recipients</div>
-                <Link to="/transferConfirmation">
-                    <div>A</div>
+        <div className="transactionContainer">
+            <form className="transaction">
+                <div className="inputContainer">
+                    <label htmlFor="recipient">Send to email</label>
+                        <input
+                            required
+                            id="recipient"
+                            className="inputValue"
+                            name="recipient"
+                            type="text"
+                            value={recipient}
+                            onChange={e => setRecipient(e.target.value)}
+                        />
+                    <div className="statusText">{recepientError(recipient)}</div>
+                </div>
+                <Link className="submitButton" type="submit" to="../transferConfirmation">
+                    <button disabled={transactionError} className="button">Continue</button>
                 </Link>
-                <div>Show more</div>
-                <div>New recipient</div>
-            </div>
-        </form>
+            </form>
+        </div>
     )
 }
 

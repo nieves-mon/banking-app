@@ -1,72 +1,69 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 
-import "./Transfer.css"
+import "../Transactions/Transaction.css"
 
-const Transfer = ({users, currUser, balance, updateBalance, setPage}) => {
-    const [otherUser, setOtherUser] = useState("");
-    const [transfer, setTransfer] = useState(0)
-
-    const filteredUsers = users.filter(user => user.name !== currUser.name);
+const Transfer = ({amount, setAmount, balance, setPage}) => {
+    let transferError = false;
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        let idx;
-        for(let i = 0; i < filteredUsers.length; i++) {
-            if(filteredUsers[i].name.toLowerCase() === otherUser.toLowerCase().trim()) {
-                idx = i;
-                break;
-            }
-        }
+        // let idx;
+        // for(let i = 0; i < filteredUsers.length; i++) {
+        //     if(filteredUsers[i].name.toLowerCase() === otherUser.toLowerCase().trim()) {
+        //         idx = i;
+        //         break;
+        //     }
+        // }
 
-        if(idx === -1) {
-            console.log("fail");
-            return;
-        }
+        // if(idx === -1) {
+        //     console.log("fail");
+        //     return;
+        // }
 
-        console.log(idx);
-        updateBalance(currUser, "transfer", parseFloat(transfer), "Transfer To", users[idx]);
+        // console.log(idx);
+        // updateBalance(currUser, "transfer", parseFloat(transfer), "Transfer To", users[idx]);
     }
 
-    function fundStatus(balance, transfer) {
-        if ((balance - transfer) < 0) {
+    function fundStatus(balance, amount) {
+        if (amount.length < 1) {
+            transferError = true
+            return <p className="warning">Type an amount to transfer</p>
+        }
+        if ((balance - amount) < 0) {
+            transferError = true
             return <p className="warning">You have not enough funds in your account</p>;
         }
-        return <p>You have <span>&#8369;</span>{(balance - transfer).toLocaleString(undefined, {maximumFractionDigits:2})} available in your account</p>
+        return <p>New balance after transfer will be: <span>&#8369;</span>{(balance - amount).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
     }
 
     useEffect(() => {
+        setAmount("");
         setPage("transfer");
     }, [setPage]);
 
     return (
         <div className="transactionContainer">
-            <form className="deductTransfer" onSubmit={e => {handleSubmit(e)}}>
-                <div className="inputTransfer">
-                    <label htmlFor="other-user">Transfer to:</label>
-                    <input
-                        required
-                        id="other-user"
-                        type="text"
-                        value={otherUser}
-                        onChange={e => setOtherUser(e.target.value)}
-                    />
-
-                    <label htmlFor="transfer">Send</label>
+            <form className="transaction" onSubmit={e => {handleSubmit(e)}}>
+                <div className="inputContainer">
+                    <label htmlFor="transfer">Send exactly</label>
                         <input
                             required
                             id="transfer"
-                            className="transferAmount"
+                            className="inputValue"
                             name="transfer"
                             type="number"
-                            value={transfer}
-                            min="0"
-                            onChange={e => setTransfer(e.target.value)}
+                            value={amount}
+                            min="0.0"
+                            step="any"
+                            onChange={e => setAmount(e.target.value)}
                         />
-                    <div className="statusText">{fundStatus(balance, transfer)}</div>
+                    <div className="statusText">{fundStatus(balance, amount)}</div>
                 </div>
-                <button type="submit">Continue</button>
+                <Link className="submitButton" type="submit" to="../recipient">
+                    <button disabled={transferError} className="button">Continue</button>
+                </Link>
             </form>
         </div>
     )

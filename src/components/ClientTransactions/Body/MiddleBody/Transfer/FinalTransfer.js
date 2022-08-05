@@ -1,17 +1,20 @@
 import React from "react"
-import { Link } from "react-router-dom";
 
-const FinalTransfer = () => {
+import {
+    Link
+  } from "react-router-dom";
+
+import "../Transactions/FinalTransaction.css"
+
+const FinalTransfer = ({users, currUser, other, amount}) => {
+    const idx = users.findIndex(user => user.email === other);
 
     return (
-        <div>
-            <div>Done!</div>
-            <div>Your money has been transferred and ready to use.</div>
+        <div className="finalTransactionContainer">
+            <div className="doneTransaction">Done!</div>
+            <div className="finalTransaction">₱ {amount} has been transferred from {currUser.name} to {users[idx].name} and ready to use.</div>
             <div>
-                <Link to="/latestTransactions">
-                    <div>Got it!</div>
-                </Link>
-                <div>Invite and earn PHP1,000</div>
+                <Link className="submitButton" type="submit" to="../history"><button className="button">Got it!</button></Link>
             </div>
         </div>
     )

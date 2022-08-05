@@ -21,7 +21,7 @@ const TransactionList = ({currUser, setPage}) => {
                         <tr key={`transaction${i}`}>
                             <td className="date">{transaction.date}</td>
                             <td className="type">{transaction.type[0].toUpperCase() + transaction.type.substring(1)}</td>
-                            <td className="amount">₱ {transaction.amount.toFixed(2)}</td>
+                            <td className="amount">₱ {parseFloat(transaction.amount).toFixed(2)}</td>
                         </tr>
                     )
                 }) :
