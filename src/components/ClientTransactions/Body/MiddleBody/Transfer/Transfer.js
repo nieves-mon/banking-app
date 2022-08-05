@@ -3,20 +3,30 @@ import { Link } from "react-router-dom";
 
 import "./Transfer.css"
 
-const Transfer = ({setPage}) => {
-    const tempUser = {name:"B", email: "b@gmail.com", balance:10000}
-    const [balance, setBalance] = useState(tempUser.balance)
+const Transfer = ({users, currUser, balance, updateBalance, setPage}) => {
+    const [otherUser, setOtherUser] = useState("");
     const [transfer, setTransfer] = useState(0)
 
-    const deductTransfer = () => {
-        tempUser.balance -= transfer
-        setBalance(balance - parseInt(transfer))
-        return;
-    }
+    const filteredUsers = users.filter(user => user.name !== currUser.name);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        deductTransfer();
+
+        let idx;
+        for(let i = 0; i < filteredUsers.length; i++) {
+            if(filteredUsers[i].name.toLowerCase() === otherUser.toLowerCase().trim()) {
+                idx = i;
+                break;
+            }
+        }
+
+        if(idx === -1) {
+            console.log("fail");
+            return;
+        }
+
+        console.log(idx);
+        updateBalance(currUser, "transfer", parseFloat(transfer), "Transfer To", users[idx]);
     }
 
     function fundStatus(balance, transfer) {
@@ -34,7 +44,16 @@ const Transfer = ({setPage}) => {
         <div className="transactionContainer">
             <form className="deductTransfer" onSubmit={e => {handleSubmit(e)}}>
                 <div className="inputTransfer">
-                    <label htmlFor="transfer">You send exactly</label>
+                    <label htmlFor="other-user">Transfer to:</label>
+                    <input
+                        required
+                        id="other-user"
+                        type="text"
+                        value={otherUser}
+                        onChange={e => setOtherUser(e.target.value)}
+                    />
+
+                    <label htmlFor="transfer">Send</label>
                         <input
                             required
                             id="transfer"
@@ -47,7 +66,7 @@ const Transfer = ({setPage}) => {
                         />
                     <div className="statusText">{fundStatus(balance, transfer)}</div>
                 </div>
-                <Link className="submitButton" type="submit" to="recipient">Continue</Link>
+                <button type="submit">Continue</button>
             </form>
         </div>
     )

@@ -18,35 +18,35 @@ import TransactionList from "../TransactionList/TransactionList";
 const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) => {
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-    const [balance, setBalance] = useState(0);
+    const [balance, setBalance] = useState(currUser.balance);
 
-    const updateBalance = (user, type, amount, ...args) => {
+    const updateBalance = (user, type, amount, transferType = null, otherUser = null) => {
         let newBalance;
+        let desc = type;
         switch(type) {
             case "deposit":
-                newBalance = (parseFloat(balance) + amount).toFixed(2);
+                newBalance = (parseFloat(user.balance) + amount).toFixed(2);
                 break;
             case "withdraw":
-                newBalance = (parseFloat(balance) - amount).toFixed(2);
+                newBalance = (parseFloat(user.balance) - amount).toFixed(2);
                 break;
             case "transfer":
-                const secondUser = args[0];
-                const transferType = args[1];
                 switch(transferType) {
                     case "Transfer To":
-                        newBalance = (parseFloat(balance) - amount).toFixed(2);
-                        updateBalance(secondUser, "transfer", amount, user, "Transfer From");
+                        newBalance = (parseFloat(user.balance) - amount).toFixed(2);
+                        updateBalance(otherUser, "transfer", amount, "Transfer From", user);
                         break;
                     case "Transfer From":
-                        newBalance = (parseFloat(balance) + amount).toFixed(2);
+                        newBalance = (parseFloat(user.balance) + amount).toFixed(2);
                 }
+                desc = transferType + " " + otherUser.name;
         }
         setBalance(newBalance);
 
         const idx = users.findIndex(obj => obj.name === user.name);
         const tempUsers = JSON.parse(localStorage.getItem("users"));
         tempUsers[idx].balance = newBalance;
-        tempUsers[idx].history.push({"date": date, "type": type, "amount": amount});
+        tempUsers[idx].history.push({"date": date, "type": desc, "amount": amount});
 
         updateUsers([...tempUsers]);
         changeCurrUser(tempUsers[idx]);
@@ -68,7 +68,7 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
                     <Route path="/deposit" element={<Deposit currUser={currUser} balance={balance} updateBalance={updateBalance} setPage={setPage}/>}/>
                     <Route path="/withdraw" element={<Withdraw currUser={currUser} balance={balance} updateBalance={updateBalance} setPage={setPage}/>}/>
 
-                    <Route path="/transfer" element={<Transfer currUser={currUser} balance={balance} updateBalance={updateBalance} setPage={setPage}/>}/>
+                    <Route path="/transfer" element={<Transfer users={users} currUser={currUser} balance={balance} updateBalance={updateBalance} setPage={setPage}/>}/>
                     <Route path="/recipient" element={<Recipient />}/>
                     <Route path="/transferConfirmation" element={<TransferConfirmation />}/>
                     <Route path="/finalTransfer" element={<FinalTransfer />}/>
