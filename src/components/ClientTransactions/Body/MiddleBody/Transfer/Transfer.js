@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 
 import "./Transfer.css"
 
-const Transfer = () => {
+const Transfer = ({setPage}) => {
     const tempUser = {name:"B", email: "b@gmail.com", balance:10000}
     const [balance, setBalance] = useState(tempUser.balance)
     const [transfer, setTransfer] = useState(0)
@@ -25,6 +25,10 @@ const Transfer = () => {
         }
         return <p>You have <span>&#8369;</span>{(balance - transfer).toLocaleString(undefined, {maximumFractionDigits:2})} available in your account</p>
     }
+
+    useEffect(() => {
+        setPage("transfer");
+    }, [setPage]);
 
     return (
         <div className="transactionContainer">

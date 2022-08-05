@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./Deposit.css"
 
-const Deposit = ({currUser, balance, updateBalance}) => {
+const Deposit = ({currUser, balance, updateBalance, setPage}) => {
     const [deposit, setDeposit] = useState("")
 
     const addDeposit = (value) => {
@@ -14,6 +14,10 @@ const Deposit = ({currUser, balance, updateBalance}) => {
         e.preventDefault();
         addDeposit(e.target[0].value);
     }
+
+    useEffect(() => {
+        setPage("deposit");
+    }, [setPage]);
 
     return (
         <form className="addDeposit" onSubmit={e => {handleSubmit(e)}}>

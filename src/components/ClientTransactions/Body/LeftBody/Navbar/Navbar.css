@@ -42,6 +42,10 @@
     background-color: rgb(225 226 235);
 }
 
-.linkText:active {
+.links:active .linkText {
     color: rgb(3 73 144);
+}
+
+.active {
+    background: pink !important;
 }

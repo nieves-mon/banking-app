@@ -14,7 +14,7 @@ import FinalTransfer from "../Transfer/FinalTransfer.js"
 
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 
-const Transactions = ({users, updateUsers, currUser, changeCurrUser}) => {
+const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) => {
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     const [balance, setBalance] = useState(currUser.balance);
@@ -51,10 +51,10 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser}) => {
             </div>
             <div className="transactionsContainer">
                 <Routes>
-                    <Route path="/deposit" element={<Deposit currUser={currUser} balance={balance} updateBalance={updateBalance} />}/>
-                    <Route path="/withdraw" element={<Withdraw currUser={currUser} balance={balance} updateBalance={updateBalance} />}/>
+                    <Route path="/deposit" element={<Deposit currUser={currUser} balance={balance} updateBalance={updateBalance} setPage={setPage}/>}/>
+                    <Route path="/withdraw" element={<Withdraw currUser={currUser} balance={balance} updateBalance={updateBalance} setPage={setPage}/>}/>
 
-                    <Route path="/transfer" element={<Transfer currUser={currUser} balance={balance} updateBalance={updateBalance} />}/>
+                    <Route path="/transfer" element={<Transfer currUser={currUser} balance={balance} updateBalance={updateBalance} setPage={setPage}/>}/>
                     <Route path="/recipient" element={<Recipient />}/>
                     <Route path="/transferConfirmation" element={<TransferConfirmation />}/>
                     <Route path="/finalTransfer" element={<FinalTransfer />}/>

@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
-const Withdraw = ({currUser, balance, updateBalance}) => {
+const Withdraw = ({currUser, balance, updateBalance, setPage}) => {
     const [withdrawal, setWithdrawal] = useState("")
 
     const deductWithdrawal = () => {
@@ -13,6 +13,10 @@ const Withdraw = ({currUser, balance, updateBalance}) => {
         e.preventDefault();
         deductWithdrawal();
     }
+
+    useEffect(() => {
+        setPage("withdraw");
+    }, [setPage]);
 
     return (
         <form className="deductWithdrawal" onSubmit={e => {handleSubmit(e)}}>
