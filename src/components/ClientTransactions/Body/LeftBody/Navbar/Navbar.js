@@ -7,6 +7,9 @@ export default function Navbar({page}) {
       <div>
         <nav>
           <div className="linksContainer">
+            <Link className={page === "history" ? "links active" : "links"} to="history">
+              <div className="linkText">History</div>
+            </Link>
             <Link className={page === "deposit" ? "links active" : "links"} to="deposit">
               <div className="linkText">
                   <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="rgb(3 73 144)" fillRule="evenodd" clipRule="evenodd">

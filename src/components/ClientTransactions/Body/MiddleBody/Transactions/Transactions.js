@@ -13,11 +13,12 @@ import TransferConfirmation from "../Transfer/TransferConfirmation.js"
 import FinalTransfer from "../Transfer/FinalTransfer.js"
 
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
+import TransactionList from "../TransactionList/TransactionList";
 
 const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) => {
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-    const [balance, setBalance] = useState(currUser.balance);
+    const [balance, setBalance] = useState(0);
 
     const updateBalance = (user, type, amount) => {
         let newBalance;
@@ -33,6 +34,7 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
         const idx = users.findIndex(obj => obj.name === user.name);
         const tempUsers = JSON.parse(localStorage.getItem("users"));
         tempUsers[idx].balance = newBalance;
+        tempUsers[idx].history.push({"date": date, "type": type, "amount": amount});
 
         updateUsers([...tempUsers]);
         changeCurrUser(tempUsers[idx]);
@@ -51,6 +53,7 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
             </div>
             <div className="transactionsContainer">
                 <Routes>
+                    <Route path="/history" element={<TransactionList currUser={currUser} setPage={setPage}/>}/>
                     <Route path="/deposit" element={<Deposit currUser={currUser} balance={balance} updateBalance={updateBalance} setPage={setPage}/>}/>
                     <Route path="/withdraw" element={<Withdraw currUser={currUser} balance={balance} updateBalance={updateBalance} setPage={setPage}/>}/>
 

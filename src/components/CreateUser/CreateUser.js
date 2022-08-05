@@ -3,6 +3,8 @@ import "./CreateUser.css"
 const validator = require("email-validator");
 
 const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     const [name, setName] = useState("");
     const [balance, setBalance] = useState(0);
     const [email, setEmail] = useState("");
@@ -90,7 +92,7 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
                 "balance":parseFloat(balance),
                 "cardNumber": Date.now(),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),  //generate random number between 100 - 999
-                "history": []});
+                "history": [{"date": date, "type":"Initial Deposit", "amount": parseFloat(balance)}]});
     }
 
     return (
