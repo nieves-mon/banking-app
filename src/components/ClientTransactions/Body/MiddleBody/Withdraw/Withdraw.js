@@ -1,13 +1,11 @@
 import React, { useState } from "react"
 
-const Withdraw = () => {
-    const tempUser = {name:"A", email: "a@gmail.com", balance:50000}
-    const [balance, setBalance] = useState(tempUser.balance)
-    const [withdrawal, setWithdrawal] = useState(0)
+const Withdraw = ({currUser, balance, updateBalance}) => {
+    const [withdrawal, setWithdrawal] = useState("")
 
     const deductWithdrawal = () => {
-        tempUser.balance -= withdrawal
-        setBalance(balance - parseInt(withdrawal))
+        updateBalance(currUser, "withdraw", parseFloat(withdrawal))
+        setWithdrawal("");
         return;
     }
 
@@ -26,7 +24,9 @@ const Withdraw = () => {
                     name="withdrawal"
                     type="number"
                     value={withdrawal}
-                    min="0"
+                    min="0.0"
+                    step="any"
+                    placeholder="0"
                     onChange={e => setWithdrawal(e.target.value)}
                 />
             </div>

@@ -46,10 +46,10 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser}) => {
             </div>
             <div className="transactionsContainer">
                 <Routes>
-                    <Route path="/deposit" element={<Deposit currUser={currUser} balance={balance} updateBalance={updateBalance} changeCurrUser={changeCurrUser} />}/>
-                    <Route path="/withdraw" element={<Withdraw currUser={currUser} balance={balance} />}/>
+                    <Route path="/deposit" element={<Deposit currUser={currUser} balance={balance} updateBalance={updateBalance} />}/>
+                    <Route path="/withdraw" element={<Withdraw currUser={currUser} balance={balance} updateBalance={updateBalance} />}/>
 
-                    <Route path="/transfer" element={<Transfer currUser={currUser} balance={balance} />}/>
+                    <Route path="/transfer" element={<Transfer currUser={currUser} balance={balance} updateBalance={updateBalance} />}/>
                     <Route path="/recipient" element={<Recipient />}/>
                     <Route path="/transferConfirmation" element={<TransferConfirmation />}/>
                     <Route path="/finalTransfer" element={<FinalTransfer />}/>
