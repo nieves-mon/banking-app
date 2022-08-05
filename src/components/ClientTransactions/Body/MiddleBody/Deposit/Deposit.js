@@ -2,17 +2,17 @@ import React, { useState } from "react"
 import "./Deposit.css"
 
 const Deposit = ({currUser, balance, updateBalance}) => {
-    const [deposit, setDeposit] = useState(0)
+    const [deposit, setDeposit] = useState("")
 
     const addDeposit = () => {
         updateBalance(currUser, "deposit", parseFloat(deposit))
+        setDeposit("0");
         return;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         addDeposit();
-        setDeposit(0);
     }
 
     return (
@@ -28,6 +28,7 @@ const Deposit = ({currUser, balance, updateBalance}) => {
                     value={deposit}
                     min="0.0"
                     step="any"
+                    placeholder="0"
                     onChange={e => {setDeposit(e.target.value)}}
                 />
             </div>
