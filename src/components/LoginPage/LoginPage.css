@@ -17,14 +17,24 @@
 }
 
 .login-btn {
+    background: rgb(0, 39, 77);
     border: none;
+    color: white;
+    font-size: 1em;
+    font-weight: 700;
     padding: 0.5rem;
-    width: 50%;
+    width: 60%;
     margin: 1rem auto 0;
 }
 
 .login-btn:hover {
+    background: rgb(7, 62, 117);
     cursor: pointer;
+}
+
+.login-btn:active {
+    background: white;
+    color: rgb(7, 62, 117);
 }
 
 .login-form input {
