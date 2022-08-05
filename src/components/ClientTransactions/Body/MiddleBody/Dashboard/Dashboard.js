@@ -9,10 +9,10 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
     const [page, setPage]  = useState("deposit");
 
     const loadDemo = () => {
-        // const demoUsers = [
-        //     {"name": }
-        // ];
-        // updateUsers(demoData);
+        const demoUsers = [
+            {}
+        ];
+        updateUsers(demoUsers);
     }
 
     return (
