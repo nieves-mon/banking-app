@@ -20,18 +20,23 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser}) => {
     const [balance, setBalance] = useState(currUser.balance);
 
     const updateBalance = (user, type, amount) => {
+        let newBalance;
         switch(type) {
             case "deposit":
-                setBalance(balance + amount);
+                newBalance = (parseFloat(balance) + amount).toFixed(2);
                 break;
             case "withdraw":
-                setBalance(balance - amount);
+                newBalance = (parseFloat(balance) - amount).toFixed(2);
         }
+        setBalance(newBalance);
 
-        let idx = users.findIndex(obj => obj.name === user.name);
-        users[idx].balance = balance;
-        updateUsers(users);
-        changeCurrUser(users[idx]);
+        const idx = users.findIndex(obj => obj.name === user.name);
+        const tempUsers = JSON.parse(localStorage.getItem("users"));
+        tempUsers[idx].balance = newBalance;
+
+        updateUsers([...tempUsers]);
+        changeCurrUser(tempUsers[idx]);
+        console.log(amount);
     }
 
     return (

@@ -16,7 +16,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
                 <Transactions users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} />
             </div>
             <div className="rightBodyContainer">
-                <RightBody />
+                <RightBody currUser={currUser}/>
             </div>
         </div>
     )

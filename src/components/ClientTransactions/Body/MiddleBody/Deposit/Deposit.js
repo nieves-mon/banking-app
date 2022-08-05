@@ -4,15 +4,15 @@ import "./Deposit.css"
 const Deposit = ({currUser, balance, updateBalance}) => {
     const [deposit, setDeposit] = useState("")
 
-    const addDeposit = () => {
-        updateBalance(currUser, "deposit", parseFloat(deposit))
-        setDeposit("0");
+    const addDeposit = (value) => {
+        updateBalance(currUser, "deposit", parseFloat(value))
+        setDeposit("");
         return;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addDeposit();
+        addDeposit(e.target[0].value);
     }
 
     return (

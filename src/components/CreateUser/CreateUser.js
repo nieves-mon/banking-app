@@ -68,7 +68,7 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
         }
 
         updateUsers([...users, newUser]);
-        changeCurrUser(JSON.parse(localStorage.getItem("users"))[JSON.parse(localStorage.getItem("users")).length - 1]);
+        changeCurrUser(newUser);
         togglePopup();
         alert("Successfully created new user: " + newUser.name + "\nUser's card number: " + newUser.cardNumber);
     }
