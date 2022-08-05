@@ -28,7 +28,7 @@ const Body = ({handleLogIn}) => {
         <Routes>
             <Route path="/UserList" element={<UserList users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} />} />
 
-            <Route path="/Dashboard/*" element={<Dashboard handleLogIn={handleLogIn} currUser={currUser}/>}/>
+            <Route path="/Dashboard/*" element={<Dashboard handleLogIn={handleLogIn} users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} />}/>
         </Routes>
     )
 }

@@ -1,20 +1,18 @@
 import React, { useState } from "react"
 import "./Deposit.css"
 
-const Deposit = () => {
-    const tempUser = {name:"A", email: "a@gmail.com", balance:50000}
-    const [balance, setBalance] = useState(tempUser.balance)
+const Deposit = ({currUser, balance, updateBalance}) => {
     const [deposit, setDeposit] = useState(0)
 
     const addDeposit = () => {
-        tempUser.balance += deposit
-        setBalance(parseInt(deposit) + balance)
+        updateBalance(currUser, "deposit", parseFloat(deposit))
         return;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         addDeposit();
+        setDeposit(0);
     }
 
     return (
@@ -28,13 +26,14 @@ const Deposit = () => {
                     name="deposit"
                     type="number"
                     value={deposit}
-                    min="0"
-                    onChange={e => setDeposit(e.target.value)}
+                    min="0.0"
+                    step="any"
+                    onChange={e => {setDeposit(e.target.value)}}
                 />
             </div>
             <button className="submitButton" type="submit">Submit</button>
             <div>
-                Your balance is {balance}.
+                Your balance is {balance}
             </div>
         </form>
     )

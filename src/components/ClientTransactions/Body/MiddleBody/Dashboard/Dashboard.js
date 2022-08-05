@@ -5,7 +5,7 @@ import Transactions from "../Transactions/Transactions";
 import RightBody from "../../RightBody/RightBody";
 import "./Dashboard.css"
 
-const Dashboard = ({currUser, handleLogIn}) => {
+const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) => {
     return (
         <div className="bodyContainer">
             <div className="leftBodyContainer">
@@ -13,7 +13,7 @@ const Dashboard = ({currUser, handleLogIn}) => {
                 <Logout handleLogIn={handleLogIn} />
             </div>
             <div className="middleBodyContainer">
-                <Transactions />
+                <Transactions users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} />
             </div>
             <div className="rightBodyContainer">
                 <RightBody />

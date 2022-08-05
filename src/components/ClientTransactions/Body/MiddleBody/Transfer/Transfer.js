@@ -43,7 +43,7 @@ const Transfer = () => {
                         />
                     <div className="statusText">{fundStatus(balance, transfer)}</div>
                 </div>
-                <Link className="submitButton" type="submit" to="/recipient">Continue</Link>
+                <Link className="submitButton" type="submit" to="recipient">Continue</Link>
             </form>
         </div>
     )
