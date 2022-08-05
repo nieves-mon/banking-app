@@ -20,7 +20,7 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     const [balance, setBalance] = useState(0);
 
-    const updateBalance = (user, type, amount) => {
+    const updateBalance = (user, type, amount, ...args) => {
         let newBalance;
         switch(type) {
             case "deposit":
@@ -28,6 +28,18 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
                 break;
             case "withdraw":
                 newBalance = (parseFloat(balance) - amount).toFixed(2);
+                break;
+            case "transfer":
+                const secondUser = args[0];
+                const transferType = args[1];
+                switch(transferType) {
+                    case "Transfer To":
+                        newBalance = (parseFloat(balance) - amount).toFixed(2);
+                        updateBalance(secondUser, "transfer", amount, user, "Transfer From");
+                        break;
+                    case "Transfer From":
+                        newBalance = (parseFloat(balance) + amount).toFixed(2);
+                }
         }
         setBalance(newBalance);
 
@@ -38,7 +50,6 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
 
         updateUsers([...tempUsers]);
         changeCurrUser(tempUsers[idx]);
-        console.log(amount);
     }
 
     return (

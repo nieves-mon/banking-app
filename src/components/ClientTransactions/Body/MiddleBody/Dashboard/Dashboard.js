@@ -8,18 +8,34 @@ import "./Dashboard.css"
 const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) => {
     const [page, setPage]  = useState("deposit");
 
+    const loadDemo = () => {
+        // const demoUsers = [
+        //     {"name": }
+        // ];
+        // updateUsers(demoData);
+    }
+
     return (
         <div className="bodyContainer">
-            <div className="leftBodyContainer">
-                <Navbar page={page}/>
-                <Logout handleLogIn={handleLogIn} />
-            </div>
-            <div className="middleBodyContainer">
-                <Transactions users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} setPage={setPage}/>
-            </div>
-            <div className="rightBodyContainer">
-                <RightBody currUser={currUser}/>
-            </div>
+            {users.length > 0 ?
+                <>
+                    <div className="leftBodyContainer">
+                        <Navbar page={page}/>
+                        <Logout handleLogIn={handleLogIn} />
+                    </div>
+                    <div className="middleBodyContainer">
+                        <Transactions users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} setPage={setPage}/>
+                    </div>
+                    <div className="rightBodyContainer">
+                        <RightBody currUser={currUser}/>
+                    </div>
+                </>
+            :   <div className="no-users">
+                    <div className="no-users-text">No Users</div>
+                    <p>Click the button below to load demo data</p>
+                    <button >Load Demo Data</button>
+                </div>
+            }
         </div>
     )
 }
