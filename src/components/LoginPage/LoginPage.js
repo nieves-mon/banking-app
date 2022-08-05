@@ -32,9 +32,13 @@ const LoginPage = ({handleLogIn}) => {
 
     return (
         <div className="login-page">
+            <div className="login-logo">
+                <i className="fa-solid fa-piggy-bank"></i>
+                alkansya
+            </div>
             <form className="login-form" onSubmit={(e) => {handleSubmit(e)}}>
-                <div>
-                    <label htmlFor="username">Username:</label>
+                <div className="login-div">
+                    <label htmlFor="username">Username</label>
                     <input
                         type="text"
                         id="username"
@@ -44,8 +48,8 @@ const LoginPage = ({handleLogIn}) => {
                     {!unValidity && <div className="invalid">Username does not exist</div>}
                 </div>
 
-                <div>
-                    <label htmlFor="password">Password:</label>
+                <div className="login-div">
+                    <label htmlFor="password">Password</label>
                     <input
                         type="password"
                         id="password"
