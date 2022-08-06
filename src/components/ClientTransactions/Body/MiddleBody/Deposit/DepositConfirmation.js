@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../Transactions/TransactionConfirmation.css";
 
 const DepositConfirmation = ({currUser, deposit, balance, updateBalance}) => {
-    const [reference, setReference] = useState("");
+    // const [reference, setReference] = useState("");
 
     const handleConfirm = (e) => {
         updateBalance(currUser, "Deposit", parseFloat(deposit));

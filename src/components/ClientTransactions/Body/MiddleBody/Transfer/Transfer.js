@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { Link } from "react-router-dom";
 
 import "../Transactions/Transaction.css"
@@ -8,22 +8,6 @@ const Transfer = ({amount, setAmount, balance, setPage}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // let idx;
-        // for(let i = 0; i < filteredUsers.length; i++) {
-        //     if(filteredUsers[i].name.toLowerCase() === otherUser.toLowerCase().trim()) {
-        //         idx = i;
-        //         break;
-        //     }
-        // }
-
-        // if(idx === -1) {
-        //     console.log("fail");
-        //     return;
-        // }
-
-        // console.log(idx);
-        // updateBalance(currUser, "transfer", parseFloat(transfer), "Transfer To", users[idx]);
     }
 
     function fundStatus(balance, amount) {
@@ -45,7 +29,7 @@ const Transfer = ({amount, setAmount, balance, setPage}) => {
     useEffect(() => {
         setAmount("");
         setPage("transfer");
-    }, [setPage]);
+    }, [setPage, setAmount]);
 
     return (
         <div className="transactionContainer">

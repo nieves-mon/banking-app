@@ -23,13 +23,15 @@
     font-size: 1em;
     font-weight: 700;
     padding: 0.5rem;
-    width: 60%;
-    margin: 1rem auto 0;
+    width: 100%;
 }
 
-.login-btn a {
+.login-link {
     text-decoration: none;
     color: inherit;
+    width: fit-content;
+    margin: 1rem auto 0;
+    width: 60%;
 }
 
 .login-btn:hover {

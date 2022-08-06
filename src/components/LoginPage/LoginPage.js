@@ -24,11 +24,9 @@ const LoginPage = ({handleLogIn}) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if(!isValidLogin()) {
-            return;
+        if(isValidLogin()) {
+            handleLogIn();
         }
-        handleLogIn();
     }
 
     return (
@@ -37,7 +35,7 @@ const LoginPage = ({handleLogIn}) => {
                 <i className="fa-solid fa-piggy-bank"></i>
                 alkansya
             </div>
-            <form className="login-form" onSubmit={(e) => {handleSubmit(e)}}>
+            <form className="login-form" onSubmit={e => document.getElementsByClassName("login-link").click()}>
                 <div className="login-div">
                     <label htmlFor="username">Username (admin)</label>
                     <input
@@ -60,9 +58,9 @@ const LoginPage = ({handleLogIn}) => {
                     {!pwValidity && <div className="invalid">Incorrect Password</div>}
                 </div>
 
-                <button className="login-btn" type="Submit">
-                    <Link to="/Dashboard/history">Log In</Link>
-                </button>
+                <Link to="../Dashboard/history" className="login-link">
+                    <button className="login-btn" onClick={e => handleSubmit(e)}>Log In</button>
+                </Link>
             </form>
         </div>
     )

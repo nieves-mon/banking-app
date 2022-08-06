@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "react-router-dom";
 import "../Transactions/TransactionConfirmation.css"
 
 
 const WithdrawalConfirmation = ({currUser, withdraw, balance, updateBalance}) => {
-    const [reference, setReference] = useState("")
+    // const [reference, setReference] = useState("")
 
     const handleConfirm = (e) => {
         updateBalance(currUser, "Withdraw", parseFloat(withdraw));

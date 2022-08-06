@@ -4,11 +4,11 @@ import Body from "./ClientTransactions/Body/Body"
 import LoginPage from "./LoginPage/LoginPage";
 
 const App = () => {
-    const [loggedIn, setloggedIn] = useState(JSON.parse(sessionStorage.getItem("loggedIn")));
+    const [loggedIn, setloggedIn] = useState(sessionStorage.getItem("loggedIn") === null ? false : JSON.parse(sessionStorage.getItem("loggedIn")));
 
     const handleLogIn = () => {
         sessionStorage.setItem("loggedIn", JSON.stringify(!loggedIn));
-        setloggedIn(!loggedIn);
+        setloggedIn(JSON.parse(sessionStorage.getItem("loggedIn")));
     }
 
     return (

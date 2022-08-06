@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "react-router-dom";
 import "../Transactions/TransactionConfirmation.css"
 
 
 const TransferConfirmation = ({users, currUser, other, amount, balance, updateBalance}) => {
-    const [reference, setReference] = useState("")
+    // const [reference, setReference] = useState("")
 
     const idx = users.findIndex(user => user.email === other);
 
