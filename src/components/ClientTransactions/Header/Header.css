@@ -80,6 +80,6 @@ body {
 }
 
 .rightContainer a:active {
-    background: white;
-    color: rgb(7, 62, 117);
+    background: rgb(181, 218, 255);
+    color: rgb(0, 100, 200);
 }
