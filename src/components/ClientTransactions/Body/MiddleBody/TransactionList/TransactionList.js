@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "./TransactionList.css";
 
 const TransactionList = ({currUser, setPage}) => {
     useEffect(() => {
@@ -6,22 +7,24 @@ const TransactionList = ({currUser, setPage}) => {
     }, [setPage]);
 
     return(
-        <table className="user-table">
-            <thead>
+        <table className="transaction-table">
+            <thead className="transaction-table-head">
                 <tr>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Amount</th>
+                    <th>DATE</th>
+                    <th>TYPE</th>
+                    <th>AMOUNT</th>
                 </tr>
             </thead>
 
             <tbody>
                 {currUser.history.length > 0 ? currUser.history.map((transaction, i) => {
                     return (
-                        <tr key={`transaction${i}`}>
+                        <tr className="transaction-row" key={`transaction${i}`}>
                             <td className="date">{transaction.date}</td>
                             <td className="type">{transaction.type[0].toUpperCase() + transaction.type.substring(1)}</td>
-                            <td className="amount">₱ {parseFloat(transaction.amount).toFixed(2)}</td>
+                            <td className={transaction.type === "Deposit" || transaction.type.startsWith("Transfer From") ? "amount debit" : "amount credit"}>
+                                ₱ {parseFloat(transaction.amount).toFixed(2)}
+                            </td>
                         </tr>
                     )
                 }) :
