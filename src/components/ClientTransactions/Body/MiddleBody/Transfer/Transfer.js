@@ -27,6 +27,10 @@ const Transfer = ({amount, setAmount, balance, setPage}) => {
     }
 
     function fundStatus(balance, amount) {
+        if (amount < 0) {
+            transferError = true
+            return <p className="warning">Amount cannot be negative</p>
+        }
         if (amount.length < 1) {
             transferError = true
             return <p className="warning">Type an amount to transfer</p>

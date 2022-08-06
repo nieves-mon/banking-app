@@ -21,6 +21,8 @@
 
 .type {
     font-style: italic;
+    text-align: left;
+
 }
 
 .amount {

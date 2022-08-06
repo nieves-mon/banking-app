@@ -25,7 +25,7 @@ const RightBody = ({currUser}) => {
                 </div>
                 <div className="cardDetails">
                     <div className="cardDetailLabel">Balance</div>
-                    <div className="cardDetailActual">{currUser.balance}</div>
+                    <div className="cardDetailActual">₱ {parseFloat(currUser.balance).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
                 </div>
             </div>
         </div>

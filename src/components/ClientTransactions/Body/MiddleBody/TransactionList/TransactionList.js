@@ -22,8 +22,8 @@ const TransactionList = ({currUser, setPage}) => {
                         <tr className="transaction-row" key={`transaction${i}`}>
                             <td className="date">{transaction.date}</td>
                             <td className="type">{transaction.type[0].toUpperCase() + transaction.type.substring(1)}</td>
-                            <td className={transaction.type === "Deposit" || transaction.type.startsWith("Transfer From") ? "amount debit" : "amount credit"}>
-                                ₱ {parseFloat(transaction.amount).toFixed(2)}
+                            <td className={transaction.type.endsWith("Deposit") || transaction.type.startsWith("Transfer From") ? "amount debit" : "amount credit"}>
+                                ₱ {parseFloat(transaction.amount).toLocaleString(undefined, {maximumFractionDigits:2})}
                             </td>
                         </tr>
                     )

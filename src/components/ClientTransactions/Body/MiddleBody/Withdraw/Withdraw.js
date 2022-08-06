@@ -5,7 +5,11 @@ import "../Transactions/Transaction.css"
 const Withdraw = ({withdraw, setWithdraw, balance, setPage}) => {
     let withdrawError = false;
 
-    function fundStatus(balance, withdrawal) {
+    function fundStatus(balance, withdraw) {
+        if(withdraw < 0) {
+            withdrawError = true
+            return <p className="warning">Amount cannot be negative</p>
+        }
         if (withdraw.length < 1) {
             withdrawError = true
             return <p className="warning">Type an amount to withdraw</p>

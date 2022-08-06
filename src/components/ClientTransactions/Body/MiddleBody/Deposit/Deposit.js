@@ -5,6 +5,10 @@ const Deposit = ({deposit, setDeposit, balance, setPage}) => {
     let depositError = false
 
     function fundStatus(balance, deposit) {
+        if(deposit < 0) {
+            depositError = true
+            return <p className="warning">Amount cannot be negative</p>
+        }
         if (deposit.length === 0) {
             depositError = true
             return <p className="warning">Type an amount to deposit</p>

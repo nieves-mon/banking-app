@@ -19,11 +19,11 @@ const WithdrawalConfirmation = ({currUser, withdraw, balance, updateBalance}) =>
                 </div>
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Withdraw exactly</div>
-                    <div className="transactionDetailActual">{withdraw}</div>
+                    <div className="transactionDetailActual">{withdraw.toLocaleString(undefined, {maximumFractionDigits:2})}</div>
                 </div>
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Balance afterwards</div>
-                    <div className="transactionDetailActual">{parseFloat(balance) + parseFloat(withdraw)}</div>
+                    <div className="transactionDetailActual">{(parseFloat(balance) + parseFloat(withdraw)).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
                 </div>
             </div>
             {/* <div className="transactionDetailsContainer">
