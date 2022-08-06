@@ -34,7 +34,7 @@ const UserList = ({users, updateUsers, currUser, changeCurrUser}) => {
                         />
                     </div>
 
-                    <Link to="/Dashboard" className="user-list-back">
+                    <Link to="/Dashboard/history" className="user-list-back">
                         <i className="fa-solid fa-circle-arrow-left"></i> Back
                     </Link>
                 </div>

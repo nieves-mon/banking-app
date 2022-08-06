@@ -1,0 +1,38 @@
+.transaction-table {
+    margin: 1rem auto 0;
+    width: 95%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.transaction-table th {
+    font-size: 1.2em;
+}
+
+.transaction-table td,
+.transaction-table th {
+    border-bottom: solid black 1px;
+    padding: 0.5rem;
+}
+
+.date {
+    background: none;
+}
+
+.type {
+    font-style: italic;
+    text-align: left;
+
+}
+
+.amount {
+    font-weight: 600;
+}
+
+.debit {
+    color: rgb(0, 148, 0);
+}
+
+.credit {
+    color: rgb(196, 13, 0);
+}

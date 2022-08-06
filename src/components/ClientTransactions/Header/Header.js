@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import "./Header.css"
 
 const Header = () => {
-    const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-
     return (
         <div className="headerContainer">
             <div className="leftContainer">
@@ -13,10 +10,10 @@ const Header = () => {
                 alkansya
             </div>
             <div className="middleContainer">
-                <div>
-                    <div>Date</div>
-                    <div>{date}</div>
+                {/* <div className="initialContainer">
+                    <div className="initials">R</div>
                 </div>
+                <div className="greeting">Hello,</div> */}
             </div>
             <div className="rightContainer">
                 <Link to="/UserList">

@@ -1,0 +1,61 @@
+.cardInfo {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 20px;
+}
+
+.transactionDetailsContainer {
+    font-size: 1.2em;
+    color: rgb(122 151 187);
+    margin: 20px;
+}
+
+.transactionDetails {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+}
+
+.transactionDetailLabel {
+    flex: 2;
+}
+
+.transactionDetailActual {
+    flex: 1;
+    color: rgb(3 73 144);
+    text-align: right;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.transactionReference {
+    margin: 10px;
+    color: #a98bb5;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.transactionReference {
+    border: none;
+    background-color: rgb(235 230 238);
+    font-size: 12px;
+    color: rgb(3 73 144);
+}
+
+.submitButton {
+    height: 20px;
+    width: 250px;
+}
+
+.button {
+    border: none;
+    background-color: rgb(3 73 144);
+    color: rgb(235 230 238);
+    align-items: center;
+}

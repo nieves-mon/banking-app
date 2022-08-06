@@ -3,10 +3,22 @@ import "./CreateUser.css"
 const validator = require("email-validator");
 
 const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     const [name, setName] = useState("");
     const [balance, setBalance] = useState(0);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const validPassword = () => {
+        let valid = true;
+
+        if(password.length < 8 || password.length > 20) {
+            valid = false;
+        }
+
+        return valid;
+    }
 
     const validEmail = () => {
         const valid = {
@@ -67,8 +79,13 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
             return;
         }
 
+        if(!validPassword()) {
+            alert("Password must be 8-20 characters long");
+            return;
+        }
+
         updateUsers([...users, newUser]);
-        changeCurrUser(JSON.parse(localStorage.getItem("users"))[JSON.parse(localStorage.getItem("users")).length - 1]);
+        changeCurrUser(newUser);
         togglePopup();
         alert("Successfully created new user: " + newUser.name + "\nUser's card number: " + newUser.cardNumber);
     }
@@ -89,7 +106,8 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
                 "email":email, "password":password,
                 "balance":parseFloat(balance),
                 "cardNumber": Date.now(),
-                "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100)}); //generate random number between 100 - 999
+                "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),  //generate random number between 100 - 999
+                "history": [{"date": date, "type":"Initial Deposit", "amount": parseFloat(balance)}]});
     }
 
     return (

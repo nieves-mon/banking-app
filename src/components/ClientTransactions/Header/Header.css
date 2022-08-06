@@ -6,11 +6,12 @@ body {
     display: flex;
     flex-direction: row;
     height: 60px;
+    background-color: rgb(3 73 144);
+    color: rgb(235 230 238);
 }
 
 .leftContainer {
     font-size: 2em;
-    background-color: blue;
     width: 220px;
     display: flex;
     justify-content: flex-start;
@@ -22,14 +23,13 @@ body {
 .middleContainer {
     display: flex;
     flex-direction: row;
-    background-color: pink;
     flex: 3;
 }
 
 .rightContainer {
+    color: white;
     display: flex;
     flex-direction: row;
-    background-color: purple;
     width: 300px;
     justify-content: flex-end;
     align-items: center;
@@ -43,4 +43,43 @@ body {
     align-items: center;
     gap: 0.5em;
     padding: 0.5rem 1rem;
+}
+
+.initialContainer {
+    background-color: rgb(225 226 235);
+    width: 30px;
+    height: 30px;
+    margin: 15px;
+    border-radius: 15px;
+}
+
+.initials {
+    color: rgb(122 151 187);
+    padding-right: 10px;
+}
+
+.greeting {
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.rightContainer a {
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 1rem;
+}
+
+.rightContainer a:hover {
+    background: rgb(0, 100, 200);
+    cursor: pointer;
+}
+
+.rightContainer a:active {
+    background: rgb(181, 218, 255);
+    color: rgb(0, 100, 200);
 }

@@ -1,0 +1,152 @@
+.cardContainer {
+    position: relative;
+    width: 80%;
+    height: 200px;
+    margin-top: 15px;
+    margin-right: 30px;
+    margin-left: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(112deg, rgb(3 73 144) 0%, rgb(248 197 201) 100%);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+.logoContainer {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: flex;
+}
+
+.chip {
+    position: relative;
+    margin: 0;
+    top: 50px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 35px;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom left, #ffecc7, #d0b978);
+    overflow: hidden;
+}
+
+.chip .chipLine {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #333;
+}
+
+.chip .chipLine:nth-child(1) {
+    top: 11px;
+}
+
+.chip .chipLine:nth-child(2) {
+    top: 16px;
+}
+
+.chip .chipLine:nth-child(3) {
+    top: 21px;
+}
+
+.chip .chipLine:nth-child(4) {
+    left: 25px;
+    width: 1px;
+    height: 33px;
+}
+
+.chip .chipMiddle {
+    width: 15px;
+    height: 18px;
+    border: 1px solid #333;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom left, #efdbab, #e1cb94);
+    z-index: 1;
+}
+
+.cardNumber {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 55px 10px 0px;
+    font-size: 1.5em;
+    font-family: "cc font", monospace;
+}
+
+.cardExpiry {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.2rem 10px 0px;
+    font-size: 1.2em;
+    font-family: "cc font", monospace;
+}
+
+.cardUser {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.3rem 12px 0px;
+    font-size: 1.3em;
+    font-family: "cc font", monospace;
+}
+
+.emboss {
+    color: rgba(225, 226, 235, 0.2);
+    text-shadow: -1px -1px rgba(225, 226, 235, 0.2),
+        1px 1px rgba(3,73,144,1);
+};
+
+.mastercardLogo {
+    position: absolute;
+    margin-top: 100px;
+    display: flex;
+}
+
+.mcRed {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(235 0 27);
+    margin-top: 10px;
+}
+
+.mcYellow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: -10px;
+    background-color: rgba(247, 158, 27, 0.7);
+}
+
+.design1 {
+    position: absolute;
+    width: 312px;
+    height: 125px;
+    border-radius: 600px / 200px;
+    margin: -33px -20px -61px -78px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.design2 {
+    position: absolute;
+    width: 245px;
+    height: 190px;
+    border-radius: 50%;
+    margin: -70px 89px -115px -97px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.logoContainer .fa-piggy-bank {
+    font-size: 1.5em;
+}

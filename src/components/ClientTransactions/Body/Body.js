@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import { Routes, Route } from "react-router-dom"
 import UserList from "../../UserList/UserList"
 import Dashboard from "./MiddleBody/Dashboard/Dashboard"
+import "./Body.css";
 
 const Body = ({handleLogIn}) => {
     const [currUser, setCurrUser] = useState(
@@ -23,15 +24,11 @@ const Body = ({handleLogIn}) => {
         return;
     }
 
-    const getCurrUser = () => {
-        return currUser;
-    }
-
     return (
         <Routes>
             <Route path="/UserList" element={<UserList users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} />} />
 
-            <Route path="/Dashboard/*" element={<Dashboard handleLogIn={handleLogIn} currUser={currUser}/>}/>
+            <Route path="/Dashboard/*" element={<Dashboard handleLogIn={handleLogIn} users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} />}/>
         </Routes>
     )
 }

@@ -42,6 +42,7 @@
 
 .searchbar {
     margin-left: 1rem;
+    padding: 0.4rem;
 }
 
 .user-list-title {
@@ -104,4 +105,24 @@
 .selected,
 .selected:hover {
     background: rgba(43, 122, 250, 0.2);
+}
+
+
+.user-list-div a {
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background: rgb(3 73 144);
+    padding: 0.5rem 1rem;
+}
+
+.user-list-div a:hover {
+    background: rgb(0, 100, 200);
+    color: white;
+    cursor: pointer;
+}
+
+.user-list-div a:active {
+    background: rgb(181, 218, 255);
+    color: rgb(0, 100, 200);
 }

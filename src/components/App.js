@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./ClientTransactions/Header/Header"
 import Body from "./ClientTransactions/Body/Body"
 import LoginPage from "./LoginPage/LoginPage";
 
 const App = () => {
-    const [loggedIn, setloggedIn] = useState(JSON.parse(sessionStorage.getItem("loggedIn")));
+    const [loggedIn, setloggedIn] = useState(sessionStorage.getItem("loggedIn") === null ? false : JSON.parse(sessionStorage.getItem("loggedIn")));
 
     const handleLogIn = () => {
         sessionStorage.setItem("loggedIn", JSON.stringify(!loggedIn));

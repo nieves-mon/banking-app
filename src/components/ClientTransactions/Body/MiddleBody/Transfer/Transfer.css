@@ -1,0 +1,57 @@
+.transactionContainer {
+    width: flex;
+    height: 160px;
+    margin-top: 15px;
+    margin-right: 30px;
+    margin-left: 30px;
+    border: 2px;
+    border-style: dashed;
+    border-color: rgb(3 73 144);
+    background-color: rgb(235 230 238);
+    border-radius: 16px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.deductTransfer {
+    margin: 10px;
+    color: #a98bb5;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputTransfer {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.transferAmount {
+    border: #a98bb5;
+    background-color: rgb(235 230 238);
+    font-size: 25px;
+    color: rgb(3 73 144);
+}
+
+.statusText {
+    color: rgb(3 73 144);
+    background-color: rgb(235 230 238);
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.warning {
+    color: red;
+}
+
+.submitButton {
+    margin-top: 20px;
+    border: none;
+}

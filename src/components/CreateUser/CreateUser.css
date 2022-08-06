@@ -6,7 +6,6 @@
     width: 100%;
     max-width: 400px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 
     position: absolute;
     top: 50%;
@@ -31,6 +30,7 @@
     border: none;
     font-size: 1rem;
     padding: 0.5rem;
+    border-bottom: black solid 1px;
 }
 
 .create-user button {
@@ -47,6 +47,7 @@
 
 .create-user input:focus {
     border: none;
+    border-bottom: black solid 1px;
 }
 
 .fa-xmark {
