@@ -10,9 +10,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 120px;
+    width: 90%;
     height: 40px;
-    background-color: rgb(225 226 235);
+    background: rgb(3 73 144);
     border-radius: 5px;
     margin-top: 20px;
     margin: 5px;
@@ -20,6 +20,7 @@
 }
 
 .linkText {
+    color: white !important;
     width: fit-content;
     display: flex;
     align-items: center;
@@ -31,7 +32,8 @@
 }
 
 .links:hover {
-    background-color: rgb(122 151 187);
+    background: rgb(0, 100, 200);
+    color: rgb(225 226 235);
 }
 
 .linkText {
@@ -39,13 +41,17 @@
 }
 
 .links:active {
-    background-color: rgb(225 226 235);
+    background: rgb(181, 218, 255);
 }
 
 .links:active .linkText {
-    color: rgb(3 73 144);
+    color: rgb(0, 100, 200) !important;
 }
 
 .active {
-    background: pink !important;
+    background: rgb(181, 218, 255) !important;
+}
+
+.active .linkText {
+    color: rgb(0, 100, 200) !important;
 }
