@@ -22,3 +22,42 @@
     background-color: rgb(253 232 233);
     width: 300px;
 }
+
+.no-users {
+    width: 100%;
+    height: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.no-users-text {
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.no-users p {
+    font-size: 1.5em;
+}
+
+.no-users button {
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background: rgb(3 73 144);
+    padding: 0.5rem 1rem;
+}
+
+.no-users button:hover {
+    background: rgb(0, 100, 200);
+    color: white;
+    cursor: pointer;
+}
+
+.no-users button:active {
+    background: rgb(181, 218, 255);
+    color: rgb(0, 100, 200);
+}

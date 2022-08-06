@@ -30,12 +30,12 @@ const Card = ({currUser}) => {
             <div className="emboss cardNumber">{cardNumber}</div>
             <div className="emboss cardExpiry">12/28</div>
             <div className="emboss cardUser">{currUser.name}</div>
-            <div className="mastercardLogo">
+            {/* <div className="mastercardLogo">
                 <div className="mcRed"></div>
                 <div className="mcYellow"></div>
             </div>
             <div className="design1"></div>
-            <div className="design2"></div>
+            <div className="design2"></div> */}
         </div>
     )
 }
