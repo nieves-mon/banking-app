@@ -27,6 +27,7 @@ body {
 }
 
 .rightContainer {
+    color: white;
     display: flex;
     flex-direction: row;
     width: 300px;
@@ -60,4 +61,25 @@ body {
 .greeting {
     margin-top: 20px;
     border-radius: 15px;
+}
+
+.rightContainer a {
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 1rem;
+}
+
+.rightContainer a:hover {
+    background: rgb(0, 100, 200);
+    cursor: pointer;
+}
+
+.rightContainer a:active {
+    background: white;
+    color: rgb(7, 62, 117);
 }
