@@ -10,6 +10,16 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const validPassword = () => {
+        let valid = true;
+
+        if(password.length < 8 || password.length > 20) {
+            valid = false;
+        }
+
+        return valid;
+    }
+
     const validEmail = () => {
         const valid = {
             unique: true,
@@ -66,6 +76,11 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
 
         if(!emailValidity.validFormat) {
             alert("Invalid email format");
+            return;
+        }
+
+        if(!validPassword()) {
+            alert("Password must be 8-20 characters long");
             return;
         }
 

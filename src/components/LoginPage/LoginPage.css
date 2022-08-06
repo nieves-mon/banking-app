@@ -27,6 +27,11 @@
     margin: 1rem auto 0;
 }
 
+.login-btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .login-btn:hover {
     background: rgb(7, 62, 117);
     cursor: pointer;

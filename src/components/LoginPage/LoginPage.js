@@ -1,4 +1,5 @@
 import React, { useState }from "react";
+import { Link } from "react-router-dom";
 import "./LoginPage.css"
 
 const LoginPage = ({handleLogIn}) => {
@@ -59,7 +60,9 @@ const LoginPage = ({handleLogIn}) => {
                     {!pwValidity && <div className="invalid">Incorrect Password</div>}
                 </div>
 
-                <button className="login-btn" type="Submit">Log In</button>
+                <button className="login-btn" type="Submit">
+                    <Link to="/Dashboard/history">Log In</Link>
+                </button>
             </form>
         </div>
     )

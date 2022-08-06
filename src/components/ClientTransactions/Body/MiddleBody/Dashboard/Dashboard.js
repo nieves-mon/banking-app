@@ -3,6 +3,7 @@ import Navbar from "../../LeftBody/Navbar/Navbar";
 import Logout from "../../LeftBody/Logout/Logout";
 import Transactions from "../Transactions/Transactions";
 import RightBody from "../../RightBody/RightBody";
+import { Link } from "react-router-dom";
 import "./Dashboard.css"
 
 const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) => {
@@ -42,10 +43,10 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
                 "cardNumber": Date.now() + (303030303  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
                 "history": [
-                    {"date": "4/30/2022", "type": "Deposit", "amount": "1500.00"},
-                    {"date": "3/15/2022", "type": "Deposit", "amount": "37005.85"},
-                    {"date": "2/30/2022", "type": "Withdraw", "amount": "14000.00"},
-                    {"date": "12/24/2021", "type": "Deposit", "amount": "25000.00"},
+                    {"date": "12/30/2021", "type": "Deposit", "amount": "1500.00"},
+                    {"date": "12/15/2021", "type": "Deposit", "amount": "37005.85"},
+                    {"date": "12/1/2021", "type": "Withdraw", "amount": "14000.00"},
+                    {"date": "11/24/2021", "type": "Deposit", "amount": "25000.00"},
                     {"date": "11/5/2021", "type": "Initial Deposit", "amount": "38026.69"}
                 ]
             },
@@ -104,7 +105,9 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
             :   <div className="no-users">
                     <div className="no-users-text">No Users</div>
                     <p>Click the button below to load demo data</p>
-                    <button type="submit" onClick={e => handleClick(e)}>Load Demo Data</button>
+                    <button type="submit" onClick={e => handleClick(e)}>
+                        <Link to="/UserList">Load Demo Data</Link>
+                    </button>
                 </div>
             }
         </div>

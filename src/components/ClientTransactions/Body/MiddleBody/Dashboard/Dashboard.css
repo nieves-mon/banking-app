@@ -51,6 +51,11 @@
     padding: 0.5rem 1rem;
 }
 
+.no-users button a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .no-users button:hover {
     background: rgb(0, 100, 200);
     color: white;

@@ -30,6 +30,7 @@
     border: none;
     font-size: 1rem;
     padding: 0.5rem;
+    border-bottom: black solid 1px;
 }
 
 .create-user button {
@@ -46,6 +47,7 @@
 
 .create-user input:focus {
     border: none;
+    border-bottom: black solid 1px;
 }
 
 .fa-xmark {

@@ -3,6 +3,20 @@ import "./RightBody.css"
 import Card from "./Card/Card.js"
 
 const RightBody = ({currUser}) => {
+    const current = new Date();
+    const month = current.getMonth();
+    const year = current.getFullYear();
+    const userYear = parseInt(currUser.history[0].date.slice(currUser.history[0].date.length - 4, currUser.history[0].date.length));
+    const userMonth = parseInt(currUser.history[0].date.charAt(0));
+
+    const checkActivity = () => {
+        if((userMonth + 6) % 12 + userYear < month + year){
+            return <div className="cardDetailActual">Inactive</div>
+        } else {
+            return <div className="cardDetailActual">Active</div>
+        }
+    }
+
     return (
         <div>
             <div className="myCard">{currUser.name}'s Card</div>
@@ -17,7 +31,7 @@ const RightBody = ({currUser}) => {
                 </div>
                 <div className="cardDetails">
                     <div className="cardDetailLabel">Status</div>
-                    <div className="cardDetailActual">Active</div>
+                    {checkActivity()}
                 </div>
                 <div className="cardDetails">
                     <div className="cardDetailLabel">Currency</div>
