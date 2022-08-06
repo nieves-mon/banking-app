@@ -8,7 +8,7 @@ const App = () => {
 
     const handleLogIn = () => {
         sessionStorage.setItem("loggedIn", JSON.stringify(!loggedIn));
-        setloggedIn(JSON.parse(sessionStorage.getItem("loggedIn")));
+        setloggedIn(!loggedIn);
     }
 
     return (

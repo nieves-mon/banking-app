@@ -3,9 +3,9 @@ import "./Logout.css"
 
 const Logout = ({handleLogIn}) => {
     return (
-        <div className="logoutContainer">
+        <div className="logoutContainer" onClick={handleLogIn}>
             <div className="links">
-                <div className="linkText" onClick={handleLogIn}>Log Out</div>
+                <div className="linkText">Log Out</div>
             </div>
         </div>
     )

@@ -39,7 +39,7 @@ const LoginPage = ({handleLogIn}) => {
             </div>
             <form className="login-form" onSubmit={(e) => {handleSubmit(e)}}>
                 <div className="login-div">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">Username (admin)</label>
                     <input
                         type="text"
                         id="username"
@@ -50,7 +50,7 @@ const LoginPage = ({handleLogIn}) => {
                 </div>
 
                 <div className="login-div">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Password (12345678)</label>
                     <input
                         type="password"
                         id="password"
