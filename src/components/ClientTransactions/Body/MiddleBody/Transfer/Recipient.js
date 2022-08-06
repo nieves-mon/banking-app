@@ -37,6 +37,10 @@ const Recipient = ({users, currUser, setOther}) => {
         }
     }
 
+    const chooseRecipient = (i) => {
+        setRecipient(users[i].email);
+    }
+
     useEffect(() => {
         setRecipient("");
     }, [setRecipient]);
@@ -61,6 +65,28 @@ const Recipient = ({users, currUser, setOther}) => {
                     <button disabled={transactionError} className="button">Continue</button>
                 </Link>
             </form>
+            <div className="recipient-list-div">
+                <table className="recipient-list">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Card Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredUsers.map((user, i) => {
+                            return(
+                                <tr key={`recipient${i}`} className="recipient-row" onClick={e => chooseRecipient(i)}>
+                                    <td className="recipient-name">{user.name}</td>
+                                    <td className="recipient-email">{user.email}</td>
+                                    <td className="recipient-cn">{user.cardNumber}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

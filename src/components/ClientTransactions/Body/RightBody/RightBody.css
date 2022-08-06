@@ -1,17 +1,17 @@
 .myCard {
-    font-size: 15px;
+    font-size: 1.5em;
     font-weight: 500;
     margin: 10px;
 }
 
 .cardInfo {
-    font-size: 15px;
+    font-size: 1.1em;
     font-weight: 500;
     margin: 20px;
 }
 
 .cardDetailsContainer {
-    font-size: 12px;
+    font-size: 1em;
     color: rgb(122 151 187);
     margin: 20px;
 }

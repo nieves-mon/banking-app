@@ -18,7 +18,7 @@ const Withdraw = ({withdraw, setWithdraw, balance, setPage}) => {
             withdrawError = true
             return <p className="warning">Not enough funds in your account</p>;
         }
-        return <p>New balance after withdrawl will be <span>&#8369;</span>{(balance - withdraw).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
+        return <p>New balance after withdraw will be <span>&#8369;</span>{(balance - withdraw).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
     }
 
     useEffect(() => {

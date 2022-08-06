@@ -1,7 +1,7 @@
 .cardContainer {
     position: relative;
-    width: 240px;
-    height: 152px;
+    width: 80%;
+    height: 200px;
     margin-top: 15px;
     margin-right: 30px;
     margin-left: 30px;
@@ -28,8 +28,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 28px;
+    width: 50px;
+    height: 35px;
     border-radius: 5px;
     background-image: linear-gradient(to bottom left, #ffecc7, #d0b978);
     overflow: hidden;
@@ -43,21 +43,21 @@
 }
 
 .chip .chipLine:nth-child(1) {
-    top: 9px;
+    top: 11px;
 }
 
 .chip .chipLine:nth-child(2) {
-    top: 14px;
+    top: 16px;
 }
 
 .chip .chipLine:nth-child(3) {
-    top: 19px;
+    top: 21px;
 }
 
 .chip .chipLine:nth-child(4) {
-    left: 17.5px;
+    left: 25px;
     width: 1px;
-    height: 28px;
+    height: 33px;
 }
 
 .chip .chipMiddle {
@@ -75,7 +75,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 55px 10px 0px;
-    font-size: 18px;
+    font-size: 1.5em;
     font-family: "cc font", monospace;
 }
 
@@ -84,8 +84,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 10px 0px;
-    font-size: 15px;
+    margin: 0.2rem 10px 0px;
+    font-size: 1.2em;
     font-family: "cc font", monospace;
 }
 
@@ -94,8 +94,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 12px 0px;
-    font-size: 15px;
+    margin: 0.3rem 12px 0px;
+    font-size: 1.3em;
     font-family: "cc font", monospace;
 }
 
@@ -145,4 +145,8 @@
     border-radius: 50%;
     margin: -70px 89px -115px -97px;
     background: rgba(255, 255, 255, 0.05);
+}
+
+.logoContainer .fa-piggy-bank {
+    font-size: 1.5em;
 }

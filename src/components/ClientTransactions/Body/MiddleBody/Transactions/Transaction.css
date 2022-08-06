@@ -1,5 +1,6 @@
-.transactionContainer {
+.transaction {
     padding: 1em;
+    border-radius: 16px;
     position: relative;
     margin-top: 15px;
     margin-right: 30px;
@@ -8,7 +9,10 @@
     border-style: dashed;
     border-color: rgb(3 73 144);
     background-color: rgb(235 230 238);
-    border-radius: 16px;
+}
+
+.transactionContainer {
+    position: relative;
 }
 
 .transaction label {
@@ -86,4 +90,49 @@ textarea:focus, input:focus{
 .button:active {
     background: rgb(181, 218, 255);
     color: rgb(0, 100, 200);
+}
+
+.recipient-list-div {
+    overflow-y: auto;
+    max-height: 300px;
+    padding: 0 1rem;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.recipient-list {
+    overflow-y: auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.recipient-list th{
+    font-size: 1em;
+}
+
+.recipient-list td {
+    font-size: 1.1em;
+}
+
+.recipient-list td,
+.recipient-list th {
+    border-bottom: black 1px solid;
+    padding: 0.5rem 0;
+}
+
+.recipient-row:hover {
+    background: rgba(188, 173, 198, 0.675);
+    cursor: pointer;
+}
+
+.recipient-name {
+    width: 35%;
+}
+
+.recipient-email {
+    width: 65%;
+}
+
+.recipient-cn {
+    width: fit-content;
 }
