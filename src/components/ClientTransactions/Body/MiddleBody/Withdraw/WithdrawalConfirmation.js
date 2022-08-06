@@ -26,7 +26,7 @@ const WithdrawalConfirmation = ({currUser, withdraw, balance, updateBalance}) =>
                     <div className="transactionDetailActual">{parseFloat(balance) + parseFloat(withdraw)}</div>
                 </div>
             </div>
-            <div className="transactionDetailsContainer">
+            {/* <div className="transactionDetailsContainer">
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Reference (optional)</div>
                     <div className="transactionDetailActual">
@@ -41,7 +41,7 @@ const WithdrawalConfirmation = ({currUser, withdraw, balance, updateBalance}) =>
                         />
                     </div>
                 </div>
-            </div>
+            </div> */}
             <Link className="submitButton" type="submit" to="../finalWithdrawal">
                 <button className="button" onClick={e => handleConfirm(e)}>Confirm and send</button>
             </Link>

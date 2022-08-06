@@ -9,7 +9,7 @@ const FinalWithdrawal = ({currUser, withdraw}) => {
             <div className="doneTransaction">Done!</div>
             <div className="finalTransaction">₱{withdraw} has been withdrawn from {currUser.name}'s Account.</div>
             <div>
-                <Link className="submitButton" type="submit" to="/latestTransactions">
+                <Link className="submitButton" type="submit" to="../history">
                     <button className="button">Got it!</button>
                 </Link>
             </div>

@@ -1,5 +1,5 @@
 .finalTransactionContainer {
-    position: relative
+    position: relative;
 }
 
 .doneTransaction {
@@ -8,15 +8,17 @@
     color: rgb(3 73 144);
     display: flex;
     flex-direction: column;
+    font-size: 2em;
+    font-weight: 600;
 }
 
 .finalTransaction {
+    font-size: 1.5em;
     text-align: center;
-    color: #a98bb5;
+    color: #9357aa;
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 5rem 0;
 }
 
 .submitButton {

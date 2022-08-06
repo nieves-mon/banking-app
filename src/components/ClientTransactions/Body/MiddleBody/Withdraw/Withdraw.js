@@ -12,9 +12,9 @@ const Withdraw = ({withdraw, setWithdraw, balance, setPage}) => {
         }
         if ((balance - parseFloat(withdraw)) < 0) {
             withdrawError = true
-            return <p className="warning">You have not enough funds in your account</p>;
+            return <p className="warning">Not enough funds in your account</p>;
         }
-        return <p>You have <span>&#8369;</span>{(balance - withdraw).toLocaleString(undefined, {maximumFractionDigits:2})} available in your account</p>
+        return <p>New balance after withdrawl will be <span>&#8369;</span>{(balance - withdraw).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
     }
 
     useEffect(() => {
@@ -34,7 +34,8 @@ const Withdraw = ({withdraw, setWithdraw, balance, setPage}) => {
                             name="withdrawal"
                             type="number"
                             value={withdraw}
-                            min="0"
+                            min="0.0"
+                            step="any"
                             onChange={e => setWithdraw(e.target.value)}
                         />
                     <div className="statusText">{fundStatus(balance, withdraw)}</div>

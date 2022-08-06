@@ -1,3 +1,7 @@
+.transactionsContainer {
+    width: 100%;
+}
+
 .dateContainer, .balanceContainer {
     display: flex;
     flex-direction: row;

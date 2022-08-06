@@ -33,7 +33,7 @@ const Transfer = ({amount, setAmount, balance, setPage}) => {
         }
         if ((balance - amount) < 0) {
             transferError = true
-            return <p className="warning">You have not enough funds in your account</p>;
+            return <p className="warning">Not enough funds in your account</p>;
         }
         return <p>New balance after transfer will be: <span>&#8369;</span>{(balance - amount).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
     }

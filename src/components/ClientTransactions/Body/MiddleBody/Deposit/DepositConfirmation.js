@@ -10,7 +10,7 @@ const DepositConfirmation = ({currUser, deposit, balance, updateBalance}) => {
     }
 
     return (
-        <>
+        <div className="transactionConfirmation">
             <div className="transactionDetailsContainer">
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Deposit details</div>
@@ -25,7 +25,7 @@ const DepositConfirmation = ({currUser, deposit, balance, updateBalance}) => {
                     <div className="transactionDetailActual">{parseFloat(deposit) + parseFloat(balance)}</div>
                 </div>
             </div>
-            <div className="transactionDetailsContainer">
+            {/* <div className="transactionDetailsContainer">
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Reference (optional)</div>
                     <div className="transactionDetailActual">
@@ -40,11 +40,11 @@ const DepositConfirmation = ({currUser, deposit, balance, updateBalance}) => {
                         />
                     </div>
                 </div>
-            </div>
+            </div> */}
             <Link className="submitButton" type="submit" to="../finalDeposit">
                 <button className="button" onClick={e => handleConfirm(e)}>Confirm and send</button>
             </Link>
-        </>
+        </div>
     )
 }
 

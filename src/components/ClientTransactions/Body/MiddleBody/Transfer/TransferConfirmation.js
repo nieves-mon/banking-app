@@ -46,7 +46,7 @@ const TransferConfirmation = ({users, currUser, other, amount, balance, updateBa
                     <div className="transactionDetailActual">{users[idx].cardNumber}</div>
                 </div>
             </div>
-            <div className="transactionDetailsContainer">
+            {/* <div className="transactionDetailsContainer">
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Reference (optional)</div>
                     <div className="transactionDetailActual">
@@ -61,7 +61,7 @@ const TransferConfirmation = ({users, currUser, other, amount, balance, updateBa
                         />
                     </div>
                 </div>
-            </div>
+            </div> */}
             <Link className="submitButton" type="submit" to="../finalTransfer">
                 <button className="button" onClick={e => handleConfirm(e)}>Confirm and send</button>
             </Link>

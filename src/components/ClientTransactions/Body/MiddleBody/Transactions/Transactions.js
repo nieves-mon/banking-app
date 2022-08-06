@@ -66,7 +66,7 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
     }
 
     return (
-        <div>
+        <div className="dashboard-container">
             <div className="dateContainer">
                 <div className="dateLabel">DATE</div>
                 <div className="dateActual">{date}</div>

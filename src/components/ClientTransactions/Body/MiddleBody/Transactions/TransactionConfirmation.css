@@ -5,14 +5,13 @@
 }
 
 .transactionDetailsContainer {
-    font-size: 12px;
+    font-size: 1.2em;
     color: rgb(122 151 187);
     margin: 20px;
 }
 
 .transactionDetails {
-    display: flex;
-    flex-direction: row;
+    margin-bottom: 0.2rem;
 }
 
 .transactionDetailLabel {
