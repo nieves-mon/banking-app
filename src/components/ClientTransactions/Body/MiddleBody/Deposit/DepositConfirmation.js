@@ -18,11 +18,11 @@ const DepositConfirmation = ({currUser, deposit, balance, updateBalance}) => {
                 </div>
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Deposit exactly</div>
-                    <div className="transactionDetailActual">{deposit}</div>
+                    <div className="transactionDetailActual">₱ {parseFloat(deposit).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
                 </div>
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Balance afterwards</div>
-                    <div className="transactionDetailActual">{parseFloat(deposit) + parseFloat(balance)}</div>
+                    <div className="transactionDetailActual">₱ {(parseFloat(deposit) + parseFloat(balance)).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
                 </div>
             </div>
             {/* <div className="transactionDetailsContainer">

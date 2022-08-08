@@ -71,7 +71,7 @@ const UserList = ({users, updateUsers, currUser, changeCurrUser}) => {
                                     <td className="user-name">{user.name}</td>
                                     <td className="user-email">{user.email}</td>
                                     <td className="user-cn">{user.cardNumber}</td>
-                                    <td className="user-balance">₱ {user.balance}</td>
+                                    <td className="user-balance">₱ {parseFloat(user.balance).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
                                 </tr>
                             )
                         }) :
