@@ -14,7 +14,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
             {"name": "Ron Swanson",
                 "email": "rswanson@email.com",
                 "balance": 451865.50,
-                "cardNumber": Date.now() + (101010101 * 12),
+                "cardNumber": Date.now() - (101010101 * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
                 "history": [
                     {"date": "3/9/2022", "type": "Withdraw", "amount": "15500.00"},
@@ -27,7 +27,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
             {"name": "Walter White",
                 "email": "heisenberg@email.com",
                 "balance": 50123541.89,
-                "cardNumber": Date.now() + (202020202  * 12),
+                "cardNumber": Date.now() - (202020202  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
                 "history": [
                     {"date": "1/25/2022", "type": "Transfer From Rick Sanchez", "amount": "1490080.00"},
@@ -40,7 +40,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
             {"name": "Muriel Bagge",
                 "email": "murielb@email.com",
                 "balance": 87532.54,
-                "cardNumber": Date.now() + (303030303  * 12),
+                "cardNumber": Date.now() - (303030303  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
                 "history": [
                     {"date": "12/30/2021", "type": "Deposit", "amount": "1500.00"},
@@ -53,7 +53,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
             {"name": "Dirk Gently",
                 "email": "dirk@email.com",
                 "balance": 1548325.56,
-                "cardNumber": Date.now() + (404040404  * 12),
+                "cardNumber": Date.now() - (404040404  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
                 "history": [
                     {"date": "5/1/2022", "type": "Withdraw", "amount": "500850.25"},
@@ -66,7 +66,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
             {"name": "Rick Sanchez",
                 "email": "pickle_rick@email.com",
                 "balance": 54125485.37,
-                "cardNumber": Date.now() + (505050505  * 12),
+                "cardNumber": Date.now() - (505050505  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
                 "history": [
                     {"date": "1/25/2022", "type": "Transfer To Walter White", "amount": "560000.00"},
