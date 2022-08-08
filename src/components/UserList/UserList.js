@@ -11,7 +11,7 @@ const UserList = ({users, updateUsers, currUser, changeCurrUser}) => {
         setIsOpen(!isOpen);
     }
 
-    const filteredUsers = users.filter(user => user.name.toLowerCase().includes(searchInput.toLowerCase()));
+    const filteredUsers = users.filter(user => user.name.toLowerCase().includes(searchInput.toLowerCase()) || user.email.toLowerCase().includes(searchInput.toLowerCase()));
 
     return (
         <div className="user-popup-div">
@@ -29,7 +29,7 @@ const UserList = ({users, updateUsers, currUser, changeCurrUser}) => {
                             className="searchbar"
                             type="text"
                             value={searchInput}
-                            placeholder="Search by name"
+                            placeholder="Search by name or email"
                             onChange={e => setSearchInput(e.target.value)}
                         />
                     </div>
