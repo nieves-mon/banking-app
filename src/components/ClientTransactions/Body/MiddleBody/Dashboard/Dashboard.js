@@ -19,7 +19,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
                 "history": [
                     {"date": "3/9/2022", "type": "Withdraw", "amount": "15500.00"},
                     {"date": "3/1/2022", "type": "Deposit", "amount": "45650.55"},
-                    {"date": "2/15/2022", "type": "Transfer From", "amount": "256483.99"},
+                    {"date": "2/15/2022", "type": "Deposit", "amount": "256483.99"},
                     {"date": "2/1/2022", "type": "Deposit", "amount": "142000.00"},
                     {"date": "12/14/2021", "type": "Initial Deposit", "amount": "23230.96"}
                 ]
