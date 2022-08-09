@@ -16,6 +16,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
                 "balance": 451865.50,
                 "cardNumber": Date.now() - (101010101 * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
+                "userType": "client",
                 "history": [
                     {"date": "3/9/2022", "type": "Withdraw", "amount": "15500.00"},
                     {"date": "3/1/2022", "type": "Deposit", "amount": "45650.55"},
@@ -29,6 +30,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
                 "balance": 50123541.89,
                 "cardNumber": Date.now() - (202020202  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
+                "userType": "client",
                 "history": [
                     {"date": "1/25/2022", "type": "Transfer From Rick Sanchez", "amount": "1490080.00"},
                     {"date": "1/10/2022", "type": "Withdraw", "amount": "15000000.00"},
@@ -42,6 +44,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
                 "balance": 87532.54,
                 "cardNumber": Date.now() - (303030303  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
+                "userType": "client",
                 "history": [
                     {"date": "12/30/2021", "type": "Deposit", "amount": "1500.00"},
                     {"date": "12/15/2021", "type": "Deposit", "amount": "37005.85"},
@@ -55,6 +58,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
                 "balance": 1548325.56,
                 "cardNumber": Date.now() - (404040404  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
+                "userType": "client",
                 "history": [
                     {"date": "5/1/2022", "type": "Withdraw", "amount": "500850.25"},
                     {"date": "3/6/2022", "type": "Withdraw", "amount": "450000.00"},
@@ -68,6 +72,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
                 "balance": 54125485.37,
                 "cardNumber": Date.now() - (505050505  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
+                "userType": "client",
                 "history": [
                     {"date": "1/25/2022", "type": "Transfer To Walter White", "amount": "560000.00"},
                     {"date": "1/16/2022", "type": "Deposit", "amount": "10450000.55"},
