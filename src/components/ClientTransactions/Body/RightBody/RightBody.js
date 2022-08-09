@@ -10,7 +10,7 @@ const RightBody = ({currUser}) => {
     const userMonth = parseInt(currUser.history[0].date.charAt(0));
 
     const checkActivity = () => {
-        if((userMonth + 6) % 12 + userYear < month + year){
+        if((month + year) - (userMonth + userYear) > 6){
             return <div className="cardDetailActual">Inactive</div>
         } else {
             return <div className="cardDetailActual">Active</div>

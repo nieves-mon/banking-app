@@ -15,15 +15,15 @@ const WithdrawalConfirmation = ({currUser, withdraw, balance, updateBalance}) =>
             <div className="transactionDetailsContainer">
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Withdrawal details</div>
-                    <Link to="/withdraw"><div className="transactionDetailActual">Edit</div></Link>
+                    <Link to="../withdraw"><div className="transactionDetailActual">Edit</div></Link>
                 </div>
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Withdraw exactly</div>
-                    <div className="transactionDetailActual">{withdraw.toLocaleString(undefined, {maximumFractionDigits:2})}</div>
+                    <div className="transactionDetailActual">₱ {parseFloat(withdraw).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
                 </div>
                 <div className="transactionDetails">
                     <div className="transactionDetailLabel">Balance afterwards</div>
-                    <div className="transactionDetailActual">{(parseFloat(balance) + parseFloat(withdraw)).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
+                    <div className="transactionDetailActual">₱ {(parseFloat(balance) + parseFloat(withdraw)).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
                 </div>
             </div>
             {/* <div className="transactionDetailsContainer">

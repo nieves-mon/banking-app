@@ -62,3 +62,7 @@
     cursor: pointer;
     background: rgba(0, 0, 0, 0.2);
 }
+
+.create-user .invalid {
+    color: red;
+}

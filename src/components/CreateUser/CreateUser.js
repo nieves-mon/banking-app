@@ -57,32 +57,36 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
     }
 
     const addUser = (newUser) => {
+        let validity = true;
+
         const nameValidity = vaildName();
         if(!nameValidity.unique) {
-            alert(`${newUser.name} already exists!`);
-            return;
+            validity = false;
         }
 
         if(!nameValidity.doesNotStartWithNum) {
-            alert(`Name cannot start with a number!`);
-            return;
+            validity = false;
         }
 
         const emailValidity = validEmail();
         if(!emailValidity.unique) {
-            alert(`${newUser.email} is already used in an existing account`);
-            return;
+            validity = false;
         }
 
         if(!emailValidity.validFormat) {
-            alert("Invalid email format");
-            return;
+            validity = false;
         }
 
         if(!validPassword()) {
-            alert("Password must be 8-20 characters long");
-            return;
+            validity = false;
         }
+
+        if(balance < 0) {
+            validity = false;
+        }
+
+        if(!validity)
+            return;
 
         updateUsers([...users, newUser]);
         changeCurrUser(newUser);
@@ -125,6 +129,8 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
                     placeholder="John Doe"
                     onChange={e => setName(e.target.value)}
                 />
+                {!vaildName().unique && name.length > 0 && <div className="invalid">{name} already exists!</div>}
+                {!vaildName().doesNotStartWithNum && name.length > 0 && <div className="invalid">Name cannot start with a number</div>}
             </div>
 
             <div>
@@ -138,6 +144,8 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
                     placeholder="sample@email.com"
                     onChange={e => setEmail(e.target.value)}
                 />
+                {!validEmail().validFormat && email.length > 0 && <div className="invalid">Invalid email format</div>}
+                {!validEmail().unique && <div className="invalid">{email} is already used in an existing account</div>}
             </div>
 
             <div>
@@ -150,6 +158,7 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                 />
+                {!validPassword() && password.length > 0 && <div className="invalid">Password must be 8-20 characters long</div>}
             </div>
 
             <div>
@@ -164,6 +173,7 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
                     step="any"
                     onChange={e => setBalance(e.target.value)}
                 />
+                {balance < 0 && <div className="invalid">Initial balance cannot be negative</div>}
             </div>
 
             <button type="submit">Create New User</button>
