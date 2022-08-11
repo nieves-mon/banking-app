@@ -6,7 +6,7 @@
     margin-bottom: 1rem;
 }
 
-.add-expense-div {
+.add-expense-div form {
     width: 55%;
 }
 
@@ -51,4 +51,32 @@
     resize: none;
     font-size: 1em;
     padding: 0.5rem;
+}
+
+.expense-list-div {
+    overflow-y: auto;
+    max-height: 30vh;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.expense-list {
+    overflow-y: auto;
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.expense-list th{
+    font-size: 1em;
+}
+
+.expense-list td {
+    font-size: 1.1em;
+}
+
+.expense-list td,
+.expense-list th {
+    border-bottom: black 1px solid;
+    padding: 0.5rem 0;
 }
