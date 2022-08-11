@@ -20,6 +20,7 @@ import FinalTransfer from "../Transfer/FinalTransfer.js"
 
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 import TransactionList from "../TransactionList/TransactionList";
+import Expense from "../Expense/Expense";
 
 const Transactions = () => {
     const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
@@ -80,6 +81,7 @@ const Transactions = () => {
             <div className="transactionsContainer">
                 <Routes>
                     <Route path="/history" element={<TransactionList currUser={currUser}/>}/>
+                    <Route path="/expense" element={<Expense />}/>
 
                     <Route path="/deposit" element={<Deposit currUser={currUser} deposit={amount} setDeposit={setAmount} balance={balance}/>}/>
                     <Route path="/depositConfirmation" element={<DepositConfirmation currUser={currUser} deposit={amount} balance={balance} updateBalance={updateBalance}/>}/>
