@@ -63,10 +63,13 @@ const LoginPage = ({handleLogIn}) => {
 
     const handleSubmit = (e) => {
         if(isValidLogin() && unValidity && pwValidity) {
-            if(users.findIndex(user => usernameIn === user.email) !== -1) {
-                changeCurrUser(users[users.findIndex(user => usernameIn === user.email)]);
+            if(employees.findIndex(user => usernameIn === user.email) !== -1) {
+                if(users.length > 0)
+                    changeCurrUser(users[0]);
+                if(localStorage.getItem("employees") === null)
+                    updateEmployees([...employees]);
             } else {
-                changeCurrUser(users[0]);
+                changeCurrUser(users[users.findIndex(user => usernameIn === user.email)]);
             }
 
             handleLogIn();

@@ -7,15 +7,11 @@ import { Link } from "react-router-dom";
 import { UsersContext } from "../../../../../contexts/UsersContext";
 import "./Dashboard.css"
 import { PageProvider } from "../../../../../contexts/PageContext";
-import { EmployeesContext } from "../../../../../contexts/EmployeesContext";
 
 const Dashboard = ({handleLogIn}) => {
     const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
-    const [employees, updateEmployees] = useContext(EmployeesContext);
 
     const loadDemo = () => {
-        const demoEmployees = [{"name": "admin", "email": "admin@alkansya.com", "password": "12345678", "userType": "employee"}];
-
         const demoUsers = [
             {"name": "Ron Swanson",
                 "email": "rswanson@email.com",
@@ -93,8 +89,8 @@ const Dashboard = ({handleLogIn}) => {
                 ]
             }
         ];
-        updateEmployees(...employees, demoEmployees);
         updateUsers(...users, demoUsers);
+        changeCurrUser(demoUsers[4]);
     }
 
     const handleClick = (e) => {

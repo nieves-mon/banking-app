@@ -4,11 +4,11 @@ export const UsersContext = createContext();
 
 export const UsersProvider  = ({ children }) => {
     const [users, setUsers] = useState(
-        JSON.parse(localStorage.getItem("users")) === null ? [] : JSON.parse(localStorage.getItem("users"))
+        localStorage.getItem("users") === null ? [] : JSON.parse(localStorage.getItem("users"))
     );
 
     const [currUser, setCurrUser] = useState(
-        JSON.parse(localStorage.getItem("currentUser")) === null ? {} : JSON.parse(localStorage.getItem("currentUser"))
+        localStorage.getItem("currentUser") === null ? {} : JSON.parse(localStorage.getItem("currentUser"))
     );
 
     const updateUsers = (newUsers) => {
