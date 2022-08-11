@@ -7,15 +7,19 @@ import { Link } from "react-router-dom";
 import { UsersContext } from "../../../../../contexts/UsersContext";
 import "./Dashboard.css"
 import { PageProvider } from "../../../../../contexts/PageContext";
+import { EmployeesContext } from "../../../../../contexts/EmployeesContext";
 
 const Dashboard = ({handleLogIn}) => {
-    const [page, setPage]  = useState("deposit");
     const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
+    const [employees, updateEmployees] = useContext(EmployeesContext);
 
     const loadDemo = () => {
+        const demoEmployees = [{"name": "admin", "email": "admin@alkansya.com", "password": "12345678", "userType": "employee"}];
+
         const demoUsers = [
             {"name": "Ron Swanson",
                 "email": "rswanson@email.com",
+                "password": "12345678",
                 "balance": 451865.50,
                 "cardNumber": Date.now() - (101010101 * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
@@ -30,6 +34,7 @@ const Dashboard = ({handleLogIn}) => {
             },
             {"name": "Walter White",
                 "email": "heisenberg@email.com",
+                "password": "12345678",
                 "balance": 50123541.89,
                 "cardNumber": Date.now() - (202020202  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
@@ -44,6 +49,7 @@ const Dashboard = ({handleLogIn}) => {
             },
             {"name": "Muriel Bagge",
                 "email": "murielb@email.com",
+                "password": "12345678",
                 "balance": 87532.54,
                 "cardNumber": Date.now() - (303030303  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
@@ -58,6 +64,7 @@ const Dashboard = ({handleLogIn}) => {
             },
             {"name": "Dirk Gently",
                 "email": "dirk@email.com",
+                "password": "12345678",
                 "balance": 1548325.56,
                 "cardNumber": Date.now() - (404040404  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
@@ -72,6 +79,7 @@ const Dashboard = ({handleLogIn}) => {
             },
             {"name": "Rick Sanchez",
                 "email": "pickle_rick@email.com",
+                "password": "12345678",
                 "balance": 54125485.37,
                 "cardNumber": Date.now() - (505050505  * 12),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),
@@ -85,9 +93,8 @@ const Dashboard = ({handleLogIn}) => {
                 ]
             }
         ];
-        console.log(demoUsers);
-        updateUsers(demoUsers);
-        changeCurrUser(demoUsers[4])
+        updateEmployees(...employees, demoEmployees);
+        updateUsers(...users, demoUsers);
     }
 
     const handleClick = (e) => {

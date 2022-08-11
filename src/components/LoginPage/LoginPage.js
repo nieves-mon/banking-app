@@ -1,30 +1,74 @@
-import React, { useState }from "react";
+import React, { useContext, useState }from "react";
 import { Link } from "react-router-dom";
+import { EmployeesContext } from "../../contexts/EmployeesContext";
+import { LoggedInUserContext } from "../../contexts/LoggedInUserContext";
+import { UsersContext } from "../../contexts/UsersContext";
 import "./LoginPage.css"
 
 const LoginPage = ({handleLogIn}) => {
+    const [loggedInUser, updateLoggedInUser] = useContext(LoggedInUserContext);
+    const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
+    const [employees, updateEmployees] = useContext(EmployeesContext);
     const [usernameIn, setUsernameIn] = useState("");
     const [passwordIn, setPasswordIn] = useState("");
-    const [unValidity, setunValidity] = useState(true);
-    const [pwValidity, setpwValidity] = useState(true);
+    const [loginValid, setLoginValid] = useState([true, true]);
+    let unValidity = true;
+    let pwValidity = true;
 
     const isValidLogin = () => {
-        if(usernameIn.trim() === "admin" && passwordIn === "12345678") {
-            return true;
-        }
+        let found = false;
 
-        if(usernameIn.trim() !== "admin") {
-            setunValidity(false);
-        }
+        employees.forEach(employee => {
+            if(employee.email === usernameIn) {
+                pwValidity = true;
+                found = true;
+                setLoginValid([true, false]);
+                if(employee.password === passwordIn) {
+                    unValidity = true;
+                    updateLoggedInUser(employee);
+                    setLoginValid([true, true]);
+                } else {
+                    unValidity = false;
+                    setLoginValid([false, false]);
+                }
+                return;
+            }
+        });
 
-        if(passwordIn !== "12345678") {
-            setpwValidity(false);
-        }
-        return false;
+        users.forEach(user => {
+            if(found)
+                return;
+
+            if(user.email === usernameIn) {
+                pwValidity = true;
+                found = true;
+                setLoginValid([true, false]);
+                if(user.password === passwordIn) {
+                    unValidity = true;
+                    updateLoggedInUser(user);
+                    setLoginValid([true, true]);
+                } else {
+                    unValidity = false;
+                    setLoginValid([false, false]);
+                }
+                return;
+            }
+        });
+
+        if(!found)
+            setLoginValid([false, true]);
+
+        return found;
     }
 
     const handleSubmit = (e) => {
-        if(isValidLogin()) {
+        if(isValidLogin() && unValidity && pwValidity) {
+            if(users.findIndex(user => usernameIn === user.email) !== -1) {
+                changeCurrUser(users[users.findIndex(user => usernameIn === user.email)]);
+            } else {
+                changeCurrUser(users[0]);
+            }
+
             handleLogIn();
         }
     }
@@ -44,7 +88,7 @@ const LoginPage = ({handleLogIn}) => {
                         value={usernameIn}
                         onChange={e => setUsernameIn(e.target.value)}
                     />
-                    {!unValidity && <div className="invalid">Username does not exist</div>}
+                    {!loginValid[0] && <div className="invalid">Username does not exist</div>}
                 </div>
 
                 <div className="login-div">
@@ -55,7 +99,7 @@ const LoginPage = ({handleLogIn}) => {
                         value={passwordIn}
                         onChange={e => setPasswordIn(e.target.value)}
                     />
-                    {!pwValidity && <div className="invalid">Incorrect Password</div>}
+                    {!loginValid[1] && <div className="invalid">Incorrect Password</div>}
                 </div>
 
                 <Link to="../Dashboard/history" className="login-link">
