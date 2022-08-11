@@ -6,6 +6,7 @@ import RightBody from "../../RightBody/RightBody";
 import { Link } from "react-router-dom";
 import { UsersContext } from "../../../../../contexts/UsersContext";
 import "./Dashboard.css"
+import { PageProvider } from "../../../../../contexts/PageContext";
 
 const Dashboard = ({handleLogIn}) => {
     const [page, setPage]  = useState("deposit");
@@ -95,29 +96,31 @@ const Dashboard = ({handleLogIn}) => {
     }
 
     return (
-        <div className="bodyContainer">
-            {users.length > 0 ?
-                <>
-                    <div className="leftBodyContainer">
-                        <Navbar page={page}/>
-                        <Logout handleLogIn={handleLogIn} />
+        <PageProvider>
+            <div className="bodyContainer">
+                {users.length > 0 ?
+                    <>
+                        <div className="leftBodyContainer">
+                            <Navbar/>
+                            <Logout handleLogIn={handleLogIn} />
+                        </div>
+                        <div className="middleBodyContainer">
+                            <Transactions/>
+                        </div>
+                        <div className="rightBodyContainer">
+                            <RightBody currUser={currUser}/>
+                        </div>
+                    </>
+                :   <div className="no-users">
+                        <div className="no-users-text">No Users</div>
+                        <p>Click the button below to load demo data</p>
+                        <button type="submit" onClick={e => handleClick(e)}>
+                            <Link to="/UserList">Load Demo Data</Link>
+                        </button>
                     </div>
-                    <div className="middleBodyContainer">
-                        <Transactions setPage={setPage}/>
-                    </div>
-                    <div className="rightBodyContainer">
-                        <RightBody currUser={currUser}/>
-                    </div>
-                </>
-            :   <div className="no-users">
-                    <div className="no-users-text">No Users</div>
-                    <p>Click the button below to load demo data</p>
-                    <button type="submit" onClick={e => handleClick(e)}>
-                        <Link to="/UserList">Load Demo Data</Link>
-                    </button>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        </PageProvider>
     )
 }
 

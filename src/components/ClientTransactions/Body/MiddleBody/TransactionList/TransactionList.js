@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { PageContext } from "../../../../../contexts/PageContext";
 import "./TransactionList.css";
 
-const TransactionList = ({currUser, setPage}) => {
+const TransactionList = ({currUser}) => {
+    const [page, setPage] = useContext(PageContext);
+
     useEffect(() => {
         setPage("history");
     }, [setPage]);

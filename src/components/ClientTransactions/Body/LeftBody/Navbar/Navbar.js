@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { PageContext } from "../../../../../contexts/PageContext";
 import "./Navbar.css";
 
-export default function Navbar({page}) {
+export default function Navbar() {
+  const [page] = useContext(PageContext);
   return (
       <div>
         <nav>

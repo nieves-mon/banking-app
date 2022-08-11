@@ -1,9 +1,10 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { Link } from "react-router-dom";
-
+import { PageContext } from "../../../../../contexts/PageContext";
 import "../Transactions/Transaction.css"
 
-const Transfer = ({amount, setAmount, balance, setPage}) => {
+const Transfer = ({amount, setAmount, balance}) => {
+    const [page, setPage] = useContext(PageContext);
     let transferError = false;
 
     const handleSubmit = (e) => {

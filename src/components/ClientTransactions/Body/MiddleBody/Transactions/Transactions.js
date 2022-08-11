@@ -21,7 +21,7 @@ import FinalTransfer from "../Transfer/FinalTransfer.js"
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 import TransactionList from "../TransactionList/TransactionList";
 
-const Transactions = ({setPage}) => {
+const Transactions = () => {
     const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
@@ -79,17 +79,17 @@ const Transactions = ({setPage}) => {
             </div>
             <div className="transactionsContainer">
                 <Routes>
-                    <Route path="/history" element={<TransactionList currUser={currUser} setPage={setPage}/>}/>
+                    <Route path="/history" element={<TransactionList currUser={currUser}/>}/>
 
-                    <Route path="/deposit" element={<Deposit currUser={currUser} deposit={amount} setDeposit={setAmount} balance={balance} setPage={setPage}/>}/>
+                    <Route path="/deposit" element={<Deposit currUser={currUser} deposit={amount} setDeposit={setAmount} balance={balance}/>}/>
                     <Route path="/depositConfirmation" element={<DepositConfirmation currUser={currUser} deposit={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalDeposit" element={<FinalDeposit currUser={currUser} deposit={amount} setDeposit={setAmount}/>}/>
 
-                    <Route path="/withdraw" element={<Withdraw currUser={currUser} withdraw={amount} setWithdraw={setAmount} balance={balance} setPage={setPage}/>}/>
+                    <Route path="/withdraw" element={<Withdraw currUser={currUser} withdraw={amount} setWithdraw={setAmount} balance={balance}/>}/>
                     <Route path="/withdrawalConfirmation" element={<WithdrawalConfirmation  currUser={currUser} withdraw={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalWithdrawal" element={<FinalWithdrawal  currUser={currUser} withdraw={amount} setWithdraw={setAmount} />}/>
 
-                    <Route path="/transfer" element={<Transfer currUser={currUser} amount={amount} setAmount={setAmount} balance={balance} setPage={setPage}/>}/>
+                    <Route path="/transfer" element={<Transfer currUser={currUser} amount={amount} setAmount={setAmount} balance={balance}/>}/>
                     <Route path="/recipient" element={<Recipient users={users} currUser={currUser} setOther={setOther}/>}/>
                     <Route path="/transferConfirmation" element={<TransferConfirmation users={users} currUser={currUser} other={other} amount={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalTransfer" element={<FinalTransfer users={users} currUser={currUser} other={other} amount={amount}/>}/>
