@@ -32,6 +32,7 @@ const Transfer = ({amount, setAmount, balance, setPage}) => {
     }, [setPage, setAmount]);
 
     return (
+        <div>
         <div className="transactionContainer">
             <form className="transaction" onSubmit={e => {handleSubmit(e)}}>
                 <div className="inputContainer">
@@ -53,6 +54,18 @@ const Transfer = ({amount, setAmount, balance, setPage}) => {
                     <button disabled={transferError} className="button">Continue</button>
                 </Link>
             </form>
+        </div>
+        <div className="transactionContainer">
+            <form className="transaction" onSubmit={e => {handleSubmit(e)}}>
+                <div className="inputContainer">
+                    <label htmlFor="transfer">A requested {amount} to be transferred to their account</label>
+                    <div className="statusText">{fundStatus(balance, amount)}</div>
+                </div>
+                <Link className="submitButton" type="submit" to="../recipient">
+                    <button disabled={transferError} className="button">Send</button>
+                </Link>
+            </form>
+        </div>
         </div>
     )
 }

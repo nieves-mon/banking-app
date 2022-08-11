@@ -17,6 +17,13 @@ import Recipient from "../Transfer/Recipient.js"
 import TransferConfirmation from "../Transfer/TransferConfirmation.js"
 import FinalTransfer from "../Transfer/FinalTransfer.js"
 
+import Request from "../Request/Request.js"
+import Requestee from "../Request/Requestee.js"
+import RequestConfirmation from "../Request/RequestConfirmation.js"
+import FinalRequest from "../Request/FinalRequest.js"
+
+import Home from "../Home/Home.js"
+
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 import TransactionList from "../TransactionList/TransactionList";
 
@@ -79,6 +86,8 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
                 <Routes>
                     <Route path="/history" element={<TransactionList currUser={currUser} setPage={setPage}/>}/>
 
+                    <Route path="/home" element={<Home currUser={currUser} amount={amount} setPage={setPage}/>}/>
+
                     <Route path="/deposit" element={<Deposit currUser={currUser} deposit={amount} setDeposit={setAmount} balance={balance} setPage={setPage}/>}/>
                     <Route path="/depositConfirmation" element={<DepositConfirmation currUser={currUser} deposit={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalDeposit" element={<FinalDeposit currUser={currUser} deposit={amount} setDeposit={setAmount}/>}/>
@@ -91,6 +100,11 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
                     <Route path="/recipient" element={<Recipient users={users} currUser={currUser} setOther={setOther}/>}/>
                     <Route path="/transferConfirmation" element={<TransferConfirmation users={users} currUser={currUser} other={other} amount={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalTransfer" element={<FinalTransfer users={users} currUser={currUser} other={other} amount={amount}/>}/>
+
+                    <Route path="/request" element={<Request currUser={currUser} amount={amount} setAmount={setAmount} balance={balance} setPage={setPage}/>}/>
+                    <Route path="/requestee" element={<Requestee users={users} currUser={currUser} setOther={setOther}/>}/>
+                    <Route path="/requestConfirmation" element={<RequestConfirmation users={users} currUser={currUser} other={other} amount={amount} balance={balance} updateBalance={updateBalance}/>}/>
+                    <Route path="/finalRequest" element={<FinalRequest users={users} currUser={currUser} other={other} amount={amount}/>}/>
                 </Routes>
             </div>
             <div>

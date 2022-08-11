@@ -92,7 +92,7 @@ textarea:focus, input:focus{
     color: rgb(0, 100, 200);
 }
 
-.recipient-list-div {
+.recipient-list-div, .requestee-list-div {
     overflow-y: auto;
     max-height: 300px;
     padding: 0 1rem;
@@ -100,39 +100,39 @@ textarea:focus, input:focus{
     width: 80%;
 }
 
-.recipient-list {
+.recipient-list, .requestee-list {
     overflow-y: auto;
     text-align: center;
     border-collapse: collapse;
 }
 
-.recipient-list th{
+.recipient-list, .requestee-list th{
     font-size: 1em;
 }
 
-.recipient-list td {
+.recipient-list, .requestee-list td {
     font-size: 1.1em;
 }
 
-.recipient-list td,
-.recipient-list th {
+.recipient-list, .requestee-list td,
+.recipient-list, .requestee-list th {
     border-bottom: black 1px solid;
     padding: 0.5rem 0;
 }
 
-.recipient-row:hover {
+.recipient-row:hover, .requestee-row:hover {
     background: rgba(188, 173, 198, 0.675);
     cursor: pointer;
 }
 
-.recipient-name {
+.recipient-name, .requestee-name {
     width: 35%;
 }
 
-.recipient-email {
+.recipient-email, .requestee-email {
     width: 65%;
 }
 
-.recipient-cn {
+.recipient-cn, .requestee-cn {
     width: fit-content;
 }

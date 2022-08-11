@@ -7,6 +7,9 @@ export default function Navbar({page}) {
       <div>
         <nav>
           <div className="linksContainer">
+            <Link className={page === "home" ? "links active" : "links"} to="home">
+              <div className="linkText">Home</div>
+            </Link>
             <Link className={page === "history" ? "links active" : "links"} to="history">
               <div className="linkText">Transactions</div>
             </Link>
@@ -23,6 +26,9 @@ export default function Navbar({page}) {
             </Link>
             <Link className={page === "transfer" ? "links active" : "links"} to="transfer">
               <div className="linkText">Transfer</div>
+            </Link>
+            <Link className={page === "request" ? "links active" : "links"} to="request">
+              <div className="linkText">Request</div>
             </Link>
           </div>
         </nav>
