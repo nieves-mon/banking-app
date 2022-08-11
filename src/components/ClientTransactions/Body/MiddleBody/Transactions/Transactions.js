@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import "./Transactions.css"
 import {
     Routes,
     Route
 } from "react-router-dom";
+import { UsersContext } from "../../../../../contexts/UsersContext";
 import Deposit from "../Deposit/Deposit"
 import DepositConfirmation from "../Deposit/DepositConfirmation"
 import FinalDeposit from "../Deposit/FinalDeposit"
@@ -20,7 +21,8 @@ import FinalTransfer from "../Transfer/FinalTransfer.js"
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 import TransactionList from "../TransactionList/TransactionList";
 
-const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) => {
+const Transactions = ({setPage}) => {
+    const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     const [balance, setBalance] = useState(currUser.balance);

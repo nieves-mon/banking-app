@@ -112,6 +112,8 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
                 "cardNumber": Date.now(),
                 "cvc": Math.floor(Math.random() * (999 - 100 + 1) + 100),  //generate random number between 100 - 999
                 "userType": "client",
+                "budgets": [],
+                "expenses": [],
                 "history": [{"date": date, "type":"Initial Deposit", "amount": parseFloat(balance)}]});
     }
 

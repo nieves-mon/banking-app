@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./ClientTransactions/Header/Header"
 import Body from "./ClientTransactions/Body/Body"
 import LoginPage from "./LoginPage/LoginPage";
+import { UsersProvider } from "../contexts/UsersContext";
 
 const App = () => {
     const [loggedIn, setloggedIn] = useState(sessionStorage.getItem("loggedIn") === null ? false : JSON.parse(sessionStorage.getItem("loggedIn")));
@@ -12,7 +13,7 @@ const App = () => {
     }
 
     return (
-        <>
+        <UsersProvider>
             {loggedIn === true ?
                 <>
                     <Header />
@@ -20,7 +21,7 @@ const App = () => {
                 </>
             : <LoginPage handleLogIn={handleLogIn} />
             }
-        </>
+        </UsersProvider>
     )
 }
 

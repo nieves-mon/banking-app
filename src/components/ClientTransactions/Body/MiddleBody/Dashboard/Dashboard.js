@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../../LeftBody/Navbar/Navbar";
 import Logout from "../../LeftBody/Logout/Logout";
 import Transactions from "../Transactions/Transactions";
 import RightBody from "../../RightBody/RightBody";
 import { Link } from "react-router-dom";
+import { UsersContext } from "../../../../../contexts/UsersContext";
 import "./Dashboard.css"
 
-const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) => {
+const Dashboard = ({handleLogIn}) => {
     const [page, setPage]  = useState("deposit");
+    const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
 
     const loadDemo = () => {
         const demoUsers = [
@@ -101,7 +103,7 @@ const Dashboard = ({users, updateUsers, currUser, changeCurrUser, handleLogIn}) 
                         <Logout handleLogIn={handleLogIn} />
                     </div>
                     <div className="middleBodyContainer">
-                        <Transactions users={users} updateUsers={updateUsers} currUser={currUser} changeCurrUser={changeCurrUser} setPage={setPage}/>
+                        <Transactions setPage={setPage}/>
                     </div>
                     <div className="rightBodyContainer">
                         <RightBody currUser={currUser}/>
