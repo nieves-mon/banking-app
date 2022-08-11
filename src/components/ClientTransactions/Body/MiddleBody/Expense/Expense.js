@@ -34,27 +34,29 @@ const Expense = ({cost, setCost, updateBalance}) => {
         <div className="transactionContainer add-expense-div">
             <form className="transaction" onSubmit={e => handleConfirm(e)}>
                 <h4 className="form-header">Add Expense</h4>
-                <div className="inputContainer">
-                    <label htmlFor="cost">Cost</label>
-                        <input
-                            required
-                            id="cost"
-                            className="inputValue"
-                            name="expense-cost"
-                            type="number"
-                            min="0.0"
-                            step="any"
-                            value={cost}
-                            onChange={e => setCost(e.target.value)}
-                        />
-                </div>
-                <div className="inputContainer">
-                    <label htmlFor="type">Type</label>
-                    <select>
-                        {currUser.categories.map(cat => {
-                            return <option key={cat} value={cat} onClick={() => setCategory(cat)}>{cat}</option>
-                        })}
-                    </select>
+                <div className="row-container">
+                    <div className="inputContainer">
+                        <label htmlFor="cost">Cost</label>
+                            <input
+                                required
+                                id="cost"
+                                className="inputValue"
+                                name="expense-cost"
+                                type="number"
+                                min="0.0"
+                                step="any"
+                                value={cost}
+                                onChange={e => setCost(e.target.value)}
+                            />
+                    </div>
+                    <div className="inputContainer">
+                        <label htmlFor="type">Type</label>
+                        <select>
+                            {currUser.categories.map(cat => {
+                                return <option key={cat} value={cat} onClick={() => setCategory(cat)}>{cat}</option>
+                            })}
+                        </select>
+                    </div>
                 </div>
                 <div className="inputContainer">
                     <label htmlFor="desc">Description</label>
