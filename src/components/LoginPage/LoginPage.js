@@ -84,7 +84,7 @@ const LoginPage = ({handleLogIn}) => {
             </div>
             <form className="login-form" onSubmit={e => document.getElementsByClassName("login-link").click()}>
                 <div className="login-div">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">Email</label>
                     <input
                         type="text"
                         id="username"
