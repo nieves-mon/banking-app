@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { LoggedInUserContext } from "../../../../../contexts/LoggedInUserContext";
 import { PageContext } from "../../../../../contexts/PageContext";
 import "./Navbar.css";
 
 export default function Navbar() {
+  const [loggedInUser] = useContext(LoggedInUserContext);
   const [page] = useContext(PageContext);
   return (
       <div>
@@ -12,9 +14,11 @@ export default function Navbar() {
             <Link className={page === "history" ? "links active" : "links"} to="history">
               <div className="linkText">Transactions</div>
             </Link>
+            {loggedInUser.userType === "client" &&
             <Link className={page === "expense" ? "links active" : "links"} to="expense">
               <div className="linkText">Expense</div>
             </Link>
+            }
             <Link className={page === "deposit" ? "links active" : "links"} to="deposit">
               <div className="linkText">
                   {/* <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="rgb(3 73 144)" fillRule="evenodd" clipRule="evenodd">
