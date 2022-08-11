@@ -30,7 +30,7 @@ const Transactions = () => {
     const [amount, setAmount] = useState("");
     const [other, setOther] = useState("");
 
-    const updateBalance = (user, type, amount, transferType = null, otherUser = null) => {
+    const updateBalance = (user, type, amount, subType = null, otherUser = null) => {
         let newBalance;
         let desc = type;
         switch(type) {
@@ -41,7 +41,7 @@ const Transactions = () => {
                 newBalance = (parseFloat(user.balance) - amount).toFixed(2);
                 break;
             case "Transfer":
-                switch(transferType) {
+                switch(subType) {
                     case "Transfer To":
                         newBalance = (parseFloat(user.balance) - amount).toFixed(2);
                         updateBalance(otherUser, "Transfer", amount, "Transfer From", user);
@@ -52,7 +52,11 @@ const Transactions = () => {
                     default:
                         return;
                 }
-                desc = transferType + " " + otherUser.name;
+                desc = subType + " " + otherUser.name;
+                break;
+            case "Expense":
+                newBalance = (parseFloat(user.balance) - amount).toFixed(2);
+                desc += `: ${subType}`;
                 break;
             default:
                 return;
@@ -81,7 +85,7 @@ const Transactions = () => {
             <div className="transactionsContainer">
                 <Routes>
                     <Route path="/history" element={<TransactionList currUser={currUser}/>}/>
-                    <Route path="/expense" element={<Expense />}/>
+                    <Route path="/expense" element={<Expense cost={amount} setCost={setAmount} updateBalance={updateBalance}/>}/>
 
                     <Route path="/deposit" element={<Deposit currUser={currUser} deposit={amount} setDeposit={setAmount} balance={balance}/>}/>
                     <Route path="/depositConfirmation" element={<DepositConfirmation currUser={currUser} deposit={amount} balance={balance} updateBalance={updateBalance}/>}/>

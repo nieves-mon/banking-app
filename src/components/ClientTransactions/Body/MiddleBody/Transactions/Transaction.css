@@ -64,10 +64,8 @@ textarea:focus, input:focus{
 }
 
 .submitButton {
-    height: 20px;
-    width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    width: auto;
+    margin: 1rem 0;
     display: flex;
     justify-content: center;
 }
