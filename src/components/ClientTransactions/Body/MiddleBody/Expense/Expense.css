@@ -100,3 +100,21 @@
     justify-content: center;
     gap: 1rem;
 }
+
+.expense-actions .fa-solid {
+    background: rgb(3 73 144);
+    color: white;
+    font-weight: 400;
+    padding: 0.4rem;
+    border-radius: 10px;
+}
+
+.expense-actions .fa-solid:hover {
+    background: rgb(0, 100, 200);
+    cursor: pointer;
+}
+
+.expense-actions .fa-solid:active {
+    background: rgb(181, 218, 255);
+    color: rgb(0, 100, 200);
+}
