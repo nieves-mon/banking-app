@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import "./RightBody.css"
 import Card from "./Card/Card.js"
+import { LoggedInUserContext } from "../../../../contexts/LoggedInUserContext"
 
 const RightBody = ({currUser}) => {
+    const [loggedInUser] = useContext(LoggedInUserContext);
     const current = new Date();
     const month = current.getMonth();
     const year = current.getFullYear();
@@ -19,7 +21,7 @@ const RightBody = ({currUser}) => {
 
     return (
         <div>
-            <div className="myCard">{currUser.name}'s Card</div>
+            {loggedInUser.name === currUser.name ? <div className="myCard">My Card</div> : <div className="myCard">{currUser.name}'s Card</div>}
             <div>
                 <Card currUser={currUser}/>
             </div>
