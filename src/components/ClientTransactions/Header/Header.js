@@ -27,12 +27,12 @@ const Header = () => {
                     <i className="fa-solid fa-users"></i>
                 </Link>
                 :
-                <>
+                <div className="initials-greeting">
                     <div className="initialContainer">
                         <div className="initials">{currUser.name[0]}</div>
                     </div>
                     <div className="greeting">Hello, {currUser.name}</div>
-                </>
+                </div>
                 }
             </div>
         </div>

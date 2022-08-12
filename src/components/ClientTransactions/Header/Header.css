@@ -49,18 +49,24 @@ body {
     background-color: rgb(225 226 235);
     width: 30px;
     height: 30px;
-    margin: 15px;
-    border-radius: 15px;
+    /* margin: 15px; */
+    border-radius: 50px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .initials {
-    color: rgb(122 151 187);
+    color: rgb(3 73 144);
     padding-right: 10px;
 }
 
+.initialContainer .initials {
+    padding: 0;
+}
+
 .greeting {
-    margin-top: 20px;
-    border-radius: 15px;
+    padding: 0 !important;
 }
 
 .rightContainer a {
