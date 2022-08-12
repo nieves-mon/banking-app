@@ -25,6 +25,8 @@ const Expense = ({cost, setCost, updateBalance}) => {
     const handleConfirm = (e) => {
         e.preventDefault();
         addExpense();
+        setDesc("");
+        setCost("");
     }
 
     const totalCost = (catName) => {
