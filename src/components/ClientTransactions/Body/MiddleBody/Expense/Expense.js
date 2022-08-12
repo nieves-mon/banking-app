@@ -54,51 +54,50 @@ const Expense = ({cost, setCost, updateBalance}) => {
 
     return (
         <div className="transactionContainer add-expense-div">
-            {/* <div className="expense-top"> */}
-                <form className="transaction" onSubmit={e => handleConfirm(e)}>
-                    <h4 className="form-header">Add Expense</h4>
-                    <div className="row-container">
-                        <div className="inputContainer">
-                            <label htmlFor="cost">Cost</label>
-                                <input
-                                    required
-                                    id="cost"
-                                    className="inputValue"
-                                    name="expense-cost"
-                                    type="number"
-                                    min="0.0"
-                                    step="any"
-                                    value={cost}
-                                    onChange={e => setCost(e.target.value)}
-                                />
-                        </div>
-                        <div className="inputContainer">
-                            <label htmlFor="type">Type</label>
-                            <select>
-                                {currUser.categories.map(cat => {
-                                    return <option key={cat} value={cat} onClick={() => setCategory(cat)}>{cat}</option>
-                                })}
-                            </select>
-                        </div>
+            <form className="transaction" onSubmit={e => handleConfirm(e)}>
+                <h4 className="form-header">Add Expense</h4>
+                <div className="row-container">
+                    <div className="inputContainer">
+                        <label htmlFor="cost">Cost</label>
+                            <input
+                                required
+                                id="cost"
+                                className="inputValue"
+                                name="expense-cost"
+                                type="number"
+                                min="0.0"
+                                step="any"
+                                value={cost}
+                                onChange={e => setCost(e.target.value)}
+                            />
                     </div>
                     <div className="inputContainer">
-                        <label htmlFor="desc">Description</label>
-                        <textarea
-                            id="desc"
-                            name="expense-desc"
-                            value={desc}
-                            onChange={e => setDesc(e.target.value)}
-                        />
+                        <label htmlFor="type">Type</label>
+                        <select>
+                            {currUser.categories.map(cat => {
+                                return <option key={cat} value={cat} onClick={() => setCategory(cat)}>{cat}</option>
+                            })}
+                        </select>
                     </div>
-                    <div className="submitButton">
-                        <button className="button expense-btn" onClick={e => handleConfirm(e)}>Add Expense</button>
-                    </div>
-                </form>
-
-                <div className="expense-chart">
-                    <CustomPieChart data={categoryCount}/>
                 </div>
-            {/* </div> */}
+                <div className="inputContainer">
+                    <label htmlFor="desc">Description</label>
+                    <textarea
+                        id="desc"
+                        name="expense-desc"
+                        value={desc}
+                        onChange={e => setDesc(e.target.value)}
+                    />
+                </div>
+                <div className="submitButton">
+                    <button className="button expense-btn" onClick={e => handleConfirm(e)}>Add Expense</button>
+                </div>
+            </form>
+
+            <div className="expense-chart">
+                <CustomPieChart data={categoryCount}/>
+            </div>
+
             <div className="expense-list-div">
                 <table className="expense-list">
                     <thead>
