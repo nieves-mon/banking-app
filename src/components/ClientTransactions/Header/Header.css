@@ -49,7 +49,6 @@ body {
     background-color: rgb(225 226 235);
     width: 30px;
     height: 30px;
-    /* margin: 15px; */
     border-radius: 50px !important;
     display: flex;
     justify-content: center;
@@ -58,10 +57,10 @@ body {
 
 .initials {
     color: rgb(3 73 144);
-    padding-right: 10px;
 }
 
 .initialContainer .initials {
+    overflow: visible;
     padding: 0;
 }
 
