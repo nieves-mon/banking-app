@@ -3,11 +3,12 @@
     flex-direction: row;
     height: calc(100% - 60px);
     position: relative;
+    min-width: 1200px;
 }
 
 .leftBodyContainer {
     background-color: rgb(235 230 238);
-    width: 220px;
+    width: 15%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,10 +17,10 @@
 
 .middleBodyContainer {
     background-color: rgb(235 230 238);
-    flex: 3;
+    width: 63%;
 }
 
 .rightBodyContainer {
     background-color: rgb(225 226 235);
-    width: 400px;
+    width: 25%;
 }
