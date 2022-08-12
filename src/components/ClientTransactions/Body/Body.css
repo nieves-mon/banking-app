@@ -8,7 +8,7 @@
 
 .leftBodyContainer {
     background-color: rgb(235 230 238);
-    width: 15%;
+    width: 15% !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,10 +17,10 @@
 
 .middleBodyContainer {
     background-color: rgb(235 230 238);
-    width: 63%;
+    width: 63% !important;
 }
 
 .rightBodyContainer {
     background-color: rgb(225 226 235);
-    width: 25%;
+    width: 25% !important;
 }

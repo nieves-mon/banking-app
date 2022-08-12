@@ -6,8 +6,17 @@
     margin-bottom: 1rem;
 }
 
+.add-expense-div {
+    height: calc(100% - 60px);
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "add chart"
+                        "list list";
+}
+
 .add-expense-div form {
-    width: 50%;
+    grid-area: add;
 }
 
 .add-expense-div label{
@@ -46,14 +55,13 @@
 
 .add-expense-div textarea {
     border: 1px solid rgb(3 73 144);
-    width: auto;
-    height: 4.2rem;
     resize: none;
     font-size: 1em;
     padding: 0.5rem;
 }
 
 .expense-list-div {
+    grid-area: list;
     overflow-y: auto;
     max-height: 30vh;
     margin: 2rem auto;
@@ -81,20 +89,8 @@
     padding: 0.5rem 0;
 }
 
-.expense-top {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-}
-
 .expense-chart {
+    grid-area: chart;
     display: flex;
-    flex: 1 auto;
     justify-content: center;
-}
-
-.recharts-wrapper {
-    width: 100%;
-    height: 100%;
 }

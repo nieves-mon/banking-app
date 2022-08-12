@@ -15,14 +15,28 @@ const CustomPieChart = ({data}) => {
                border: "1px solid #cccc"
             }}
          >
-            <label>{`${payload[0].name} : ${payload[0].value}`}</label>
+            <label>{`${payload[0].name} : ₱${payload[0].value}`}</label>
          </div>
         );
       }
    }
 
+    const RADIAN = Math.PI / 180;
+    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+      const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+      const x = cx + radius * Math.cos(-midAngle * RADIAN);
+      const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+      if(percent * 100 > 6)
+        return (
+          <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+            {`${(percent * 100).toFixed(0)}%`}
+          </text>
+        );
+    };
+
     return (
-      <PieChart width={350} height={300}>
+      <PieChart width={window.innerWidth/3.8} height={window.innerHeight/2.4}>
         <Pie
           data={data}
           color="#000000"
@@ -30,9 +44,10 @@ const CustomPieChart = ({data}) => {
           nameKey="name"
           cx="50%"
           cy="50%"
-          outerRadius={98}
+          outerRadius={window.innerHeight/7}
           fill="#8884d8"
-          label
+          labelLine={false}
+          label={renderCustomizedLabel}
         >
           {data.map((entry, index) => (
               <Cell

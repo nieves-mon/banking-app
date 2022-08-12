@@ -54,7 +54,7 @@ const Expense = ({cost, setCost, updateBalance}) => {
 
     return (
         <div className="transactionContainer add-expense-div">
-            <div className="expense-top">
+            {/* <div className="expense-top"> */}
                 <form className="transaction" onSubmit={e => handleConfirm(e)}>
                     <h4 className="form-header">Add Expense</h4>
                     <div className="row-container">
@@ -98,7 +98,7 @@ const Expense = ({cost, setCost, updateBalance}) => {
                 <div className="expense-chart">
                     <CustomPieChart data={categoryCount}/>
                 </div>
-            </div>
+            {/* </div> */}
             <div className="expense-list-div">
                 <table className="expense-list">
                     <thead>
@@ -116,7 +116,7 @@ const Expense = ({cost, setCost, updateBalance}) => {
                                     <td className="expense-date">{expense.date}</td>
                                     <td className="expense-desc">{expense.desc}</td>
                                     <td className="expense-category">{expense.category}</td>
-                                    <td className="expense-cost">{expense.cost}</td>
+                                    <td className="expense-cost">₱ {parseFloat(expense.cost)}</td>
                                 </tr>
                             )
                         })}
