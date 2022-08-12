@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 import "../Transactions/Transaction.css"
 
@@ -15,9 +16,14 @@ const Home = ({amount, setAmount, setPage}) => {
 
     return (
         <div className="transactionContainer">
-            
-                <p>You requested {amount} to be transferred to your account</p>
-
+            <div className="transaction">
+                <div className="inputContainer">
+                    <label htmlFor="transfer">You requested {amount} to be transferred to their account</label>
+                </div>
+                <Link className="submitButton" type="submit" to="../recipient">
+                    <button className="button">Cancel</button>
+                </Link>
+            </div>
         </div>
     )
 }

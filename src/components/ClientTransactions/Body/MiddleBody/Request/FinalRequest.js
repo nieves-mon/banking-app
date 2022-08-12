@@ -14,7 +14,7 @@ const FinalRequest = ({users, currUser, other, amount}) => {
             <div className="doneTransaction">Done!</div>
             <div className="finalTransaction">Your request of ₱ {amount} was sent to {users[idx].name}.</div>
             <div>
-                <Link className="submitButton" type="submit" to="/home"><button className="button">Got it!</button></Link>
+                <Link className="submitButton" type="submit" to="../home"><button className="button">Got it!</button></Link>
             </div>
         </div>
     )

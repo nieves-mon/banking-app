@@ -70,6 +70,8 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
 
         updateUsers([...tempUsers]);
         changeCurrUser(tempUsers[idx]);
+
+        tempUsers[idx].sendRequest.unshift({"date": date, "requestee": tempUsers, "amount": amount});
     }
 
     return (
