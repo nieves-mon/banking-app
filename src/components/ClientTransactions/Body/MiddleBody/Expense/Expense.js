@@ -24,6 +24,9 @@ const Expense = ({cost, setCost, updateBalance}) => {
 
     const handleConfirm = (e) => {
         e.preventDefault();
+        if(cost.length === 0 || cost <= 0) {
+            return;
+        }
         addExpense();
         setDesc("");
         setCost("");
@@ -108,6 +111,7 @@ const Expense = ({cost, setCost, updateBalance}) => {
                             <th>Description</th>
                             <th>Category</th>
                             <th>Cost</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -118,6 +122,12 @@ const Expense = ({cost, setCost, updateBalance}) => {
                                     <td className="expense-desc">{expense.desc}</td>
                                     <td className="expense-category">{expense.category}</td>
                                     <td className="expense-cost">₱ {parseFloat(expense.cost)}</td>
+                                    <td>
+                                        <div className="expense-actions">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </div>
+                                    </td>
                                 </tr>
                             )
                         })}
