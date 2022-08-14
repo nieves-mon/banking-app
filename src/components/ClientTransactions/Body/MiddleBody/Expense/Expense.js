@@ -15,7 +15,7 @@ const Expense = ({cost, setCost, updateBalance}) => {
     const addExpense = () => {
         const tempUsers = JSON.parse(localStorage.getItem("users"));
         const idx = tempUsers.findIndex(user => user.name === currUser.name);
-        tempUsers[idx].expenses.unshift({"date": date, "desc": desc, "category": category, "cost": cost});
+        tempUsers[idx].expenses.unshift({"id": Date.now(), "date": date, "desc": desc, "category": category, "cost": cost});
         updateUsers([...tempUsers]);
         changeCurrUser(tempUsers[idx]);
         updateBalance(tempUsers[idx], "Expense", cost, category);
@@ -52,6 +52,20 @@ const Expense = ({cost, setCost, updateBalance}) => {
         {"name": "Utilities", "value": totalCost("Utilities")},
         {"name": "Entertainment", "value": totalCost("Entertainment")}
     ];
+
+    const deleteExpense = (expense) => {
+        const tempUsers = JSON.parse(localStorage.getItem("users"));
+        const userIdx = tempUsers.findIndex(user => user.name === currUser.name);
+        const tranIdx = tempUsers[userIdx].history.findIndex(obj => obj.amount === expense.cost && obj.date === expense.date && obj.type === `Expense: ${expense.category}`);
+        const expIdx = tempUsers[userIdx].expenses.findIndex(obj => obj.id === expense.id);
+
+        tempUsers[userIdx].history = [...tempUsers[userIdx].history.slice(0, tranIdx), tempUsers[userIdx].history.slice(tranIdx + 1)].flat();
+        tempUsers[userIdx].balance += expense.cost;
+        tempUsers[userIdx].expenses = [...tempUsers[userIdx].expenses.slice(0, expIdx), tempUsers[userIdx].expenses.slice(expIdx + 1)].flat();
+
+        updateUsers([...tempUsers])
+        changeCurrUser(tempUsers[userIdx]);
+    }
 
     useEffect(() => {
         setPage("expense");
@@ -124,8 +138,8 @@ const Expense = ({cost, setCost, updateBalance}) => {
                                     <td className="expense-cost">₱ {parseFloat(expense.cost)}</td>
                                     <td>
                                         <div className="expense-actions">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                            <i class="fa-solid fa-trash-can"></i>
+                                            <i className="fa-solid fa-pen-to-square"></i>
+                                            <i className="fa-solid fa-trash-can" onClick={e => deleteExpense(expense)}></i>
                                         </div>
                                     </td>
                                 </tr>
