@@ -80,7 +80,7 @@ const Transactions = () => {
             </div>
             <div className="balanceContainer">
                 <div className="balanceLabel">BALANCE</div>
-                <div className="balanceActual">₱ {parseFloat(balance).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
+                <div className="balanceActual">₱ {parseFloat(currUser.balance).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
             </div>
             <div className="transactionsContainer">
                 <Routes>

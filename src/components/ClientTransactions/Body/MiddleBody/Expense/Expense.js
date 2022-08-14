@@ -60,9 +60,10 @@ const Expense = ({cost, setCost, updateBalance}) => {
         const expIdx = tempUsers[userIdx].expenses.findIndex(obj => obj.id === expense.id);
 
         tempUsers[userIdx].history = [...tempUsers[userIdx].history.slice(0, tranIdx), tempUsers[userIdx].history.slice(tranIdx + 1)].flat();
-        tempUsers[userIdx].balance += expense.cost;
+        tempUsers[userIdx].balance = parseFloat(tempUsers[userIdx].balance) + parseFloat(expense.cost);
         tempUsers[userIdx].expenses = [...tempUsers[userIdx].expenses.slice(0, expIdx), tempUsers[userIdx].expenses.slice(expIdx + 1)].flat();
 
+        updateBalance(tempUsers[userIdx].balance);
         updateUsers([...tempUsers])
         changeCurrUser(tempUsers[userIdx]);
     }
