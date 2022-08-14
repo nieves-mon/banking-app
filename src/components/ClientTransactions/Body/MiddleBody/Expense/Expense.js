@@ -11,6 +11,11 @@ const Expense = ({cost, setCost, updateBalance}) => {
     const [page, setPage] = useContext(PageContext);
     const [category, setCategory] = useState("Rent");
     const [desc, setDesc] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    }
 
     const addExpense = () => {
         const tempUsers = JSON.parse(localStorage.getItem("users"));
@@ -139,7 +144,7 @@ const Expense = ({cost, setCost, updateBalance}) => {
                                     <td className="expense-cost">₱ {parseFloat(expense.cost)}</td>
                                     <td>
                                         <div className="expense-actions">
-                                            <i className="fa-solid fa-pen-to-square"></i>
+                                            <i className="fa-solid fa-pen-to-square" onClick={e => togglePopup()}></i>
                                             <i className="fa-solid fa-trash-can" onClick={e => deleteExpense(expense)}></i>
                                         </div>
                                     </td>
@@ -149,6 +154,39 @@ const Expense = ({cost, setCost, updateBalance}) => {
                     </tbody>
                 </table>
             </div>
+
+            {isOpen && <div className="update-popup-div">
+                <div className="overlay" onClick={e => togglePopup()}></div>
+                <form className="update-form">
+                    <i className="fa-solid fa-xmark" onClick={togglePopup}></i>
+
+                    <div className="update-date">
+                        <label>Date</label>
+                        <input type="date" />
+                    </div>
+
+                    <div className="update-cost">
+                        <label>Cost</label>
+                        <input type="number" />
+                    </div>
+
+                    <div className="update-type">
+                        <label>Type</label>
+                        <select>
+                            {currUser.categories.map(cat => {
+                                return <option key={cat} value={cat} onClick={() => setCategory(cat)}>{cat}</option>
+                            })}
+                        </select>
+                    </div>
+
+                    <div className="update-desc">
+                        <label>Description</label>
+                        <textarea />
+                    </div>
+
+                    <button className="button">Update Expense</button>
+                </form>
+            </div>}
         </div>
     )
 }
