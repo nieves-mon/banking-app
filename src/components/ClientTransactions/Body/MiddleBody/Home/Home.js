@@ -41,7 +41,7 @@ const Home = ({updateBalance}) => {
         <div className="transactionContainer">
             {currUser.sentRequests.length > 0 && <div className="transaction">
                 <div className="inputContainer">
-                    <label htmlFor="transfer">You requested {users[toIdx].name} to transfer {currUser.sentRequests[0].amount} to your account</label>
+                    <label htmlFor="transfer">You requested {users[toIdx].name} to transfer ₱{parseFloat(currUser.sentRequests[0].amount).toLocaleString(undefined, {maximumFractionDigits:2})} to your account</label>
                 </div>
                 <div className="submitButton">
                     <button className="button" onClick={e => handleClick("Cancel")}>Cancel</button>
@@ -50,7 +50,7 @@ const Home = ({updateBalance}) => {
 
             {currUser.receivedRequests.length > 0 && <div className="transaction">
                 <div className="inputContainer">
-                    <label htmlFor="transfer">{users[fromIdx].name} requested you to transfer {currUser.receivedRequests[0].amount} to their account</label>
+                    <label htmlFor="transfer">{users[fromIdx].name} requested you to transfer ₱{parseFloat(currUser.receivedRequests[0].amount).toLocaleString(undefined, {maximumFractionDigits:2})} to their account</label>
                 </div>
                 <div className="submitButton">
                     <button className="button" onClick={e => handleClick("Approve")}>Confirm</button>
