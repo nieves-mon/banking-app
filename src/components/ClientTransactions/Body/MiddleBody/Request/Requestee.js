@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import "../Transactions/Transaction.css"
+import "./Requestee.css"
 
 import {
     Link
