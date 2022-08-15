@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react"
 import "../Transactions/Transaction.css"
 import "./Requestee.css"
-
-import {
-    Link
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Requestee = ({users, currUser, setOther}) => {
     const filteredUsers = users.filter(user => user.name !== currUser.name);

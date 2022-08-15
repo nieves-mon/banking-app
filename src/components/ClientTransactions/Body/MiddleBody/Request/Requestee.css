@@ -1,0 +1,45 @@
+
+.requestee-list-div {
+    overflow-y: auto;
+    max-height: 300px;
+    padding: 0 1rem;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.requestee-list {
+    overflow-y: auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.requestee-list th{
+    font-size: 1em;
+}
+
+.requestee-list td {
+    font-size: 1.1em;
+}
+
+.requestee-list td,
+.requestee-list th {
+    border-bottom: black 1px solid;
+    padding: 0.5rem 0;
+}
+
+.requestee-row:hover {
+    background: rgba(188, 173, 198, 0.675);
+    cursor: pointer;
+}
+
+.requestee-name {
+    width: 35%;
+}
+
+.requestee-email {
+    width: 65%;
+}
+
+.requestee-cn {
+    width: fit-content;
+}
