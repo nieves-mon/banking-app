@@ -114,6 +114,8 @@ const CreateUser = ({users, updateUsers, changeCurrUser, togglePopup}) => {
                 "userType": "client",
                 "budgets": [],
                 "expenses": [],
+                "sentRequests": [],
+                "receivedRequests": [],
                 "history": [{"date": date, "type":"Initial Deposit", "amount": parseFloat(balance)}]});
     }
 

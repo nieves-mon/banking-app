@@ -22,6 +22,8 @@ const Dashboard = ({handleLogIn}) => {
                 "userType": "client",
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
+                "sentRequests": [],
+                "receivedRequests": [],
                 "history": [
                     {"date": "2022-03-09", "type": "Withdraw", "amount": "15500.00"},
                     {"date": "2022-03-01", "type": "Deposit", "amount": "45650.55"},
@@ -39,6 +41,8 @@ const Dashboard = ({handleLogIn}) => {
                 "userType": "client",
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
+                "sentRequests": [],
+                "receivedRequests": [],
                 "history": [
                     {"date": "2022-01-25", "type": "Transfer From Rick Sanchez", "amount": "1490080.00"},
                     {"date": "2022-01-10", "type": "Withdraw", "amount": "15000000.00"},
@@ -56,6 +60,8 @@ const Dashboard = ({handleLogIn}) => {
                 "userType": "client",
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
+                "sentRequests": [],
+                "receivedRequests": [],
                 "history": [
                     {"date": "2021-12-30", "type": "Deposit", "amount": "1500.00"},
                     {"date": "2021-12-15", "type": "Deposit", "amount": "37005.85"},
@@ -73,6 +79,8 @@ const Dashboard = ({handleLogIn}) => {
                 "userType": "client",
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
+                "sentRequests": [],
+                "receivedRequests": [],
                 "history": [
                     {"date": "2022-05-01", "type": "Withdraw", "amount": "500850.25"},
                     {"date": "2022-03-06", "type": "Withdraw", "amount": "450000.00"},
@@ -90,6 +98,8 @@ const Dashboard = ({handleLogIn}) => {
                 "userType": "client",
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
+                "sentRequests": [],
+                "receivedRequests": [],
                 "history": [
                     {"date": "2022-01-25", "type": "Transfer To Walter White", "amount": "560000.00"},
                     {"date": "2022-01-16", "type": "Deposit", "amount": "10450000.55"},
