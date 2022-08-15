@@ -22,6 +22,12 @@ import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 import TransactionList from "../TransactionList/TransactionList";
 import Expense from "../Expense/Expense";
 
+import Home from "../Home/Home";
+import Request from "../Request/Request";
+import Requestee from "../Request/Requestee";
+import RequestConfirmation from "../Request/RequestConfirmation";
+import FinalRequest from "../Request/FinalRequest";
+
 const Transactions = () => {
     const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
     const current = new Date();
@@ -86,6 +92,8 @@ const Transactions = () => {
             </div>
             <div className="transactionsContainer">
                 <Routes>
+                    <Route path="/home" element={<Home currUser={currUser} amount={amount} users={users} other={other} />}/>
+
                     <Route path="/history" element={<TransactionList currUser={currUser}/>}/>
                     <Route path="/expense" element={<Expense cost={amount} setCost={setAmount} updateBalance={updateBalance}/>}/>
 
@@ -101,6 +109,11 @@ const Transactions = () => {
                     <Route path="/recipient" element={<Recipient users={users} currUser={currUser} setOther={setOther}/>}/>
                     <Route path="/transferConfirmation" element={<TransferConfirmation users={users} currUser={currUser} other={other} amount={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalTransfer" element={<FinalTransfer users={users} currUser={currUser} other={other} amount={amount}/>}/>
+
+                    <Route path="/request" element={<Request currUser={currUser} amount={amount} setAmount={setAmount} balance={balance}/>}/>
+                    <Route path="/requestee" element={<Requestee users={users} currUser={currUser} setOther={setOther}/>}/>
+                    <Route path="/requestConfirmation" element={<RequestConfirmation users={users} currUser={currUser} other={other} amount={amount} balance={balance} updateBalance={updateBalance}/>}/>
+                    <Route path="/finalRequest" element={<FinalRequest users={users} currUser={currUser} other={other} amount={amount}/>}/>
                 </Routes>
             </div>
             <div>
