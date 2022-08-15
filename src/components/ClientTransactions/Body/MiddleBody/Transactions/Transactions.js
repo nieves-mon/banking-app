@@ -39,9 +39,6 @@ const Transactions = () => {
     const [other, setOther] = useState("");
 
     const updateBalance = (user, type, amount, subType = null, otherUser = null) => {
-        let tempUsers = JSON.parse(localStorage.getItem("users"));
-        let idx = users.findIndex(obj => obj.name === user.name);
-
         let newBalance;
         let desc = type;
 
@@ -90,8 +87,8 @@ const Transactions = () => {
         }
         setBalance(newBalance);
 
-        tempUsers = JSON.parse(localStorage.getItem("users"));
-        idx = users.findIndex(obj => obj.name === user.name);
+        const tempUsers = JSON.parse(localStorage.getItem("users"));
+        const idx = users.findIndex(obj => obj.name === user.name);
 
         if(subType === "Requested Transfer To") {
             tempUsers[idx].receivedRequests.splice(0, 1);
