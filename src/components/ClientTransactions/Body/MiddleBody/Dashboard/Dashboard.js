@@ -44,7 +44,7 @@ const Dashboard = ({handleLogIn}) => {
                     {"date": "2022-01-10", "type": "Withdraw", "amount": "15000000.00"},
                     {"date": "2021-12-30", "type": "Deposit", "amount": "600000.00"},
                     {"date": "2021-12-25", "type": "Transfer To Dirk Gently", "amount": "700845.99"},
-                    {"date": "2021-11-30", "type": "Initial Deposit", "amount": "36,512,775.9"}
+                    {"date": "2021-11-30", "type": "Initial Deposit", "amount": "36512775.9"}
                 ]
             },
             {"name": "Muriel Bagge",

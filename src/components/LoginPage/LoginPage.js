@@ -19,6 +19,9 @@ const LoginPage = ({handleLogIn}) => {
         let found = false;
 
         employees.forEach(employee => {
+            if(found)
+                return;
+
             if(employee.email === usernameIn) {
                 pwValidity = true;
                 found = true;
@@ -29,9 +32,7 @@ const LoginPage = ({handleLogIn}) => {
                     setLoginValid([true, true]);
                 } else {
                     unValidity = false;
-                    setLoginValid([false, false]);
                 }
-                return;
             }
         });
 
@@ -49,9 +50,7 @@ const LoginPage = ({handleLogIn}) => {
                     setLoginValid([true, true]);
                 } else {
                     unValidity = false;
-                    setLoginValid([false, false]);
                 }
-                return;
             }
         });
 
