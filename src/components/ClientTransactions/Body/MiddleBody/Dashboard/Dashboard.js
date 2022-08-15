@@ -23,11 +23,11 @@ const Dashboard = ({handleLogIn}) => {
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
                 "history": [
-                    {"date": "3/9/2022", "type": "Withdraw", "amount": "15500.00"},
-                    {"date": "3/1/2022", "type": "Deposit", "amount": "45650.55"},
-                    {"date": "2/15/2022", "type": "Deposit", "amount": "256483.99"},
-                    {"date": "2/1/2022", "type": "Deposit", "amount": "142000.00"},
-                    {"date": "12/14/2021", "type": "Initial Deposit", "amount": "23230.96"}
+                    {"date": "2022-03-09", "type": "Withdraw", "amount": "15500.00"},
+                    {"date": "2022-03-01", "type": "Deposit", "amount": "45650.55"},
+                    {"date": "2022-02-15", "type": "Deposit", "amount": "256483.99"},
+                    {"date": "2022-02-01", "type": "Deposit", "amount": "142000.00"},
+                    {"date": "2021-12-14", "type": "Initial Deposit", "amount": "23230.96"}
                 ]
             },
             {"name": "Walter White",
@@ -40,11 +40,11 @@ const Dashboard = ({handleLogIn}) => {
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
                 "history": [
-                    {"date": "1/25/2022", "type": "Transfer From Rick Sanchez", "amount": "1490080.00"},
-                    {"date": "1/10/2022", "type": "Withdraw", "amount": "15000000.00"},
-                    {"date": "12/30/2021", "type": "Deposit", "amount": "600000.00"},
-                    {"date": "12/25/2021", "type": "Transfer To Dirk Gently", "amount": "700845.99"},
-                    {"date": "11/30/2021", "type": "Initial Deposit", "amount": "36,512,775.9"}
+                    {"date": "2022-01-25", "type": "Transfer From Rick Sanchez", "amount": "1490080.00"},
+                    {"date": "2022-01-10", "type": "Withdraw", "amount": "15000000.00"},
+                    {"date": "2021-12-30", "type": "Deposit", "amount": "600000.00"},
+                    {"date": "2021-12-25", "type": "Transfer To Dirk Gently", "amount": "700845.99"},
+                    {"date": "2021-11-30", "type": "Initial Deposit", "amount": "36,512,775.9"}
                 ]
             },
             {"name": "Muriel Bagge",
@@ -57,11 +57,11 @@ const Dashboard = ({handleLogIn}) => {
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
                 "history": [
-                    {"date": "12/30/2021", "type": "Deposit", "amount": "1500.00"},
-                    {"date": "12/15/2021", "type": "Deposit", "amount": "37005.85"},
-                    {"date": "12/1/2021", "type": "Withdraw", "amount": "14000.00"},
-                    {"date": "11/24/2021", "type": "Deposit", "amount": "25000.00"},
-                    {"date": "11/5/2021", "type": "Initial Deposit", "amount": "38026.69"}
+                    {"date": "2021-12-30", "type": "Deposit", "amount": "1500.00"},
+                    {"date": "2021-12-15", "type": "Deposit", "amount": "37005.85"},
+                    {"date": "2021-12-01", "type": "Withdraw", "amount": "14000.00"},
+                    {"date": "2021-11-24", "type": "Deposit", "amount": "25000.00"},
+                    {"date": "2021-11-05", "type": "Initial Deposit", "amount": "38026.69"}
                 ]
             },
             {"name": "Dirk Gently",
@@ -74,11 +74,11 @@ const Dashboard = ({handleLogIn}) => {
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
                 "history": [
-                    {"date": "5/1/2022", "type": "Withdraw", "amount": "500850.25"},
-                    {"date": "3/6/2022", "type": "Withdraw", "amount": "450000.00"},
-                    {"date": "1/3/2022", "type": "Withdraw", "amount": "230000.00"},
-                    {"date": "12/25/2021", "type": "Deposit", "amount": "648500.50"},
-                    {"date": "12/10/2021", "type": "Initial Deposit", "amount": "1015975.81"}
+                    {"date": "2022-05-01", "type": "Withdraw", "amount": "500850.25"},
+                    {"date": "2022-03-06", "type": "Withdraw", "amount": "450000.00"},
+                    {"date": "2022-01-03", "type": "Withdraw", "amount": "230000.00"},
+                    {"date": "2021-12-25", "type": "Deposit", "amount": "648500.50"},
+                    {"date": "2021-12-10", "type": "Initial Deposit", "amount": "1015975.81"}
                 ]
             },
             {"name": "Rick Sanchez",
@@ -91,11 +91,11 @@ const Dashboard = ({handleLogIn}) => {
                 "categories": ["Rent", "Food", "Transportation", "Mortgage", "Utilities", "Entertainment"],
                 "expenses": [],
                 "history": [
-                    {"date": "1/25/2022", "type": "Transfer To Walter White", "amount": "560000.00"},
-                    {"date": "1/16/2022", "type": "Deposit", "amount": "10450000.55"},
-                    {"date": "12/29/2021", "type": "Withdraw", "amount": "640850.00"},
-                    {"date": "12/14/2021", "type": "Deposit", "amount": "12830000.00"},
-                    {"date": "10/20/2021", "type": "Initial Deposit", "amount": "32046334.82"}
+                    {"date": "2022-01-25", "type": "Transfer To Walter White", "amount": "560000.00"},
+                    {"date": "2022-01-16", "type": "Deposit", "amount": "10450000.55"},
+                    {"date": "2022-12-29", "type": "Withdraw", "amount": "640850.00"},
+                    {"date": "2021-12-14", "type": "Deposit", "amount": "12830000.00"},
+                    {"date": "2021-10-20", "type": "Initial Deposit", "amount": "32046334.82"}
                 ]
             }
         ];

@@ -8,8 +8,8 @@ const RightBody = ({currUser}) => {
     const current = new Date();
     const month = current.getMonth();
     const year = current.getFullYear();
-    const userYear = parseInt(currUser.history[0].date.slice(currUser.history[0].date.length - 4, currUser.history[0].date.length));
-    const userMonth = parseInt(currUser.history[0].date.charAt(0));
+    const userYear = parseInt(currUser.history[0].date.slice(0, 4));
+    const userMonth = parseInt(currUser.history[0].date.slice(5, 7));
 
     const checkActivity = () => {
         if((month + year) - (userMonth + userYear) > 6){

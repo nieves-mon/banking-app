@@ -55,6 +55,7 @@
 
 .add-expense-div textarea {
     border: 1px solid rgb(3 73 144);
+    color: rgb(3 73 144);
     resize: none;
     font-size: 1em;
     padding: 0.5rem;
@@ -176,6 +177,10 @@
 
 .update-desc {
     grid-area: desc;
+}
+
+.update-desc textarea {
+    color: rgb(3 73 144);
 }
 
 .update-form .button {

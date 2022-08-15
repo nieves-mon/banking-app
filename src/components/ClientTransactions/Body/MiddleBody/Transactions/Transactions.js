@@ -25,7 +25,9 @@ import Expense from "../Expense/Expense";
 const Transactions = () => {
     const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
     const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const day = current.getDate() < 10 ? `0${current.getDate()}` : current.getDate();
+    const month = (current.getMonth() + 1) < 10 ? `0${current.getMonth() + 1}` : current.getMonth() + 1;
+    const date = `${current.getFullYear()}-${month}-${day}`;
     const [balance, setBalance] = useState(currUser.balance);
     const [amount, setAmount] = useState("");
     const [other, setOther] = useState("");

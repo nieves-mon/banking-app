@@ -6,14 +6,28 @@ import "./Expense.css";
 
 const Expense = ({cost, setCost, updateBalance}) => {
     const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const day = current.getDate() < 10 ? `0${current.getDate()}` : current.getDate();
+    const month = (current.getMonth() + 1) < 10 ? `0${current.getMonth() + 1}` : current.getMonth() + 1;
+    const date = `${current.getFullYear()}-${month}-${day}`;
     const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
     const [page, setPage] = useContext(PageContext);
     const [category, setCategory] = useState("Rent");
     const [desc, setDesc] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [newDate, setNewDate] = useState("");
+    const [newCost, setNewCost] = useState("");
+    const [newCat, setNewCat] = useState("");
+    const [newDesc, setNewDesc] = useState("");
+    const [index, setIndex] = useState(0);
 
-    const togglePopup = () => {
+    const togglePopup = (id = null) => {
+        if(id !== null){
+            setIndex(id);
+            setNewDate(currUser.expenses[id].date);
+            setNewCost(currUser.expenses[id].cost);
+            setNewCat(currUser.expenses[id].category);
+            setNewDesc(currUser.expenses[id].desc);
+        }
         setIsOpen(!isOpen);
     }
 
@@ -64,13 +78,71 @@ const Expense = ({cost, setCost, updateBalance}) => {
         const tranIdx = tempUsers[userIdx].history.findIndex(obj => obj.amount === expense.cost && obj.date === expense.date && obj.type === `Expense: ${expense.category}`);
         const expIdx = tempUsers[userIdx].expenses.findIndex(obj => obj.id === expense.id);
 
-        tempUsers[userIdx].history = [...tempUsers[userIdx].history.slice(0, tranIdx), tempUsers[userIdx].history.slice(tranIdx + 1)].flat();
         tempUsers[userIdx].balance = parseFloat(tempUsers[userIdx].balance) + parseFloat(expense.cost);
-        tempUsers[userIdx].expenses = [...tempUsers[userIdx].expenses.slice(0, expIdx), tempUsers[userIdx].expenses.slice(expIdx + 1)].flat();
+        tempUsers[userIdx].expenses.splice(expIdx, 1);
+        tempUsers[userIdx].history.splice(tranIdx, 1);
+        // tempUsers[userIdx].history = [...tempUsers[userIdx].history.slice(0, tranIdx), tempUsers[userIdx].history.slice(tranIdx + 1)].flat();
+        // tempUsers[userIdx].expenses = [...tempUsers[userIdx].expenses.slice(0, expIdx), tempUsers[userIdx].expenses.slice(expIdx + 1)].flat();
 
         updateBalance(tempUsers[userIdx].balance);
         updateUsers([...tempUsers])
         changeCurrUser(tempUsers[userIdx]);
+    }
+
+    const updateExpense = (e, expense) => {
+        e.preventDefault();
+
+        const tempUsers = JSON.parse(localStorage.getItem("users"));
+        const idx = tempUsers.findIndex(user => user.name === currUser.name);
+        const tranIdx = tempUsers[idx].history.findIndex(obj => obj.amount === expense.cost && obj.date === expense.date && obj.type === `Expense: ${expense.category}`);
+        const expIdx = tempUsers[idx].expenses.findIndex(obj => obj.id === expense.id);
+
+        console.log(idx, tranIdx, expIdx);
+
+        const updatedExpense = {"id": expense.id, "date": newDate, "category": newCat, "cost": newCost, "desc": newDesc};
+        const updatedTransaction = {"date": newDate, "type": `Expense: ${newCat}`, "amount": newCost};
+
+        let newTranIdx = newDate === tempUsers[idx].history[tranIdx].date ? tranIdx : false;
+        let newExpIdx = newDate === tempUsers[idx].expenses[expIdx].date ? expIdx : false;
+
+        tempUsers[idx].expenses.splice(expIdx, 1);
+        tempUsers[idx].history.splice(tranIdx, 1);
+
+        for(let i = 0; i < tempUsers[idx].history.length; i++) {
+            if(newTranIdx !== false)
+                break;
+
+            if(newDate >= tempUsers[idx].history[i].date)
+                newTranIdx = i;
+        }
+
+        for(let i = 0; i < tempUsers[idx].expenses.length; i++) {
+            if(newExpIdx !== false)
+                break;
+
+            if(newDate >= tempUsers[idx].expenses[i].date)
+                newExpIdx = i;
+        }
+
+        if(newExpIdx === false) {
+            tempUsers[idx].expenses.push(updatedExpense);
+        } else {
+            tempUsers[idx].expenses.splice(newExpIdx, 0, updatedExpense);
+        }
+
+        if(newTranIdx === false) {
+            tempUsers[idx].history.push(updatedTransaction);
+        } else {
+            tempUsers[idx].history.splice(newTranIdx, 0, updatedTransaction);
+        }
+
+        tempUsers[idx].balance = parseFloat(tempUsers[idx].balance) + parseFloat(expense.cost);
+        tempUsers[idx].balance = parseFloat(tempUsers[idx].balance) - parseFloat(newCost);
+
+        updateBalance(tempUsers[idx].balance);
+        updateUsers([...tempUsers])
+        changeCurrUser(tempUsers[idx]);
+        togglePopup();
     }
 
     useEffect(() => {
@@ -144,7 +216,10 @@ const Expense = ({cost, setCost, updateBalance}) => {
                                     <td className="expense-cost">₱ {parseFloat(expense.cost)}</td>
                                     <td>
                                         <div className="expense-actions">
-                                            <i className="fa-solid fa-pen-to-square" onClick={e => togglePopup()}></i>
+                                            <i className="fa-solid fa-pen-to-square"
+                                                onClick={e => {
+                                                    togglePopup(i);
+                                                }}></i>
                                             <i className="fa-solid fa-trash-can" onClick={e => deleteExpense(expense)}></i>
                                         </div>
                                     </td>
@@ -158,33 +233,44 @@ const Expense = ({cost, setCost, updateBalance}) => {
             {isOpen && <div className="update-popup-div">
                 <div className="overlay" onClick={e => togglePopup()}></div>
                 <form className="update-form">
-                    <i className="fa-solid fa-xmark" onClick={togglePopup}></i>
+                    <i className="fa-solid fa-xmark" onClick={e => togglePopup()}></i>
 
                     <div className="update-date">
                         <label>Date</label>
-                        <input type="date" />
+                        <input
+                            type="date"
+                            value={newDate}
+                            onChange={e => setNewDate(e.target.value)}
+                        />
                     </div>
 
                     <div className="update-cost">
                         <label>Cost</label>
-                        <input type="number" />
+                        <input
+                            type="number"
+                            value={newCost}
+                            onChange={e => setNewCost(e.target.value)}
+                        />
                     </div>
 
                     <div className="update-type">
                         <label>Type</label>
-                        <select>
+                        <select value={newCat} onChange={e => setNewCat(e.target.value)}>
                             {currUser.categories.map(cat => {
-                                return <option key={cat} value={cat} onClick={() => setCategory(cat)}>{cat}</option>
+                                return <option key={cat} value={cat}>{cat}</option>
                             })}
                         </select>
                     </div>
 
                     <div className="update-desc">
                         <label>Description</label>
-                        <textarea />
+                        <textarea
+                            value={newDesc}
+                            onChange={e => setNewDesc(e.target.value)}
+                        />
                     </div>
 
-                    <button className="button">Update Expense</button>
+                    <button className="button" onClick={e => updateExpense(e, currUser.expenses[index])}>Update Expense</button>
                 </form>
             </div>}
         </div>
