@@ -1,6 +1,12 @@
-.transaction-table {
+.transaction-list-div {
     margin: 1rem auto 0;
     width: 95%;
+    max-height: 78vh;
+    overflow: auto;
+}
+
+.transaction-table {
+    width: 100%;
     text-align: center;
     border-collapse: collapse;
 }

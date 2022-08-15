@@ -1,11 +1,13 @@
-import React , { useState } from "react";
+import React , { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import CreateUser from "../CreateUser/CreateUser";
+import { UsersContext } from "../../contexts/UsersContext";
 import "./UserList.css"
 
-const UserList = ({users, updateUsers, currUser, changeCurrUser}) => {
+const UserList = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchInput, setSearchInput] = useState("");
+    const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
 
     const togglePopup = () => {
         setIsOpen(!isOpen);

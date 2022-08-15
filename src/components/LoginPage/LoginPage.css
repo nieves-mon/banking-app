@@ -65,6 +65,8 @@
     color: white;
     font-size: 0.9em;
     font-style: italic;
+    width: 100%;
+    text-align: center;
 }
 
 .login-logo {

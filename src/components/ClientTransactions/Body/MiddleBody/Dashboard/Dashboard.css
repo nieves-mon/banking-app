@@ -24,8 +24,9 @@
 }
 
 .no-users {
+    background: rgb(235 230 238);
     width: 100%;
-    height: calc(100% - 60px);
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;

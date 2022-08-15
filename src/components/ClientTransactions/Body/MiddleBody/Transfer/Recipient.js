@@ -38,7 +38,7 @@ const Recipient = ({users, currUser, setOther}) => {
     }
 
     const chooseRecipient = (i) => {
-        setRecipient(users[i].email);
+        setRecipient(filteredUsers[i].email);
     }
 
     useEffect(() => {

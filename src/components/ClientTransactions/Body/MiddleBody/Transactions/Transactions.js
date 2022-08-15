@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import "./Transactions.css"
 import {
     Routes,
     Route
 } from "react-router-dom";
+import { UsersContext } from "../../../../../contexts/UsersContext";
 import Deposit from "../Deposit/Deposit"
 import DepositConfirmation from "../Deposit/DepositConfirmation"
 import FinalDeposit from "../Deposit/FinalDeposit"
@@ -19,15 +20,19 @@ import FinalTransfer from "../Transfer/FinalTransfer.js"
 
 import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 import TransactionList from "../TransactionList/TransactionList";
+import Expense from "../Expense/Expense";
 
-const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) => {
+const Transactions = () => {
+    const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
     const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const day = current.getDate() < 10 ? `0${current.getDate()}` : current.getDate();
+    const month = (current.getMonth() + 1) < 10 ? `0${current.getMonth() + 1}` : current.getMonth() + 1;
+    const date = `${current.getFullYear()}-${month}-${day}`;
     const [balance, setBalance] = useState(currUser.balance);
     const [amount, setAmount] = useState("");
     const [other, setOther] = useState("");
 
-    const updateBalance = (user, type, amount, transferType = null, otherUser = null) => {
+    const updateBalance = (user, type, amount, subType = null, otherUser = null) => {
         let newBalance;
         let desc = type;
         switch(type) {
@@ -38,7 +43,7 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
                 newBalance = (parseFloat(user.balance) - amount).toFixed(2);
                 break;
             case "Transfer":
-                switch(transferType) {
+                switch(subType) {
                     case "Transfer To":
                         newBalance = (parseFloat(user.balance) - amount).toFixed(2);
                         updateBalance(otherUser, "Transfer", amount, "Transfer From", user);
@@ -49,7 +54,11 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
                     default:
                         return;
                 }
-                desc = transferType + " " + otherUser.name;
+                desc = subType + " " + otherUser.name;
+                break;
+            case "Expense":
+                newBalance = (parseFloat(user.balance) - amount).toFixed(2);
+                desc += `: ${subType}`;
                 break;
             default:
                 return;
@@ -73,21 +82,22 @@ const Transactions = ({users, updateUsers, currUser, changeCurrUser, setPage}) =
             </div>
             <div className="balanceContainer">
                 <div className="balanceLabel">BALANCE</div>
-                <div className="balanceActual">₱ {parseFloat(balance).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
+                <div className="balanceActual">₱ {parseFloat(currUser.balance).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
             </div>
             <div className="transactionsContainer">
                 <Routes>
-                    <Route path="/history" element={<TransactionList currUser={currUser} setPage={setPage}/>}/>
+                    <Route path="/history" element={<TransactionList currUser={currUser}/>}/>
+                    <Route path="/expense" element={<Expense cost={amount} setCost={setAmount} updateBalance={updateBalance}/>}/>
 
-                    <Route path="/deposit" element={<Deposit currUser={currUser} deposit={amount} setDeposit={setAmount} balance={balance} setPage={setPage}/>}/>
+                    <Route path="/deposit" element={<Deposit currUser={currUser} deposit={amount} setDeposit={setAmount} balance={balance}/>}/>
                     <Route path="/depositConfirmation" element={<DepositConfirmation currUser={currUser} deposit={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalDeposit" element={<FinalDeposit currUser={currUser} deposit={amount} setDeposit={setAmount}/>}/>
 
-                    <Route path="/withdraw" element={<Withdraw currUser={currUser} withdraw={amount} setWithdraw={setAmount} balance={balance} setPage={setPage}/>}/>
+                    <Route path="/withdraw" element={<Withdraw currUser={currUser} withdraw={amount} setWithdraw={setAmount} balance={balance}/>}/>
                     <Route path="/withdrawalConfirmation" element={<WithdrawalConfirmation  currUser={currUser} withdraw={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalWithdrawal" element={<FinalWithdrawal  currUser={currUser} withdraw={amount} setWithdraw={setAmount} />}/>
 
-                    <Route path="/transfer" element={<Transfer currUser={currUser} amount={amount} setAmount={setAmount} balance={balance} setPage={setPage}/>}/>
+                    <Route path="/transfer" element={<Transfer currUser={currUser} amount={amount} setAmount={setAmount} balance={balance}/>}/>
                     <Route path="/recipient" element={<Recipient users={users} currUser={currUser} setOther={setOther}/>}/>
                     <Route path="/transferConfirmation" element={<TransferConfirmation users={users} currUser={currUser} other={other} amount={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalTransfer" element={<FinalTransfer users={users} currUser={currUser} other={other} amount={amount}/>}/>

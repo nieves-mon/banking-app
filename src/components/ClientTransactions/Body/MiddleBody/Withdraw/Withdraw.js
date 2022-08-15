@@ -1,8 +1,10 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { Link } from "react-router-dom";
 import "../Transactions/Transaction.css"
+import { PageContext } from "../../../../../contexts/PageContext";
 
-const Withdraw = ({withdraw, setWithdraw, balance, setPage}) => {
+const Withdraw = ({withdraw, setWithdraw, balance}) => {
+    const [page, setPage] = useContext(PageContext);
     let withdrawError = false;
 
     function fundStatus(balance, withdraw) {

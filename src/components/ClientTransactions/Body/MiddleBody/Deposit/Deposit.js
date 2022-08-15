@@ -1,7 +1,9 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
+import { PageContext } from "../../../../../contexts/PageContext";
 
-const Deposit = ({deposit, setDeposit, balance, setPage}) => {
+const Deposit = ({deposit, setDeposit, balance}) => {
+    const [page, setPage] = useContext(PageContext);
     let depositError = false
 
     function fundStatus(balance, deposit) {
