@@ -15,7 +15,7 @@ const CustomPieChart = ({data}) => {
                border: "1px solid #cccc"
             }}
          >
-            <label>{`${payload[0].name} : ₱${payload[0].value}`}</label>
+            <label>{`${payload[0].name} : ₱${payload[0].value.toLocaleString(undefined, {maximumFractionDigits:2})}`}</label>
          </div>
         );
       }

@@ -213,7 +213,7 @@ const Expense = ({cost, setCost, updateBalance}) => {
                                     <td className="expense-date">{expense.date}</td>
                                     <td className="expense-desc">{expense.desc}</td>
                                     <td className="expense-category">{expense.category}</td>
-                                    <td className="expense-cost">₱ {parseFloat(expense.cost)}</td>
+                                    <td className="expense-cost">₱ {parseFloat(expense.cost).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
                                     <td>
                                         <div className="expense-actions">
                                             <i className="fa-solid fa-pen-to-square"
