@@ -1,15 +1,32 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "react-router-dom";
+import { UsersContext } from "../../../../../contexts/UsersContext";
 import "../Transactions/TransactionConfirmation.css"
 
 
-const RequestConfirmation = ({users, currUser, other, amount, balance, updateBalance}) => {
-    // const [reference, setReference] = useState("")
+const RequestConfirmation = ({other, amount, balance}) => {
+    const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
+
+    const current = new Date();
+    const day = current.getDate() < 10 ? `0${current.getDate()}` : current.getDate();
+    const month = (current.getMonth() + 1) < 10 ? `0${current.getMonth() + 1}` : current.getMonth() + 1;
+    const date = `${current.getFullYear()}-${month}-${day}`;
 
     const idx = users.findIndex(user => user.email === other);
 
+    const updateRequests = () => {
+        const tempUsers = JSON.parse(localStorage.getItem("users"));
+        const userIdx = tempUsers.findIndex(user => user.email === currUser.email);
+
+        tempUsers[userIdx].sentRequests.push({"date": date, "toUser": tempUsers[idx].email, "amount": amount});
+        tempUsers[idx].receivedRequests.push({"date": date, "fromUser": tempUsers[userIdx].email, "amount": amount});
+
+        updateUsers([...tempUsers]);
+        changeCurrUser(tempUsers[userIdx]);
+    }
+
     const handleConfirm = (e) => {
-        updateBalance(currUser, "Request", parseFloat(amount), "Request From", users[idx]);
+        updateRequests();
     }
 
     return (

@@ -3,34 +3,66 @@ import React, { useEffect, useState, useContext } from "react"
 
 import "../Transactions/Transaction.css"
 import { PageContext } from "../../../../../contexts/PageContext";
+import { UsersContext } from "../../../../../contexts/UsersContext";
 
-const Home = ({amount, setAmount, users, other, request}) => {
-    const idx = users.findIndex(user => user.email === other);
-    const [buttonText, setButtonText] = useState("Cancel");
-    const [disable, setDisable] = useState(false)
+const Home = ({updateBalance}) => {
+    const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
     const [page, setPage] = useContext(PageContext);
+    const userIdx = users.findIndex(user => user.name === currUser.name);
+    const toIdx = currUser.sentRequests.length === 0 ? null
+                : users.findIndex(user => user.email === currUser.sentRequests[0].toUser);
+    const fromIdx = currUser.receivedRequests.length === 0  ? null
+                : users.findIndex(user => user.email === currUser.receivedRequests[0].fromUser);
 
     useEffect(() => {
         setPage("home");
     }, [setPage]);
 
-    const handleClick = () => {
-        setButtonText("Cancelled");
-        setDisable(true)
-    }
+    const handleClick = (choice) => {
+        const tempUsers = JSON.parse(localStorage.getItem("users"));
 
-    console.log(amount, setAmount, setPage)
+        switch(choice) {
+            case "Approve":
+                updateBalance(currUser, "Transfer", parseFloat(currUser.receivedRequests[0].amount), "Transfer To", users[fromIdx]);
+                tempUsers[fromIdx].sentRequests.splice(0, 1);
+                tempUsers[userIdx].receivedRequests.splice(0, 1);
+                break;
+            case "Cancel":
+                if(currUser.sentRequests.length > 0) {
+                    tempUsers[userIdx].sentRequests.splice(0, 1);
+                    tempUsers[toIdx].receivedRequests.splice(0, 1);
+                } else {
+                    tempUsers[fromIdx].sentRequests.splice(0, 1);
+                    tempUsers[userIdx].receivedRequests.splice(0, 1);
+                }
+        }
+
+        updateUsers([...tempUsers]);
+        changeCurrUser(tempUsers[userIdx]);
+    }
 
     return (
         <div className="transactionContainer">
-            {/* <div className="transaction">
+            {currUser.sentRequests.length > 0 && <div className="transaction">
                 <div className="inputContainer">
-                    <label htmlFor="transfer">You requested {users[idx].name} to transfer {amount} to your account</label>
+                    <label htmlFor="transfer">You requested {users[toIdx].name} to transfer {currUser.sentRequests[0].amount} to your account</label>
                 </div>
                 <div className="submitButton">
-                    <button className="button" disabled={disable} onClick={handleClick}>{buttonText}</button>
+                    <button className="button" onClick={e => handleClick("Cancel")}>Cancel</button>
                 </div>
-            </div> */}
+            </div>}
+
+            {currUser.receivedRequests.length > 0 && <div className="transaction">
+                <div className="inputContainer">
+                    <label htmlFor="transfer">{users[fromIdx].name} requested you to transfer {currUser.receivedRequests[0].amount} to their account</label>
+                </div>
+                <div className="submitButton">
+                    <button className="button" onClick={e => handleClick("Approve")}>Confirm</button>
+                </div>
+                <div className="submitButton">
+                    <button className="button" onClick={e => handleClick("Cancel")}>Cancel</button>
+                </div>
+            </div>}
         </div>
     )
 }

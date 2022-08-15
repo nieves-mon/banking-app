@@ -92,7 +92,7 @@ const Transactions = () => {
             </div>
             <div className="transactionsContainer">
                 <Routes>
-                    <Route path="/home" element={<Home currUser={currUser} amount={amount} users={users} other={other} />}/>
+                    <Route path="/home" element={<Home updateBalance={updateBalance} />}/>
 
                     <Route path="/history" element={<TransactionList currUser={currUser}/>}/>
                     <Route path="/expense" element={<Expense cost={amount} setCost={setAmount} updateBalance={updateBalance}/>}/>
