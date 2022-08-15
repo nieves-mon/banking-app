@@ -5,6 +5,7 @@
 }
 
 .links {
+    color: white !important;
     position: relative;
     display: flex;
     flex-direction: row;

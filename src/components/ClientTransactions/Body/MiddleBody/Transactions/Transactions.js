@@ -22,6 +22,12 @@ import LatestTransactions from "../LatestTransactions/LatestTransactions.js"
 import TransactionList from "../TransactionList/TransactionList";
 import Expense from "../Expense/Expense";
 
+import Home from "../Home/Home";
+import Request from "../Request/Request";
+import Requestee from "../Request/Requestee";
+import RequestConfirmation from "../Request/RequestConfirmation";
+import FinalRequest from "../Request/FinalRequest";
+
 const Transactions = () => {
     const [users, updateUsers, currUser, changeCurrUser] = useContext(UsersContext);
     const current = new Date();
@@ -35,6 +41,7 @@ const Transactions = () => {
     const updateBalance = (user, type, amount, subType = null, otherUser = null) => {
         let newBalance;
         let desc = type;
+
         switch(type) {
             case "Deposit":
                 newBalance = (parseFloat(user.balance) + amount).toFixed(2);
@@ -60,13 +67,37 @@ const Transactions = () => {
                 newBalance = (parseFloat(user.balance) - amount).toFixed(2);
                 desc += `: ${subType}`;
                 break;
+            case "Request":
+                switch(subType) {
+                    case "Requested Transfer To":
+                        newBalance = (parseFloat(user.balance) - amount).toFixed(2);
+                        updateBalance(otherUser, "Request", amount, "Requested Transfer From", user);
+                        break;
+                    case "Requested Transfer From":
+                        newBalance = (parseFloat(user.balance) + amount).toFixed(2);
+                        break;
+                    default:
+                        console.log("failed");
+                        return;
+                }
+                desc = subType + " " + otherUser.name;
+                break;
             default:
                 return;
         }
         setBalance(newBalance);
 
-        const idx = users.findIndex(obj => obj.name === user.name);
         const tempUsers = JSON.parse(localStorage.getItem("users"));
+        const idx = users.findIndex(obj => obj.name === user.name);
+
+        if(subType === "Requested Transfer To") {
+            tempUsers[idx].receivedRequests.splice(0, 1);
+        }
+
+        if (subType === "Requested Transfer From") {
+            tempUsers[idx].sentRequests.splice(0, 1);
+        }
+
         tempUsers[idx].balance = newBalance;
         tempUsers[idx].history.unshift({"date": date, "type": desc, "amount": amount});
 
@@ -86,6 +117,8 @@ const Transactions = () => {
             </div>
             <div className="transactionsContainer">
                 <Routes>
+                    <Route path="/home" element={<Home updateBalance={updateBalance} />}/>
+
                     <Route path="/history" element={<TransactionList currUser={currUser}/>}/>
                     <Route path="/expense" element={<Expense cost={amount} setCost={setAmount} updateBalance={updateBalance}/>}/>
 
@@ -101,6 +134,11 @@ const Transactions = () => {
                     <Route path="/recipient" element={<Recipient users={users} currUser={currUser} setOther={setOther}/>}/>
                     <Route path="/transferConfirmation" element={<TransferConfirmation users={users} currUser={currUser} other={other} amount={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalTransfer" element={<FinalTransfer users={users} currUser={currUser} other={other} amount={amount}/>}/>
+
+                    <Route path="/request" element={<Request currUser={currUser} amount={amount} setAmount={setAmount} balance={balance}/>}/>
+                    <Route path="/requestee" element={<Requestee users={users} currUser={currUser} other={other} setOther={setOther}/>}/>
+                    <Route path="/requestConfirmation" element={<RequestConfirmation users={users} currUser={currUser} other={other} amount={amount} balance={balance} updateBalance={updateBalance}/>}/>
+                    <Route path="/finalRequest" element={<FinalRequest users={users} currUser={currUser} other={other} amount={amount}/>}/>
                 </Routes>
             </div>
             <div>

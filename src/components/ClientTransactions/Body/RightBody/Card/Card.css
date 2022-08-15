@@ -7,7 +7,6 @@
     margin-left: 30px;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.2);
     background: linear-gradient(112deg, rgb(3 73 144) 0%, rgb(248 197 201) 100%);
     backdrop-filter: blur(5px);
     overflow: hidden;
