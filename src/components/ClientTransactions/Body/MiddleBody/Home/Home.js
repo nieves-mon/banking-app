@@ -20,12 +20,9 @@ const Home = ({updateBalance}) => {
 
     const handleClick = (choice) => {
         const tempUsers = JSON.parse(localStorage.getItem("users"));
-
         switch(choice) {
             case "Approve":
-                updateBalance(currUser, "Transfer", parseFloat(currUser.receivedRequests[0].amount), "Transfer To", users[fromIdx]);
-                tempUsers[fromIdx].sentRequests.splice(0, 1);
-                tempUsers[userIdx].receivedRequests.splice(0, 1);
+                updateBalance(currUser, "Request", parseFloat(currUser.receivedRequests[0].amount), "Requested Transfer To", users[fromIdx]);
                 break;
             case "Cancel":
                 if(currUser.sentRequests.length > 0) {
@@ -35,10 +32,9 @@ const Home = ({updateBalance}) => {
                     tempUsers[fromIdx].sentRequests.splice(0, 1);
                     tempUsers[userIdx].receivedRequests.splice(0, 1);
                 }
+                updateUsers([...tempUsers]);
+                changeCurrUser(tempUsers[userIdx]);
         }
-
-        updateUsers([...tempUsers]);
-        changeCurrUser(tempUsers[userIdx]);
     }
 
     return (

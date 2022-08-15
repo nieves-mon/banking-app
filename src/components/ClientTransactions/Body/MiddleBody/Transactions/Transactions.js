@@ -39,8 +39,12 @@ const Transactions = () => {
     const [other, setOther] = useState("");
 
     const updateBalance = (user, type, amount, subType = null, otherUser = null) => {
+        let tempUsers = JSON.parse(localStorage.getItem("users"));
+        let idx = users.findIndex(obj => obj.name === user.name);
+
         let newBalance;
         let desc = type;
+
         switch(type) {
             case "Deposit":
                 newBalance = (parseFloat(user.balance) + amount).toFixed(2);
@@ -66,13 +70,37 @@ const Transactions = () => {
                 newBalance = (parseFloat(user.balance) - amount).toFixed(2);
                 desc += `: ${subType}`;
                 break;
+            case "Request":
+                switch(subType) {
+                    case "Requested Transfer To":
+                        newBalance = (parseFloat(user.balance) - amount).toFixed(2);
+                        updateBalance(otherUser, "Request", amount, "Requested Transfer From", user);
+                        break;
+                    case "Requested Transfer From":
+                        newBalance = (parseFloat(user.balance) + amount).toFixed(2);
+                        break;
+                    default:
+                        console.log("failed");
+                        return;
+                }
+                desc = subType + " " + otherUser.name;
+                break;
             default:
                 return;
         }
         setBalance(newBalance);
 
-        const idx = users.findIndex(obj => obj.name === user.name);
-        const tempUsers = JSON.parse(localStorage.getItem("users"));
+        tempUsers = JSON.parse(localStorage.getItem("users"));
+        idx = users.findIndex(obj => obj.name === user.name);
+
+        if(subType === "Requested Transfer To") {
+            tempUsers[idx].receivedRequests.splice(0, 1);
+        }
+
+        if (subType === "Requested Transfer From") {
+            tempUsers[idx].sentRequests.splice(0, 1);
+        }
+
         tempUsers[idx].balance = newBalance;
         tempUsers[idx].history.unshift({"date": date, "type": desc, "amount": amount});
 
@@ -111,7 +139,7 @@ const Transactions = () => {
                     <Route path="/finalTransfer" element={<FinalTransfer users={users} currUser={currUser} other={other} amount={amount}/>}/>
 
                     <Route path="/request" element={<Request currUser={currUser} amount={amount} setAmount={setAmount} balance={balance}/>}/>
-                    <Route path="/requestee" element={<Requestee users={users} currUser={currUser} setOther={setOther}/>}/>
+                    <Route path="/requestee" element={<Requestee users={users} currUser={currUser} other={other} setOther={setOther}/>}/>
                     <Route path="/requestConfirmation" element={<RequestConfirmation users={users} currUser={currUser} other={other} amount={amount} balance={balance} updateBalance={updateBalance}/>}/>
                     <Route path="/finalRequest" element={<FinalRequest users={users} currUser={currUser} other={other} amount={amount}/>}/>
                 </Routes>

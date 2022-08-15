@@ -3,19 +3,18 @@ import "../Transactions/Transaction.css"
 import "./Requestee.css"
 import { Link } from "react-router-dom";
 
-const Requestee = ({users, currUser, setOther}) => {
+const Requestee = ({users, currUser, other, setOther}) => {
     const filteredUsers = users.filter(user => user.name !== currUser.name);
-    const [requestee, setRequestee] = useState("");
     let transactionError = false;
 
-    const requesteeError = (requestee) => {
-        if(requestee.length < 1) {
+    const requesteeError = (other) => {
+        if(other.length < 1) {
             transactionError = false;
             return <p>Please type a valid email address</p>;
         }
 
         const validEmail = (user) => {
-            return user.email === requestee;
+            return user.email === other;
         }
 
         if(filteredUsers.every(user => !validEmail(user))) {
@@ -29,19 +28,18 @@ const Requestee = ({users, currUser, setOther}) => {
             });
 
             if(!transactionError) {
-                setOther(requestee)
                 return <p>Requestee is our customer</p>;
             }
         }
     }
 
     const chooseRequestee = (i) => {
-        setRequestee(filteredUsers[i].email);
+        setOther(filteredUsers[i].email);
     }
 
     useEffect(() => {
-        setRequestee("");
-    }, [setRequestee]);
+        setOther("");
+    }, [setOther]);
 
     return (
         <div className="transactionContainer">
@@ -54,10 +52,10 @@ const Requestee = ({users, currUser, setOther}) => {
                             className="inputValue"
                             name="requestee"
                             type="text"
-                            value={requestee}
-                            onChange={e => setRequestee(e.target.value)}
+                            value={other}
+                            onChange={e => setOther(e.target.value)}
                         />
-                    <div className="statusText">{requesteeError(requestee)}</div>
+                    <div className="statusText">{requesteeError(other)}</div>
                 </div>
                 <Link className="submitButton" type="submit" to="../requestConfirmation">
                     <button disabled={transactionError} className="button">Continue</button>
